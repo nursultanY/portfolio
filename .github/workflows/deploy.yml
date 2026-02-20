@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - gh-pages
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rewrite absolute paths for subpath deployment
+        run: |
+          python3 << 'EOF'
+          import os
+          import re
+
+          BASE_PATH = '/nursultanyerken.github.io'
+          # Match href=", src=", srcset=", or action=" followed by / but not //
+          PATTERN = re.compile(r'((?:href|src|srcset|action)=")(/(?!/))')
+          REPLACEMENT = r'\1' + BASE_PATH + r'\2'
+
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d != '.git']
+              for filename in files:
+                  if filename.endswith('.html'):
+                      filepath = os.path.join(root, filename)
+                      with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                          content = f.read()
+                      new_content = PATTERN.sub(REPLACEMENT, content)
+                      if new_content != content:
+                          with open(filepath, 'w', encoding='utf-8') as f:
+                              f.write(new_content)
+                          print(f'Fixed paths in: {filepath}')
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
