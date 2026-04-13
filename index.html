@@ -17,6 +17,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+      integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
+      crossorigin="anonymous"
+    />
 
     <style>
       :root {
@@ -26,8 +32,10 @@
         --panel-border: rgba(255, 255, 255, 0.09);
         --text: #f4f5f7;
         --muted: #a7adb7;
-        --accent: #ff5a2d;
-        --accent-2: #e82f2f;
+        --accent: #d97732;
+        --accent-2: #1a120d;
+        --copper: #f19f64;
+        --footer-bg: #090b0d;
         --accent-soft: rgba(255, 90, 45, 0.22);
         --green: #73d88d;
         --yellow: #ffc76a;
@@ -55,8 +63,8 @@
         position: fixed;
         inset: 0;
         z-index: -3;
-        background: radial-gradient(circle at 78% 32%, rgba(232, 47, 47, 0.18), transparent 38%),
-          radial-gradient(circle at 73% 40%, rgba(255, 90, 45, 0.2), transparent 30%), var(--bg);
+        background: radial-gradient(circle at 78% 32%, rgba(187, 102, 44, 0.2), transparent 38%),
+          radial-gradient(circle at 73% 40%, rgba(241, 159, 100, 0.16), transparent 30%), var(--bg);
       }
 
       .container {
@@ -314,17 +322,36 @@
         background: rgba(255, 90, 45, 0.12);
       }
 
+      /* Updated: premium orange-to-black hero CTA */
       .btn-primary {
+        position: relative;
+        overflow: hidden;
         margin-top: 0.8rem;
         width: min(460px, 100%);
-        border: 1px solid rgba(255, 90, 45, 0.9);
-        color: #fff5f1;
-        background: linear-gradient(145deg, rgba(255, 90, 45, 0.9), rgba(232, 47, 47, 0.85));
+        border: 1px solid rgba(241, 159, 100, 0.5);
+        color: #fff7f3;
+        background: linear-gradient(90deg, #cb6f2c 0%, #7e4b2b 45%, #15100c 100%);
+        background-size: 120% 100%;
+        box-shadow: inset 0 1px 0 rgba(255, 230, 214, 0.25), 0 10px 26px rgba(18, 11, 8, 0.45);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: 12px;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+        mix-blend-mode: screen;
+        opacity: 0.55;
       }
 
       .btn-primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 25px rgba(232, 47, 47, 0.35);
+        background-position: 100% 0;
+        box-shadow: inset 0 1px 0 rgba(255, 232, 216, 0.32), 0 14px 30px rgba(217, 119, 50, 0.25);
+        border-color: rgba(241, 159, 100, 0.7);
       }
 
       .hero-visual {
@@ -419,24 +446,143 @@
         font-size: 0.92rem;
       }
 
-      .contact-row {
+      /* Updated: immersive contact section with particles */
+      .contact-section {
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 0;
+      }
+      .contact-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: radial-gradient(circle at 18% 12%, rgba(217, 119, 50, 0.08), transparent 45%),
+          radial-gradient(circle at 82% 16%, rgba(241, 159, 100, 0.1), transparent 42%), #06080a;
+      }
+      .contact-bg canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0.45;
+      }
+      .contact-wrap {
+        position: relative;
+        z-index: 1;
+      }
+      .contact-shell {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        background: rgba(10, 12, 14, 0.62);
+        backdrop-filter: blur(3px);
+        padding: clamp(1.2rem, 2.4vw, 2rem);
+      }
+      .contact-heading {
+        margin: 0 0 1.2rem;
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        text-align: center;
+      }
+      .contact-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.8rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
       }
-
-      .contact-row a {
+      .contact-card {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 1rem;
+      }
+      .contact-label {
+        margin: 0 0 0.85rem;
+        color: #d6d9de;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-size: 0.77rem;
+      }
+      .social-row {
+        display: flex;
+        gap: 0.65rem;
+        margin-bottom: 0.9rem;
+      }
+      .social-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(241, 159, 100, 0.38);
+        background: rgba(255, 255, 255, 0.03);
+        color: #ffd9c6;
+        display: grid;
+        place-items: center;
         text-decoration: none;
-        color: #ffe0d6;
-        border: 1px solid rgba(255, 90, 45, 0.55);
-        border-radius: 11px;
-        padding: 0.8rem 0.95rem;
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease,
+          border-color 0.22s ease;
+      }
+      .social-btn:hover {
+        transform: translateY(-3px);
+        border-color: rgba(241, 159, 100, 0.75);
+        background: rgba(217, 119, 50, 0.12);
+        box-shadow: 0 10px 22px rgba(217, 119, 50, 0.2);
+      }
+      .location-line {
+        margin: 0;
+        color: var(--muted);
+      }
+      .email-primary {
+        margin: 0 0 0.45rem;
+        color: var(--copper);
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .email-secondary {
+        margin: 0.22rem 0;
+        color: #bec3cb;
       }
 
-      .contact-row a:hover {
-        background: rgba(255, 90, 45, 0.14);
-        transform: translateY(-2px);
+      /* Added: polished footer integrated under contact */
+      .site-footer {
+        margin-top: 1.4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.15rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        gap: 1rem;
+      }
+      .footer-brand {
+        color: #f2f5f7;
+        font-size: 1.04rem;
+        font-weight: 700;
+      }
+      .footer-sub {
+        color: #b7bec8;
+        margin-top: 0.45rem;
+      }
+      .footer-title {
+        margin: 0 0 0.6rem;
+        font-size: 0.95rem;
+      }
+      .quick-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .quick-links li {
+        margin-bottom: 0.38rem;
+      }
+      .quick-links a,
+      .footer-contact a {
+        text-decoration: none;
+        color: #d6dbe3;
+        transition: color 0.2s ease;
+      }
+      .quick-links a:hover,
+      .footer-contact a:hover {
+        color: var(--copper);
+      }
+      .footer-contact p {
+        margin: 0.34rem 0;
+        color: #b7bec8;
       }
 
       .reveal {
@@ -488,7 +634,10 @@
         .cards {
           grid-template-columns: 1fr;
         }
-        .contact-row {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -623,15 +772,65 @@
         </div>
       </section>
 
-      <section id="contact" class="panel-section reveal">
-        <div class="container panel">
-          <h2 class="section-title">Contact</h2>
-          <p class="section-desc">Open to collaboration, internships, and engineering opportunities.</p>
-          <div class="contact-row">
-            <a href="mailto:nuye69018@hbku.edu.qa">Email</a>
-            <a href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer"
-              >LinkedIn</a
-            >
+      <!-- Updated: premium contact section with subtle animated particles -->
+      <section id="contact" class="panel-section reveal contact-section">
+        <div class="contact-bg" aria-hidden="true">
+          <canvas id="contactParticles"></canvas>
+        </div>
+        <div class="container contact-wrap">
+          <div class="contact-shell">
+            <h2 class="contact-heading">Get In Touch</h2>
+
+            <div class="contact-grid">
+              <article class="contact-card">
+                <p class="contact-label">Connect</p>
+                <div class="social-row">
+                  <a class="social-btn" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                  <a class="social-btn" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  <a class="social-btn" href="mailto:nuye69018@hbku.edu.qa" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="location-line"><i class="fas fa-map-marker-alt"></i> Doha, Qatar</p>
+              </article>
+
+              <article class="contact-card">
+                <p class="contact-label">Email</p>
+                <p class="email-primary">nuye69018@hbku.edu.qa</p>
+                <p class="email-secondary">nursultan.yerken@portfolio.dev</p>
+                <p class="email-secondary">Response usually within 24 hours.</p>
+              </article>
+            </div>
+
+            <!-- Added: footer under contact -->
+            <footer class="site-footer">
+              <div class="footer-grid">
+                <section>
+                  <div class="footer-brand">Nursultan Yerken</div>
+                  <p class="footer-sub">Engineering robust systems with practical impact.</p>
+                  <div class="social-row">
+                    <a class="social-btn" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a class="social-btn" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="social-btn" href="mailto:nuye69018@hbku.edu.qa" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                  </div>
+                </section>
+
+                <section>
+                  <h3 class="footer-title">Quick Links</h3>
+                  <ul class="quick-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#journey">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                  </ul>
+                </section>
+
+                <section class="footer-contact">
+                  <h3 class="footer-title">Get in Touch</h3>
+                  <p><a href="mailto:nuye69018@hbku.edu.qa">nuye69018@hbku.edu.qa</a></p>
+                  <p>Doha, Qatar</p>
+                </section>
+              </div>
+            </footer>
           </div>
         </div>
       </section>
@@ -643,6 +842,7 @@
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
       const railFill = document.getElementById("railFill");
+      let particleState = null;
 
       function activateSection(id) {
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
@@ -682,11 +882,68 @@
       );
       document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+      // Added: lightweight particle/star background for the contact section
+      function initContactParticles() {
+        const canvas = document.getElementById("contactParticles");
+        const host = document.getElementById("contact");
+        if (!canvas || !host) return;
+        const ctx = canvas.getContext("2d");
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const particles = [];
+
+        function resizeParticles() {
+          const rect = host.getBoundingClientRect();
+          canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+          canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+          canvas.style.width = `${Math.max(1, Math.floor(rect.width))}px`;
+          canvas.style.height = `${Math.max(1, Math.floor(rect.height))}px`;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const count = Math.max(30, Math.min(80, Math.floor(rect.width / 18)));
+          particles.length = 0;
+          for (let i = 0; i < count; i += 1) {
+            particles.push({
+              x: Math.random() * rect.width,
+              y: Math.random() * rect.height,
+              vx: (Math.random() - 0.5) * 0.18,
+              vy: (Math.random() - 0.5) * 0.18,
+              r: 0.6 + Math.random() * 1.7,
+              a: 0.16 + Math.random() * 0.38,
+            });
+          }
+        }
+
+        function tick() {
+          const w = canvas.width / dpr;
+          const h = canvas.height / dpr;
+          ctx.clearRect(0, 0, w, h);
+          for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < -10) p.x = w + 10;
+            if (p.x > w + 10) p.x = -10;
+            if (p.y < -10) p.y = h + 10;
+            if (p.y > h + 10) p.y = -10;
+
+            ctx.beginPath();
+            ctx.fillStyle = `rgba(247, 180, 134, ${p.a})`;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          particleState.raf = requestAnimationFrame(tick);
+        }
+
+        resizeParticles();
+        particleState = { resizeParticles, raf: requestAnimationFrame(tick) };
+      }
+
       window.addEventListener("load", () => {
+        initContactParticles();
         placeRailPoints();
         syncScrollUI();
       });
       window.addEventListener("resize", () => {
+        if (particleState && particleState.resizeParticles) particleState.resizeParticles();
         placeRailPoints();
         syncScrollUI();
       });
