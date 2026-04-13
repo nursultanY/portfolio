@@ -18,11 +18,7 @@
     <meta name="author" content="Nursultan Yerken" />
     <meta
       name="description"
-      content="Portfolio: Oil and gas themed one-page website with about, blog, and projects."
-    />
-    <meta
-      name="keywords"
-      content="Natrual Language Processing,Prompt Engineering,Computer Security, Social Engineering,"
+      content="One-page oil and gas themed portfolio with About, Blog, Projects, and CV."
     />
 
     <link
@@ -37,7 +33,6 @@
       integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
       crossorigin="anonymous"
     />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
@@ -56,23 +51,10 @@
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons"
     />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css"
-      media=""
-      id="highlight_theme_light"
-    />
-
     <link rel="shortcut icon" href="/assets/img/favicon.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="canonical" href="https://algoroxyolo.github.io/" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css"
-      media="none"
-      id="highlight_theme_dark"
-    />
     <script src="/assets/js/theme.js"></script>
     <script src="/assets/js/dark_mode.js"></script>
   </head>
@@ -104,7 +86,7 @@
               <li class="nav-item"><a class="nav-link" href="#about">about</a></li>
               <li class="nav-item"><a class="nav-link" href="#blog">blog</a></li>
               <li class="nav-item"><a class="nav-link" href="#projects">projects</a></li>
-              <li class="nav-item"><a class="nav-link" href="/cv/">cv</a></li>
+              <li class="nav-item"><a class="nav-link" href="#cv">cv</a></li>
               <li class="toggle-container">
                 <button id="light-toggle" title="Change theme">
                   <i class="fas fa-moon"></i>
@@ -117,56 +99,64 @@
       </nav>
 
       <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
+        <div class="progress-container"><span class="progress-bar"></span></div>
       </progress>
     </header>
 
-    <div class="energy-bg"></div>
-    <div class="float-orb orb-1"></div>
-    <div class="float-orb orb-2"></div>
-    <div class="float-orb orb-3"></div>
+    <div class="energy-backdrop"></div>
+    <div class="flare flare-a"></div>
+    <div class="flare flare-b"></div>
+    <div class="flare flare-c"></div>
+    <div class="floating-icon icon-a"><i class="fas fa-oil-can"></i></div>
+    <div class="floating-icon icon-b"><i class="fas fa-industry"></i></div>
 
     <main class="container-fluid px-0">
-      <section id="about" class="energy-section hero-section reveal-on-scroll">
-        <div class="section-inner container py-5">
-          <p class="section-kicker">Energy Systems Portfolio</p>
-          <h1 class="display-4 font-weight-bold mb-3">Building practical systems for modern oil &amp; gas operations.</h1>
-          <p class="lead text-light mb-4">
-            I combine field execution, mechanical reliability, and digital workflows to improve
-            performance, safety, and decision quality across upstream and downstream environments.
+      <section id="about" class="energy-section reveal-on-scroll">
+        <div class="section-inner container">
+          <p class="section-kicker">Field + Digital + Mechanical</p>
+          <h1 class="display-4 font-weight-bold mb-3">
+            Oil &amp; Gas Systems Portfolio
+          </h1>
+          <p class="lead mb-4 text-light">
+            Engineering for reliability, safe operations, and production efficiency from field
+            diagnostics to decision-making analytics.
           </p>
 
-          <div class="row">
-            <div class="col-lg-8 mb-3 mb-lg-0">
-              <div class="glass-card h-100">
-                <h3 class="mb-3">About</h3>
-                <p>
-                  Mechanical engineering student at Hamad Bin Khalifa University with a strong
-                  focus on oil and gas operations. My work spans diagnostics, optimization, and
-                  engineering execution with clear measurable outcomes.
-                </p>
-                <div class="chip-row">
-                  <span>Production Systems</span>
-                  <span>Asset Integrity</span>
-                  <span>Flow Assurance</span>
-                  <span>Digital Engineering</span>
-                </div>
+          <div class="row align-items-stretch">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+              <div class="glass-panel h-100 profile-panel">
+                <picture>
+                  <source media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp" />
+                  <source media="(max-width: 800px)" srcset="/assets/img/prof_pic-800.webp" />
+                  <img
+                    src="/assets/img/prof_pic.jpg"
+                    alt="Nursultan Yerken profile photo"
+                    onerror="this.onerror=null;this.src='/assets/img/roma.jpg';"
+                  />
+                </picture>
+                <h3 class="mt-3 mb-2">Nursultan Yerken</h3>
+                <p class="mb-0">Doha, Qatar · Mechanical Engineering</p>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="floating-metric">
-                <strong>150+</strong>
-                <small>Field diagnostics</small>
-              </div>
-              <div class="floating-metric">
-                <strong>60%</strong>
-                <small>Faster analysis pipeline</small>
-              </div>
-              <div class="floating-metric">
-                <strong>25%</strong>
-                <small>Mechanical stiffness gain</small>
+            <div class="col-lg-8">
+              <div class="glass-panel h-100">
+                <h3 class="mb-3">About</h3>
+                <p>
+                  I focus on practical oil and gas execution: field support, reliability
+                  improvement, and data-driven operational decisions. I enjoy turning complex
+                  engineering workflows into simple, measurable outcomes.
+                </p>
+                <div class="chip-row">
+                  <span>Production Operations</span>
+                  <span>Flow Assurance</span>
+                  <span>Asset Integrity</span>
+                  <span>Process Optimization</span>
+                </div>
+                <div class="metric-row mt-3">
+                  <div><strong>150+</strong><small>Diagnostics Completed</small></div>
+                  <div><strong>60%</strong><small>Faster Analysis Pipeline</small></div>
+                  <div><strong>25%</strong><small>Stiffness Improvement</small></div>
+                </div>
               </div>
             </div>
           </div>
@@ -174,11 +164,13 @@
       </section>
 
       <section id="blog" class="energy-section reveal-on-scroll">
-        <div class="section-inner container py-5">
+        <div class="section-inner container">
           <div class="section-header">
-            <p class="section-kicker">Insights</p>
+            <p class="section-kicker">Industry Notes</p>
             <h2>Blog</h2>
-            <p>Notes from operations, infrastructure, and energy transition themes.</p>
+            <p>
+              Long-form insights in a timeline style inspired by modern portfolio storytelling.
+            </p>
           </div>
 
           <div class="timeline">
@@ -187,52 +179,49 @@
               <div class="timeline-content">
                 <h4>Upstream Field Notes</h4>
                 <p>
-                  Drilling optimization, production balancing, and practical lessons from
-                  field-facing engineering decisions.
+                  Lessons from production monitoring, drilling support, and system-level decision
+                  making in active operational contexts.
                 </p>
               </div>
             </article>
             <article class="timeline-item">
               <span class="timeline-year">2025</span>
               <div class="timeline-content">
-                <h4>Midstream &amp; LNG Watch</h4>
+                <h4>Midstream and LNG Reliability</h4>
                 <p>
-                  Pipeline reliability, gas movement, and infrastructure resilience under
-                  fluctuating demand.
+                  Transportation resilience, storage considerations, and infrastructure readiness
+                  under changing demand cycles.
                 </p>
               </div>
             </article>
             <article class="timeline-item">
               <span class="timeline-year">2024</span>
               <div class="timeline-content">
-                <h4>Transition &amp; Decarbonization</h4>
+                <h4>Decarbonization in O&amp;G</h4>
                 <p>
-                  Carbon management, methane reduction, and realistic decarbonization pathways for
-                  oil and gas operators.
+                  Practical pathways for methane reduction, carbon management, and efficiency gains
+                  without compromising output.
                 </p>
               </div>
             </article>
           </div>
-
-          <a class="btn btn-outline-light mt-3" href="/blog/">Visit full blog</a>
         </div>
       </section>
 
       <section id="projects" class="energy-section reveal-on-scroll">
-        <div class="section-inner container py-5">
+        <div class="section-inner container">
           <div class="section-header">
-            <p class="section-kicker">Execution</p>
+            <p class="section-kicker">Build Portfolio</p>
             <h2>Projects</h2>
-            <p>Selected builds across product development, analytics, and systems engineering.</p>
+            <p>Selected technical builds integrated directly into this one-page experience.</p>
           </div>
-
           <div class="row">
             <div class="col-md-6 col-xl-3 mb-4">
               <a href="https://fehris.qcri.org/" target="_blank" rel="external nofollow noopener" class="project-card d-block">
                 <img src="/assets/img/fehris.png" alt="FEHRIS project preview" />
                 <div class="project-body">
                   <h5>FEHRIS</h5>
-                  <p>Cross-platform productivity and organization tool built with Flutter.</p>
+                  <p>Cross-platform productivity app for tagged information management.</p>
                 </div>
               </a>
             </div>
@@ -241,7 +230,7 @@
                 <img src="/assets/img/stock.jpg" alt="Stock predictor project preview" />
                 <div class="project-body">
                   <h5>Stock Predictor</h5>
-                  <p>Forecast model pipeline using pandas and scikit-learn.</p>
+                  <p>ML pipeline for market direction forecasting using tabular features.</p>
                 </div>
               </a>
             </div>
@@ -250,22 +239,71 @@
                 <img src="/assets/img/DFS.png" alt="File Stack project preview" />
                 <div class="project-body">
                   <h5>File Stack</h5>
-                  <p>Distributed file management system implemented in Java RMI.</p>
+                  <p>Java RMI distributed storage and file coordination system.</p>
                 </div>
               </a>
             </div>
             <div class="col-md-6 col-xl-3 mb-4">
               <a href="https://github.com/roma2023/openai-api-sql" target="_blank" rel="external nofollow noopener" class="project-card d-block">
-                <img src="/assets/img/stock.jpg" alt="SQL generator project preview" />
+                <img src="/assets/img/sql-icon.png" alt="SQL generator project preview" />
                 <div class="project-body">
                   <h5>SQL Generator</h5>
-                  <p>Natural-language to SQL app with React, Node.js, and API integration.</p>
+                  <p>Natural language to SQL workflow with React and Node.js backend.</p>
                 </div>
               </a>
             </div>
           </div>
+        </div>
+      </section>
 
-          <a class="btn btn-outline-light mt-2" href="/projects/">View all projects</a>
+      <section id="cv" class="energy-section reveal-on-scroll">
+        <div class="section-inner container">
+          <div class="section-header">
+            <p class="section-kicker">Career Snapshot</p>
+            <h2>CV</h2>
+            <p>Integrated here so your full portfolio is accessible by scrolling only.</p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 mb-4">
+              <div class="glass-panel h-100">
+                <h4>Education</h4>
+                <p class="mb-1"><strong>2022-2026</strong></p>
+                <p class="mb-2">BS Computer Science (Systems)</p>
+                <p class="mb-0 text-muted-lite">Carnegie Mellon University in Qatar</p>
+              </div>
+            </div>
+            <div class="col-lg-8 mb-4">
+              <div class="glass-panel h-100">
+                <h4>Experience</h4>
+                <ul class="cv-list mb-0">
+                  <li><strong>2024</strong> · ML &amp; NLP Researcher, CMU Qatar</li>
+                  <li><strong>2023</strong> · Software Engineer Contributor, AWS OpenSearch</li>
+                  <li><strong>2022-2023</strong> · Software Engineer Intern, QCRI</li>
+                  <li><strong>2022</strong> · Course Assistant and Student Leadership Roles</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="glass-panel">
+                <h4>Skills &amp; Links</h4>
+                <div class="chip-row mb-2">
+                  <span>Python</span>
+                  <span>Java</span>
+                  <span>C/C++</span>
+                  <span>ML &amp; NLP</span>
+                  <span>Prompt Engineering</span>
+                  <span>Systems Thinking</span>
+                </div>
+                <a class="btn btn-outline-light btn-sm mr-2 mb-2" href="/assets/pdf/SWE_resume2024.pdf" target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-file-pdf mr-1"></i> CV PDF
+                </a>
+                <a class="btn btn-outline-light btn-sm mb-2" href="mailto:nuye69018@hbku.edu.qa">
+                  <i class="fas fa-envelope mr-1"></i> Contact
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -276,164 +314,198 @@
       <a href="https://www.linkedin.com/in/nursultan-yerken/" title="LinkedIn" rel="external nofollow noopener" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
 
-    <footer>
-      <div class="container py-3">© Copyright 2026 Nursultan Yerken.</div>
-    </footer>
+    <footer><div class="container py-3">© Copyright 2026 Nursultan Yerken.</div></footer>
 
     <style>
       html {
         scroll-behavior: smooth;
       }
       body {
-        color: #e7edf5;
-        background: #060f1b;
+        color: #ebf2fb;
+        background: #050e1a;
         overflow-x: hidden;
       }
       #navbar {
-        background: rgba(4, 12, 22, 0.88);
-        border-bottom: 1px solid rgba(120, 173, 218, 0.24);
+        background: rgba(4, 12, 21, 0.9);
+        border-bottom: 1px solid rgba(132, 181, 219, 0.24);
         backdrop-filter: blur(8px);
       }
-      .energy-bg {
+      .energy-backdrop {
         position: fixed;
         inset: 0;
-        z-index: -2;
-        background: linear-gradient(115deg, rgba(6, 15, 27, 0.92), rgba(12, 45, 73, 0.84)),
+        z-index: -3;
+        background:
+          linear-gradient(120deg, rgba(3, 12, 21, 0.94), rgba(7, 31, 52, 0.88)),
           url("https://images.unsplash.com/photo-1545147989-29d6a80120b6?auto=format&fit=crop&w=2200&q=80")
             center/cover no-repeat;
       }
-      .float-orb {
+      .flare {
         position: fixed;
-        z-index: -1;
         border-radius: 50%;
         filter: blur(2px);
-        opacity: 0.42;
-        animation: drift 10s ease-in-out infinite;
+        z-index: -2;
+        opacity: 0.35;
+        animation: drift 9s ease-in-out infinite;
       }
-      .orb-1 {
-        width: 180px;
-        height: 180px;
-        background: rgba(255, 175, 65, 0.28);
-        top: 18%;
+      .flare-a {
+        width: 220px;
+        height: 220px;
+        background: rgba(255, 181, 70, 0.3);
+        top: 14%;
         left: 8%;
       }
-      .orb-2 {
-        width: 240px;
-        height: 240px;
-        background: rgba(99, 173, 234, 0.24);
+      .flare-b {
+        width: 260px;
+        height: 260px;
+        background: rgba(114, 183, 241, 0.25);
+        right: 5%;
         top: 52%;
-        right: 7%;
-        animation-delay: 1.6s;
+        animation-delay: 1.8s;
       }
-      .orb-3 {
-        width: 120px;
-        height: 120px;
-        background: rgba(255, 206, 119, 0.3);
-        bottom: 8%;
-        left: 26%;
-        animation-delay: 2.8s;
+      .flare-c {
+        width: 140px;
+        height: 140px;
+        background: rgba(255, 203, 119, 0.33);
+        left: 30%;
+        bottom: 7%;
+        animation-delay: 3s;
+      }
+      .floating-icon {
+        position: fixed;
+        z-index: 3;
+        color: rgba(255, 206, 120, 0.86);
+        font-size: 1.1rem;
+        border: 1px solid rgba(255, 206, 120, 0.5);
+        border-radius: 999px;
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        background: rgba(4, 17, 31, 0.7);
+        animation: floatCard 4.5s ease-in-out infinite;
+      }
+      .icon-a {
+        left: 15px;
+        top: 45%;
+      }
+      .icon-b {
+        left: 15px;
+        top: 53%;
+        animation-delay: 1.3s;
       }
       .energy-section {
         min-height: 100vh;
         display: flex;
         align-items: center;
+        padding: 2rem 0;
       }
-      .section-inner {
-        width: 100%;
+      .section-kicker {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.78rem;
+        color: #8bc0ef;
       }
-      .hero-section h1 {
-        max-width: 960px;
-      }
-      .glass-card {
+      .glass-panel {
         border-radius: 16px;
-        border: 1px solid rgba(139, 184, 220, 0.32);
-        background: rgba(6, 23, 40, 0.72);
-        padding: 1.35rem;
-        box-shadow: 0 14px 28px rgba(2, 9, 19, 0.45);
+        border: 1px solid rgba(139, 185, 220, 0.33);
+        background: rgba(5, 22, 39, 0.74);
+        padding: 1.2rem;
+        box-shadow: 0 16px 30px rgba(2, 9, 18, 0.45);
+      }
+      .profile-panel img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 14px;
+        border: 2px solid rgba(255, 206, 120, 0.7);
+        display: block;
+        margin: 0 auto;
+        object-fit: cover;
       }
       .chip-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.55rem;
-        margin-top: 1rem;
+        gap: 0.5rem;
       }
       .chip-row span {
         border-radius: 999px;
-        border: 1px solid rgba(255, 194, 92, 0.45);
-        background: rgba(255, 194, 92, 0.15);
-        padding: 0.35rem 0.8rem;
+        border: 1px solid rgba(255, 203, 120, 0.48);
+        background: rgba(255, 203, 120, 0.16);
+        padding: 0.35rem 0.78rem;
         font-size: 0.82rem;
       }
-      .floating-metric {
-        border-radius: 14px;
-        margin-bottom: 0.75rem;
-        border: 1px solid rgba(148, 194, 232, 0.35);
-        background: rgba(4, 18, 33, 0.78);
-        padding: 0.9rem 1rem;
-        animation: floatCard 4s ease-in-out infinite;
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
       }
-      .floating-metric:nth-child(2) {
-        animation-delay: 0.8s;
+      .metric-row div {
+        border-radius: 12px;
+        border: 1px solid rgba(137, 185, 219, 0.3);
+        background: rgba(3, 16, 28, 0.78);
+        padding: 0.75rem;
+        text-align: center;
       }
-      .floating-metric:nth-child(3) {
-        animation-delay: 1.6s;
-      }
-      .floating-metric strong {
+      .metric-row strong {
         display: block;
-        font-size: 1.4rem;
-        color: #ffd081;
+        color: #ffd38a;
+        font-size: 1.3rem;
+      }
+      .metric-row small {
+        display: block;
       }
       .section-header h2 {
-        font-size: 2.2rem;
-        margin-bottom: 0.45rem;
-      }
-      .section-kicker {
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-size: 0.76rem;
-        color: #8ec1f0;
-        margin-bottom: 0.45rem;
+        font-size: 2.3rem;
+        margin-bottom: 0.4rem;
       }
       .timeline {
         margin-top: 1rem;
-        border-left: 2px solid rgba(124, 175, 216, 0.36);
+        border-left: 2px solid rgba(126, 177, 214, 0.36);
       }
       .timeline-item {
         display: grid;
         grid-template-columns: 100px 1fr;
         gap: 1rem;
-        padding: 0.65rem 0 1.1rem 1rem;
+        padding: 0.6rem 0 1.2rem 1rem;
       }
       .timeline-year {
-        color: #ffd081;
+        color: #ffd38a;
         font-weight: 700;
       }
       .timeline-content {
         border-radius: 14px;
-        border: 1px solid rgba(130, 179, 218, 0.3);
-        background: rgba(5, 25, 42, 0.78);
+        border: 1px solid rgba(132, 179, 214, 0.32);
+        background: rgba(4, 19, 34, 0.78);
         padding: 0.95rem 1rem;
       }
       .project-card {
         border-radius: 14px;
-        border: 1px solid rgba(131, 184, 225, 0.3);
+        border: 1px solid rgba(130, 181, 218, 0.32);
         overflow: hidden;
-        background: rgba(5, 23, 40, 0.75);
-        color: #e7edf5;
-        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        background: rgba(5, 22, 39, 0.76);
+        color: #e6eef7;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .project-card:hover {
-        color: #e7edf5;
+        color: #e6eef7;
         transform: translateY(-8px);
-        box-shadow: 0 16px 34px rgba(3, 11, 20, 0.5);
+        box-shadow: 0 18px 35px rgba(3, 11, 20, 0.56);
       }
       .project-card img {
         width: 100%;
-        height: 180px;
+        height: 175px;
         object-fit: cover;
       }
       .project-body {
-        padding: 0.95rem 1rem 1.15rem;
+        padding: 1rem;
+      }
+      .cv-list {
+        padding-left: 1rem;
+      }
+      .cv-list li {
+        margin-bottom: 0.45rem;
+      }
+      .text-muted-lite {
+        color: #b9cde2;
       }
       .floating-dock {
         position: fixed;
@@ -452,16 +524,15 @@
         border-radius: 50%;
         color: #f5f8fc;
         border: 1px solid rgba(143, 192, 230, 0.5);
-        background: rgba(5, 22, 39, 0.86);
+        background: rgba(5, 22, 39, 0.88);
       }
       .floating-dock a:hover {
-        background: rgba(255, 194, 92, 0.88);
-        color: #092136;
+        color: #052038;
+        background: rgba(255, 197, 97, 0.95);
       }
       footer {
-        border-top: 1px solid rgba(119, 173, 214, 0.28);
-        background: rgba(2, 9, 18, 0.9);
-        color: #d1deee;
+        border-top: 1px solid rgba(118, 171, 209, 0.28);
+        background: rgba(2, 9, 18, 0.93);
       }
       .reveal-on-scroll {
         opacity: 0;
@@ -475,19 +546,24 @@
       @keyframes drift {
         0%,
         100% {
-          transform: translateY(0px) translateX(0px);
+          transform: translateY(0) translateX(0);
         }
         50% {
-          transform: translateY(-16px) translateX(10px);
+          transform: translateY(-15px) translateX(10px);
         }
       }
       @keyframes floatCard {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0);
         }
         50% {
-          transform: translateY(-8px);
+          transform: translateY(-7px);
+        }
+      }
+      @media (max-width: 991px) {
+        .metric-row {
+          grid-template-columns: 1fr;
         }
       }
       @media (max-width: 768px) {
@@ -497,7 +573,10 @@
         }
         .energy-section {
           min-height: auto;
-          padding: 3rem 0;
+          padding: 2.5rem 0;
+        }
+        .floating-icon {
+          display: none;
         }
       }
     </style>
@@ -507,7 +586,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
     <script defer src="/assets/js/common.js"></script>
 
-    <script type="text/javascript">
+    <script>
       const progressBar = $("#progress");
       window.onload = function () {
         setTimeout(progressBarSetup, 50);
@@ -533,10 +612,7 @@
         $("body").css({ "padding-top": navbarHeight });
         $(".progress-container").css({ "padding-top": navbarHeight });
         progressBar.css({ top: navbarHeight });
-        progressBar.attr({
-          max: getDistanceToScroll(),
-          value: getCurrentScrollPosition(),
-        });
+        progressBar.attr({ max: getDistanceToScroll(), value: getCurrentScrollPosition() });
       }
       function getDistanceToScroll() {
         return $(document).height() - $(window).height();
@@ -551,14 +627,12 @@
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-            }
+            if (entry.isIntersecting) entry.target.classList.add("is-visible");
           });
         },
         { threshold: 0.15 }
       );
-      document.querySelectorAll(".reveal-on-scroll").forEach((node) => observer.observe(node));
+      document.querySelectorAll(".reveal-on-scroll").forEach((n) => observer.observe(n));
     </script>
   </body>
 </html>
