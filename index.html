@@ -54,69 +54,43 @@
     <link rel="shortcut icon" href="/assets/img/favicon.jpg" />
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="canonical" href="https://algoroxyolo.github.io/" />
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/dark_mode.js"></script>
   </head>
 
-  <body class="fixed-top-nav">
-    <header>
-      <nav id="navbar" class="navbar navbar-dark navbar-expand-sm fixed-top">
-        <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href="#about"
-            ><span class="font-weight-bold">Nursultan&nbsp;</span>Yerken</a
-          >
-          <button
-            class="navbar-toggler collapsed ml-auto"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
-
-          <div class="collapse navbar-collapse text-right" id="navbarNav">
-            <ul class="navbar-nav ml-auto flex-nowrap">
-              <li class="nav-item"><a class="nav-link" href="#about">about</a></li>
-              <li class="nav-item"><a class="nav-link" href="#blog">blog</a></li>
-              <li class="nav-item"><a class="nav-link" href="#projects">projects</a></li>
-              <li class="nav-item"><a class="nav-link" href="#cv">cv</a></li>
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <progress id="progress" value="0">
-        <div class="progress-container"><span class="progress-bar"></span></div>
-      </progress>
-    </header>
-
+  <body>
     <div class="energy-backdrop"></div>
     <div class="flare flare-a"></div>
     <div class="flare flare-b"></div>
     <div class="flare flare-c"></div>
-    <div class="floating-icon icon-a"><i class="fas fa-oil-can"></i></div>
-    <div class="floating-icon icon-b"><i class="fas fa-industry"></i></div>
+
+    <header class="top-indicator-wrap">
+      <div class="top-indicator container">
+        <span class="brand"><strong>Nursultan</strong> Yerken</span>
+        <div class="top-sections" id="topSections">
+          <span data-section="about">about</span>
+          <span data-section="blog">blog</span>
+          <span data-section="projects">projects</span>
+          <span data-section="cv">cv</span>
+        </div>
+      </div>
+    </header>
+
+    <aside class="scroll-rail" aria-hidden="true">
+      <div class="rail-line">
+        <div class="rail-fill" id="railFill"></div>
+      </div>
+      <div class="rail-points" id="railPoints">
+        <div class="rail-point" data-section="about"><span class="dot"></span><span>about</span></div>
+        <div class="rail-point" data-section="blog"><span class="dot"></span><span>blog</span></div>
+        <div class="rail-point" data-section="projects"><span class="dot"></span><span>projects</span></div>
+        <div class="rail-point" data-section="cv"><span class="dot"></span><span>cv</span></div>
+      </div>
+    </aside>
 
     <main class="container-fluid px-0">
       <section id="about" class="energy-section reveal-on-scroll">
         <div class="section-inner container">
           <p class="section-kicker">Field + Digital + Mechanical</p>
-          <h1 class="display-4 font-weight-bold mb-3">
-            Oil &amp; Gas Systems Portfolio
-          </h1>
+          <h1 class="display-4 font-weight-bold mb-3">Oil &amp; Gas Systems Portfolio</h1>
           <p class="lead mb-4 text-light">
             Engineering for reliability, safe operations, and production efficiency from field
             diagnostics to decision-making analytics.
@@ -168,9 +142,7 @@
           <div class="section-header">
             <p class="section-kicker">Industry Notes</p>
             <h2>Blog</h2>
-            <p>
-              Long-form insights in a timeline style inspired by modern portfolio storytelling.
-            </p>
+            <p>Long-form insights in a timeline style inspired by modern portfolio storytelling.</p>
           </div>
 
           <div class="timeline">
@@ -317,18 +289,11 @@
     <footer><div class="container py-3">© Copyright 2026 Nursultan Yerken.</div></footer>
 
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
       body {
         color: #ebf2fb;
         background: #050e1a;
         overflow-x: hidden;
-      }
-      #navbar {
-        background: rgba(4, 12, 21, 0.9);
-        border-bottom: 1px solid rgba(132, 181, 219, 0.24);
-        backdrop-filter: blur(8px);
+        padding-top: 72px;
       }
       .energy-backdrop {
         position: fixed;
@@ -370,34 +335,103 @@
         bottom: 7%;
         animation-delay: 3s;
       }
-      .floating-icon {
+      .top-indicator-wrap {
         position: fixed;
-        z-index: 3;
-        color: rgba(255, 206, 120, 0.86);
-        font-size: 1.1rem;
-        border: 1px solid rgba(255, 206, 120, 0.5);
-        border-radius: 999px;
-        width: 40px;
-        height: 40px;
-        display: grid;
-        place-items: center;
-        background: rgba(4, 17, 31, 0.7);
-        animation: floatCard 4.5s ease-in-out infinite;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background: rgba(4, 12, 21, 0.84);
+        backdrop-filter: blur(8px);
       }
-      .icon-a {
-        left: 15px;
-        top: 45%;
+      .top-indicator {
+        min-height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
       }
-      .icon-b {
-        left: 15px;
-        top: 53%;
-        animation-delay: 1.3s;
+      .brand {
+        color: #dbe8f7;
+      }
+      .top-sections {
+        display: flex;
+        gap: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        font-size: 0.75rem;
+      }
+      .top-sections span {
+        color: #7a8fa4;
+        transition: color 0.25s ease, text-shadow 0.25s ease;
+      }
+      .top-sections span.active {
+        color: #ffd38a;
+        text-shadow: 0 0 12px rgba(255, 208, 129, 0.35);
+      }
+      .scroll-rail {
+        position: fixed;
+        left: 18px;
+        top: 110px;
+        bottom: 70px;
+        z-index: 10;
+        display: flex;
+        align-items: flex-start;
+      }
+      .rail-line {
+        width: 2px;
+        height: 100%;
+        background: rgba(124, 169, 204, 0.26);
+        position: relative;
+      }
+      .rail-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(180deg, #ffd38a, #6fb4ea);
+      }
+      .rail-points {
+        position: absolute;
+        left: -8px;
+        top: 0;
+        height: 100%;
+        width: 140px;
+      }
+      .rail-point {
+        position: absolute;
+        left: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #7d93a7;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        transition: color 0.25s ease;
+      }
+      .rail-point .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid rgba(138, 183, 219, 0.7);
+        background: rgba(5, 22, 39, 1);
+        transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+      }
+      .rail-point.active {
+        color: #ffd38a;
+      }
+      .rail-point.active .dot {
+        background: #ffd38a;
+        border-color: #ffd38a;
+        transform: scale(1.12);
       }
       .energy-section {
         min-height: 100vh;
         display: flex;
         align-items: center;
-        padding: 2rem 0;
+        padding: 2rem 0 2rem 4rem;
       }
       .section-kicker {
         text-transform: uppercase;
@@ -511,7 +545,7 @@
         position: fixed;
         right: 18px;
         bottom: 20px;
-        z-index: 4;
+        z-index: 11;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -552,18 +586,23 @@
           transform: translateY(-15px) translateX(10px);
         }
       }
-      @keyframes floatCard {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-7px);
-        }
-      }
       @media (max-width: 991px) {
         .metric-row {
           grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 900px) {
+        body {
+          padding-top: 62px;
+        }
+        .brand {
+          display: none;
+        }
+        .energy-section {
+          padding-left: 1rem;
+        }
+        .scroll-rail {
+          display: none;
         }
       }
       @media (max-width: 768px) {
@@ -575,8 +614,10 @@
           min-height: auto;
           padding: 2.5rem 0;
         }
-        .floating-icon {
-          display: none;
+        .top-sections {
+          width: 100%;
+          justify-content: space-between;
+          font-size: 0.68rem;
         }
       }
     </style>
@@ -587,44 +628,13 @@
     <script defer src="/assets/js/common.js"></script>
 
     <script>
-      const progressBar = $("#progress");
-      window.onload = function () {
-        setTimeout(progressBarSetup, 50);
-      };
-      function progressBarSetup() {
-        if ("max" in document.createElement("progress")) {
-          initializeProgressElement();
-          $(document).on("scroll", function () {
-            progressBar.attr({ value: getCurrentScrollPosition() });
-          });
-          $(window).on("resize", initializeProgressElement);
-        } else {
-          resizeProgressBar();
-          $(document).on("scroll", resizeProgressBar);
-          $(window).on("resize", resizeProgressBar);
-        }
-      }
-      function getCurrentScrollPosition() {
-        return $(window).scrollTop();
-      }
-      function initializeProgressElement() {
-        const navbarHeight = $("#navbar").outerHeight(true);
-        $("body").css({ "padding-top": navbarHeight });
-        $(".progress-container").css({ "padding-top": navbarHeight });
-        progressBar.css({ top: navbarHeight });
-        progressBar.attr({ max: getDistanceToScroll(), value: getCurrentScrollPosition() });
-      }
-      function getDistanceToScroll() {
-        return $(document).height() - $(window).height();
-      }
-      function resizeProgressBar() {
-        progressBar.css({ width: getWidthPercentage() + "%" });
-      }
-      function getWidthPercentage() {
-        return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-      }
+      const sectionIds = ["about", "blog", "projects", "cv"];
+      const sections = sectionIds.map((id) => document.getElementById(id));
+      const topItems = Array.from(document.querySelectorAll("#topSections span"));
+      const railItems = Array.from(document.querySelectorAll("#railPoints .rail-point"));
+      const railFill = document.getElementById("railFill");
 
-      const observer = new IntersectionObserver(
+      const revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) entry.target.classList.add("is-visible");
@@ -632,7 +642,48 @@
         },
         { threshold: 0.15 }
       );
-      document.querySelectorAll(".reveal-on-scroll").forEach((n) => observer.observe(n));
+      document.querySelectorAll(".reveal-on-scroll").forEach((n) => revealObserver.observe(n));
+
+      function setActiveSection(id) {
+        topItems.forEach((item) => item.classList.toggle("active", item.dataset.section === id));
+        railItems.forEach((item) => item.classList.toggle("active", item.dataset.section === id));
+      }
+
+      function placeRailPoints() {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+        railItems.forEach((item) => {
+          const section = document.getElementById(item.dataset.section);
+          const sectionCenter = section.offsetTop + section.offsetHeight / 2;
+          const pct = Math.max(0, Math.min(1, sectionCenter / (document.documentElement.scrollHeight)));
+          item.style.top = `calc(${(pct * 100).toFixed(2)}% - 6px)`;
+        });
+      }
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = maxScroll > 0 ? scrollY / maxScroll : 0;
+        railFill.style.height = `${Math.max(0, Math.min(1, ratio)) * 100}%`;
+
+        let activeId = sectionIds[0];
+        for (const section of sections) {
+          if (scrollY + window.innerHeight * 0.35 >= section.offsetTop) {
+            activeId = section.id;
+          }
+        }
+        setActiveSection(activeId);
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", () => {
+        placeRailPoints();
+        onScroll();
+      });
+      window.addEventListener("load", () => {
+        placeRailPoints();
+        onScroll();
+      });
     </script>
   </body>
 </html>
