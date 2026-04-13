@@ -137,6 +137,10 @@
     <div class="container mt-5">
       <!-- about.html -->
     <style>
+      body {
+        background: linear-gradient(145deg, rgba(6, 19, 33, 0.9), rgba(16, 40, 62, 0.82)), url("https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=2000&q=80") center/cover fixed no-repeat;
+        min-height: 100vh;
+      }
       .calendar-container {
         display: flex;
         justify-content: center;
@@ -153,51 +157,156 @@
         </header>
 
         <article>
-          <div class="profile float-right">
+          <style>
+            .about-engineering {
+              position: relative;
+              padding: 2rem;
+              border-radius: 18px;
+              overflow: hidden;
+              border: 1px solid rgba(61, 98, 130, 0.25);
+              background: linear-gradient(145deg, rgba(10,26,43,0.92), rgba(15,45,72,0.86)), url("https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+              color: #f1f7ff;
+              box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+              margin-bottom: 1.5rem;
+            }
+            .about-engineering a { color: #9fd2ff; }
+            .about-hero {
+              display: grid;
+              grid-template-columns: minmax(220px, 290px) 1fr;
+              gap: 2rem;
+              align-items: start;
+            }
+            .about-portrait img {
+              border-radius: 16px;
+              border: 3px solid rgba(255,255,255,0.7);
+              box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+              width: 100%;
+              object-fit: cover;
+            }
+            .about-badges {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.5rem;
+              margin-top: 0.9rem;
+            }
+            .about-badges span {
+              padding: 0.35rem 0.7rem;
+              border-radius: 999px;
+              background: rgba(159, 210, 255, 0.2);
+              border: 1px solid rgba(159, 210, 255, 0.45);
+              font-size: 0.85rem;
+            }
+            .about-stats {
+              display: grid;
+              grid-template-columns: repeat(3, minmax(120px, 1fr));
+              gap: 0.75rem;
+              margin-top: 1.2rem;
+            }
+            .about-stat {
+              padding: 0.9rem;
+              border-radius: 12px;
+              background: rgba(10, 28, 48, 0.78);
+              border: 1px solid rgba(159, 210, 255, 0.25);
+              text-align: center;
+            }
+            .about-stat strong {
+              display: block;
+              font-size: 1.25rem;
+              color: #9fd2ff;
+            }
+            .about-accordion {
+              margin-top: 1.5rem;
+              display: grid;
+              gap: 0.9rem;
+            }
+            .about-accordion details {
+              border-radius: 12px;
+              border: 1px solid rgba(159, 210, 255, 0.35);
+              background: rgba(5, 18, 32, 0.72);
+              padding: 0.75rem 1rem;
+            }
+            .about-accordion summary {
+              cursor: pointer;
+              font-weight: 600;
+              font-size: 1.03rem;
+              color: #d9ecff;
+            }
+            .about-accordion p { margin: 0.8rem 0 0.4rem; }
+            .about-bg-panel {
+              margin-top: 1.5rem;
+              border-radius: 14px;
+              border: 1px solid rgba(159, 210, 255, 0.25);
+              padding: 1rem;
+              background: linear-gradient(110deg, rgba(1,13,24,0.82), rgba(22,54,84,0.8)), url("https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+            }
+            @media (max-width: 850px) {
+              .about-hero { grid-template-columns: 1fr; }
+              .about-stats { grid-template-columns: 1fr 1fr; }
+            }
+          </style>
 
-              <figure>
+          <section class="about-engineering">
+            <div class="about-hero">
+              <div class="about-portrait">
+                <img src="/assets/img/prof_pic.jpg" alt="Nursultan Yerken portrait">
+                <div class="address mt-3">
+                  <p><strong>Location:</strong> Doha, Qatar</p>
+                  <p><strong>Focus:</strong> Mechanical, Energy, and Data-Driven Engineering</p>
+                  <p><strong>Email:</strong> Available upon request</p>
+                </div>
+              </div>
 
-  <picture>
-    
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/prof_pic-800.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/prof_pic-1400.webp"></source>
-    
+              <div>
+                <p>I am a Mechanical Engineering student at <a href="https://www.hbku.edu.qa/en" rel="external nofollow noopener" target="_blank"><strong>Hamad Bin Khalifa University</strong></a>, building my career at the intersection of energy systems, oil and gas operations, and applied analytics. My mission is to deliver measurable engineering value through practical design, safe operations, and data-backed decision-making.</p>
 
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/prof_pic.jpg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+                <div class="about-badges">
+                  <span>Oil &amp; Gas Operations</span>
+                  <span>Mechanical Design</span>
+                  <span>Energy Optimization</span>
+                  <span>Machine Learning for Engineering</span>
+                </div>
 
-  </picture>
-
-</figure>
-
-            <div class="address">
-              <p>2080-O</p> <p>Education City, Al Luqta St, Ar Rayyan</p> <p>Doha,Qatar</p>
-
+                <div class="about-stats">
+                  <div class="about-stat"><strong>150+</strong>Oilfield diagnostics completed</div>
+                  <div class="about-stat"><strong>3000+</strong>Battery cycles analyzed</div>
+                  <div class="about-stat"><strong>98.5%</strong>Model accuracy achieved</div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="clearfix">
-            <p><p>As a Mechanical Engineering student at <a href="https://www.hbku.edu.qa/en" rel="external nofollow noopener" target="_blank"><strong>Hamad Bin Khalifa University</strong></a>, I have been captivated by the dynamic realm where engineering, energy systems, and data-driven technologies intersect with real-world industrial impact. My enthusiasm for this convergence has guided me toward a journey of technical exploration and applied research, primarily focusing on mechanical systems design, energy optimization, and machine learning applications in engineering.</p>
+            <div class="about-accordion">
+              <details open>
+                <summary>Professional Summary</summary>
+                <p>I combine field engineering discipline with computational problem-solving to tackle complex mechanical and energy challenges. My portfolio reflects the ability to move from concept to implementation, with strong emphasis on safety, reliability, and sustainable impact.</p>
+              </details>
 
-  <p>Throughout my academic tenure at Hamad Bin Khalifa University, I have built a strong foundation in Mechanical Engineering, expanding my perspective through rigorous coursework such as Statics, Thermodynamics, Measurements &amp; Instrumentation, and Principles of Electrical Engineering. These courses have equipped me with both analytical depth and practical engineering intuition, enabling me to bridge theoretical knowledge with hands-on implementation.</p>
+              <details>
+                <summary>Oil &amp; Gas Field Engineering Experience</summary>
+                <p>During my internship at <a href="https://nss.kz/en/about-company/" rel="external nofollow noopener" target="_blank"><strong>NefteStroiService Ltd.</strong></a>, I worked in active oilfield conditions where precision and speed were critical. I performed more than 150 pressure and temperature diagnostics, supported equipment troubleshooting, and coordinated with multidisciplinary teams to resolve operational non-conformities efficiently.</p>
+              </details>
 
-  <p>During my internship at the <a href="https://www.hbku.edu.qa/en/qeeri" rel="external nofollow noopener" target="_blank"><strong>Qatar Environment &amp; Energy Research Institute (QEERI)</strong></a>, I developed a Python-based data pipeline processing over 3,000 battery cycles, reducing analysis time by 60%. I benchmarked eight Machine Learning models for battery State of Health and State of Charge prediction, achieving an R² of 0.92 on unseen data. My contributions led to co-authoring two IEEE conference publications and validating robust data-splitting methodologies to eliminate data leakage. This experience strengthened my ability to integrate engineering principles with advanced analytics to solve real-world energy challenges.</p>
+              <details>
+                <summary>Energy Research &amp; Data Engineering</summary>
+                <p>At the <a href="https://www.hbku.edu.qa/en/qeeri" rel="external nofollow noopener" target="_blank"><strong>Qatar Environment &amp; Energy Research Institute (QEERI)</strong></a>, I built a Python pipeline for battery lifecycle analysis that reduced analysis time by 60%. I benchmarked eight machine-learning models for state estimation and achieved robust results on unseen data, while ensuring leakage-safe data validation methods.</p>
+              </details>
 
-  <p>In my role as a <a href="https://www.shellecomarathon.com/programme/qatar.html" rel="external nofollow noopener" target="_blank"><strong>Shell Eco-Marathon</strong></a> Body-Chassis Unit Member at <a href="https://www.qatar.tamu.edu/" rel="external nofollow noopener" target="_blank">Texas A&amp;M University at Qatar</a>, I led the design and optimization of a high-strength tubular chassis using <a href="https://www.solidworks.com/" rel="external nofollow noopener" target="_blank">SOLIDWORKS</a>, improving structural stiffness by 25% through Finite Element Analysis. I engineered hydraulic braking and steering systems and developed lightweight structural components that reduced mass while meeting stress requirements. This hands-on involvement deepened my expertise in mechanical design, structural validation, and performance optimization under real testing conditions.</p>
+              <details>
+                <summary>Mechanical Systems Design &amp; Prototyping</summary>
+                <p>As part of the <a href="https://www.shellecomarathon.com/programme/qatar.html" rel="external nofollow noopener" target="_blank"><strong>Shell Eco-marathon</strong></a> team, I designed and optimized structural and steering components using SOLIDWORKS and FEA-led workflows. I improved chassis stiffness by 25% and contributed to lightweight, performance-focused design decisions under real testing constraints.</p>
+              </details>
 
-  <p>As a Field Engineer Intern at <a href="https://nss.kz/en/about-company/" rel="external nofollow noopener" target="_blank"><strong>NefteStroiService Ltd.</strong></a>, I operated directly within active oilfield environments, conducting 150+ pressure and temperature diagnostics and resolving critical equipment non-conformities. This experience refined my technical discipline, operational awareness, and ability to coordinate multidisciplinary engineering teams under time-sensitive constraints.</p>
+              <details>
+                <summary>Research, Leadership, and Long-Term Vision</summary>
+                <p>My work as a research assistant and project leader has strengthened my ability to communicate technical findings, mentor teammates, and deliver under compressed timelines. Long term, I aim to contribute to high-impact energy and oil-and-gas projects where advanced engineering and digital methods improve operational excellence.</p>
+              </details>
+            </div>
 
-  <p>My research experience as a Research Assistant under Dr. Hasan Kurban at HBKU further expanded my analytical capabilities. I spearheaded pulsar classification using a Kolmogorov-Arnold Network, achieving 98.5% accuracy and extracting symbolic formulas from complex datasets. By applying advanced feature engineering techniques such as Kernel Density Estimation and Permutation Entropy, I reduced data noise and improved predictive performance, reinforcing my commitment to combining computational intelligence with engineering applications.</p>
+            <div class="about-bg-panel">
+              <p class="mb-0"><strong>Engineering Philosophy:</strong> Build systems that are safe, efficient, and future-ready. I believe the strongest solutions emerge when field realities, rigorous mechanics, and smart data tools are integrated into one coherent workflow.</p>
+            </div>
+          </section>
 
-  <p>In my project undertakings, including Invent for the Planet, I led the technical development of a modular biodegradable carbon-capture cell, reducing projected manufacturing costs from $150 to $10 per square meter. Utilizing <a href="https://www.solidworks.com/" rel="external nofollow noopener" target="_blank">SOLIDWORKS</a> (CSWP-certified), Python, and simulation tools, I translated conceptual ideas into validated prototypes within accelerated development cycles.</p>
-
-  <p>My proficiency in engineering and computational tools — including <a href="https://www.solidworks.com/" rel="external nofollow noopener" target="_blank">SOLIDWORKS</a>, Ansys Fluent, Python, and LaTeX — combined with certifications such as <a href="https://www.solidworks.com/" rel="external nofollow noopener" target="_blank">SOLIDWORKS CAD Design Professional</a> and Complete Python Mastery, has shaped me into a multidisciplinary engineer capable of integrating mechanical systems, data science, and performance-driven innovation.</p>
-
-  <p>This journey has shaped my aspirations and solidified my commitment to advancing sustainable energy systems, intelligent engineering design, and data-enhanced decision-making — fueling my ambition to create measurable, real-world impact at the intersection of engineering and technology.</p>
-
-
-          </div>
+        </article>
 
           <!-- News section is temporarily disabled
           <h2><a href="/news/" style="color: inherit;">news</a></h2>          
