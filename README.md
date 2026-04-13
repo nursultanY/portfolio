@@ -1,15 +1,15 @@
-# nursultanyerken.github.io
+# portfolio
 
 ## Deployment
 
 This site is automatically deployed to GitHub Pages at:
-**https://nursultanY.github.io/nursultanyerken.github.io/**
+**https://nursultanY.github.io/portfolio/**
 
 ### How it works
 
 The `.github/workflows/deploy.yml` GitHub Actions workflow:
 1. Triggers on every push to the `gh-pages` branch (or can be run manually via **Actions → Deploy to GitHub Pages → Run workflow**).
-2. Rewrites all absolute HTML paths (e.g. `/assets/…`) to include the `/nursultanyerken.github.io` subpath prefix so that assets and links resolve correctly under the project-pages URL.
+2. Rewrites all absolute HTML paths (e.g. `/assets/…`) to include the `/portfolio` subpath prefix so that assets and links resolve correctly under the project-pages URL.
 3. Deploys the processed files to GitHub Pages using the official `actions/deploy-pages` action.
 
 ### Manual trigger

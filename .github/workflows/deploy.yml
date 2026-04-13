@@ -31,7 +31,7 @@ jobs:
           import os
           import re
 
-          BASE_PATH = '/nursultanyerken.github.io'
+          BASE_PATH = '/portfolio'
           # Match href=", src=", srcset=", or action=" followed by / but not //
           PATTERN = re.compile(r'((?:href|src|srcset|action)=")(/(?!/))')
           REPLACEMENT = r'\1' + BASE_PATH + r'\2'
