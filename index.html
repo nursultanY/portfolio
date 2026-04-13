@@ -49,8 +49,8 @@
     <!-- Dark Mode -->
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
 
   </head>
 
@@ -92,6 +92,12 @@
               <li class="nav-item ">
                 <a class="nav-link" href="/cv/">cv</a>
               </li>
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -113,6 +119,10 @@
       body {
         background: linear-gradient(145deg, rgba(248, 251, 255, 0.92), rgba(232, 244, 255, 0.9)), url("https://source.unsplash.com/2200x1400/?offshore,oil-rig,daylight") center/cover fixed no-repeat;
         min-height: 100vh;
+        color: #ffffff;
+      }
+      .post, .post * {
+        color: #ffffff !important;
       }
       .calendar-container {
         display: flex;
