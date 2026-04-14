@@ -139,6 +139,12 @@
         color: var(--text);
         background: rgba(255, 255, 255, 0.08);
       }
+      /* Updated: keep Journey nav state visibly premium when active */
+      .main-nav a[data-section="journey"].active {
+        background: linear-gradient(145deg, rgba(199, 122, 66, 0.35), rgba(65, 41, 27, 0.45));
+        color: #ffe0cc;
+        box-shadow: inset 0 0 0 1px rgba(231, 166, 111, 0.35), 0 0 16px rgba(125, 76, 45, 0.25);
+      }
 
       .search-shell {
         min-width: 210px;
@@ -584,6 +590,148 @@
         margin-top: 0.25rem;
       }
 
+      /* Updated: premium vertical Journey timeline section */
+      .journey-luxury {
+        position: relative;
+      }
+      .journey-shell {
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 22px;
+        background: rgba(10, 12, 14, 0.56);
+        backdrop-filter: blur(4px);
+        padding: clamp(1.1rem, 2.4vw, 2rem);
+      }
+      .journey-hero {
+        text-align: center;
+        margin-bottom: 1.2rem;
+        padding: 0.4rem 0 0.8rem;
+        background:
+          radial-gradient(circle at 50% 75%, rgba(231, 166, 111, 0.13), transparent 65%);
+      }
+      .journey-hero h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 7vw, 4.4rem);
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .journey-hero p {
+        margin: 0.55rem 0 0;
+        color: #afb6c0;
+      }
+      .journey-timeline {
+        position: relative;
+        padding-left: 0.2rem;
+      }
+      .journey-track {
+        position: absolute;
+        top: 0.6rem;
+        bottom: 0.7rem;
+        left: 108px;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .journey-track-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(180deg, #f0b182, #b9703e);
+        box-shadow: 0 0 12px rgba(199, 122, 66, 0.35);
+      }
+      .journey-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 200px 1.3fr 1fr;
+        gap: 1rem;
+        align-items: stretch;
+        padding: 0.75rem 0;
+        opacity: 0.48;
+        transform: translateY(18px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
+      }
+      .journey-row.is-visible {
+        opacity: 0.92;
+        transform: translateY(0);
+      }
+      .journey-row.is-active {
+        opacity: 1;
+      }
+      .journey-year-col {
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .journey-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid rgba(190, 196, 206, 0.55);
+        background: #0e1114;
+        margin-left: 101px;
+        z-index: 1;
+        transition: all 0.28s ease;
+      }
+      .journey-row.is-active .journey-dot {
+        border-color: #f0b182;
+        background: #f0b182;
+        box-shadow: 0 0 12px rgba(231, 166, 111, 0.5);
+      }
+      .journey-year {
+        font-size: clamp(1.4rem, 3.2vw, 2rem);
+        font-weight: 800;
+        color: #e5e9ef;
+        letter-spacing: 0.02em;
+      }
+      .journey-content,
+      .journey-media {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 0.95rem;
+      }
+      .journey-title {
+        margin: 0 0 0.38rem;
+        font-size: 1.1rem;
+      }
+      .journey-desc {
+        margin: 0;
+        color: #b7bec8;
+        line-height: 1.6;
+      }
+      .journey-meta {
+        margin-top: 0.7rem;
+        color: #e6b28b;
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .journey-media-card {
+        margin: 0;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .journey-media-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+        max-height: 240px;
+        object-fit: cover;
+      }
+      .journey-media-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+      }
+      .journey-media-grid img {
+        width: 100%;
+        height: 108px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
       /* Updated: luxury cinematic contact background with video + layered overlays */
       .contact-section {
         position: relative;
@@ -896,6 +1044,22 @@
         .about-grid-bottom {
           grid-template-columns: 1fr;
         }
+        .journey-track {
+          left: 40px;
+        }
+        .journey-row {
+          grid-template-columns: 84px 1fr;
+          gap: 0.7rem;
+        }
+        .journey-dot {
+          margin-left: 33px;
+        }
+        .journey-year {
+          font-size: 1rem;
+        }
+        .journey-media {
+          grid-column: 2;
+        }
       }
 
       @media (max-width: 620px) {
@@ -912,6 +1076,18 @@
         }
         .about-grid-mid {
           grid-template-columns: 1fr;
+        }
+        .journey-row {
+          grid-template-columns: 64px 1fr;
+        }
+        .journey-track {
+          left: 28px;
+        }
+        .journey-dot {
+          margin-left: 21px;
+        }
+        .journey-media-grid {
+          grid-template-columns: 1fr 1fr;
         }
       }
     </style>
@@ -1086,16 +1262,80 @@
         </div>
       </section>
 
-      <section id="journey" class="panel-section reveal">
-        <div class="container panel">
-          <h2 class="section-title">Journey</h2>
-          <p class="section-desc">
-            From research and internships to engineering builds, this section can host timeline-style milestones and writeups.
-          </p>
-          <div class="cards">
-            <div class="card"><h3>2026</h3><p>Advanced project integrations and portfolio expansion.</p></div>
-            <div class="card"><h3>2025</h3><p>Applied systems research and high-impact delivery cycles.</p></div>
-            <div class="card"><h3>2024</h3><p>Core product and engineering foundations established.</p></div>
+      <!-- Updated: premium Journey vertical timeline -->
+      <section id="journey" class="panel-section reveal journey-luxury">
+        <div class="container journey-shell">
+          <header class="journey-hero">
+            <h2>My Journey</h2>
+            <p>A structured timeline of milestones across engineering, research, and execution.</p>
+          </header>
+
+          <div class="journey-timeline" id="journeyTimeline">
+            <div class="journey-track"><span class="journey-track-fill" id="journeyTrackFill"></span></div>
+
+            <!-- Edit/add timeline rows from here -->
+            <article class="journey-row" data-year="2025">
+              <div class="journey-year-col">
+                <span class="journey-dot"></span>
+                <span class="journey-year">2025</span>
+              </div>
+              <div class="journey-content">
+                <h3 class="journey-title">Cybersecurity Research Internship · QCRI</h3>
+                <p class="journey-desc">
+                  Focused on OpenQA prompt-pattern analysis and model security behavior with practical
+                  detection flows for malicious interactions in applied research environments.
+                </p>
+                <p class="journey-meta">Research · Security · Applied AI</p>
+              </div>
+              <div class="journey-media">
+                <figure class="journey-media-card">
+                  <img src="/assets/img/12.jpg" alt="Research and internship highlight visual" />
+                </figure>
+              </div>
+            </article>
+
+            <article class="journey-row" data-year="2024">
+              <div class="journey-year-col">
+                <span class="journey-dot"></span>
+                <span class="journey-year">2024</span>
+              </div>
+              <div class="journey-content">
+                <h3 class="journey-title">Research + Leadership Expansion</h3>
+                <p class="journey-desc">
+                  Progressed in systems-focused research and team-oriented execution, with emphasis on
+                  translating analysis into production-ready technical outcomes.
+                </p>
+                <p class="journey-meta">Leadership · Delivery · Optimization</p>
+              </div>
+              <div class="journey-media">
+                <div class="journey-media-grid">
+                  <img src="/assets/img/10.jpg" alt="Milestone visual one" />
+                  <img src="/assets/img/11.jpg" alt="Milestone visual two" />
+                  <img src="/assets/img/8.jpg" alt="Milestone visual three" />
+                  <img src="/assets/img/9.jpg" alt="Milestone visual four" />
+                </div>
+              </div>
+            </article>
+
+            <article class="journey-row" data-year="2023">
+              <div class="journey-year-col">
+                <span class="journey-dot"></span>
+                <span class="journey-year">2023</span>
+              </div>
+              <div class="journey-content">
+                <h3 class="journey-title">Core Foundation Year</h3>
+                <p class="journey-desc">
+                  Built strong cross-domain fundamentals in software, systems thinking, and execution
+                  discipline that shaped future project and research direction.
+                </p>
+                <p class="journey-meta">Foundations · Systems · Growth</p>
+              </div>
+              <div class="journey-media">
+                <figure class="journey-media-card">
+                  <img src="/assets/img/7.jpg" alt="Foundation year highlight visual" />
+                </figure>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1207,6 +1447,9 @@
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
       const railFill = document.getElementById("railFill");
+      const journeySection = document.getElementById("journey");
+      const journeyTrackFill = document.getElementById("journeyTrackFill");
+      const journeyRows = Array.from(document.querySelectorAll(".journey-row"));
       let particleState = null;
 
       function activateSection(id) {
@@ -1235,6 +1478,26 @@
           if (scrollY + window.innerHeight * 0.38 >= section.offsetTop) current = section.id;
         }
         activateSection(current);
+        syncJourneyTimeline();
+      }
+
+      // Added: Journey section timeline progress and active year states
+      function syncJourneyTimeline() {
+        if (!journeySection || !journeyTrackFill || journeyRows.length === 0) return;
+        const vh = window.innerHeight;
+        const start = journeySection.offsetTop;
+        const end = journeySection.offsetTop + journeySection.offsetHeight;
+        const marker = window.scrollY + vh * 0.45;
+        const progress = Math.max(0, Math.min(1, (marker - start) / Math.max(1, end - start)));
+        journeyTrackFill.style.height = `${(progress * 100).toFixed(2)}%`;
+
+        journeyRows.forEach((row) => {
+          const r = row.getBoundingClientRect();
+          const isVisible = r.top < vh * 0.86;
+          const isActive = r.top < vh * 0.56 && r.bottom > vh * 0.22;
+          row.classList.toggle("is-visible", isVisible);
+          row.classList.toggle("is-active", isActive);
+        });
       }
 
       const revealObserver = new IntersectionObserver(
