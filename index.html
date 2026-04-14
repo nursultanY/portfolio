@@ -862,6 +862,85 @@
         transform: scale(1.02);
       }
 
+      /* Updated: vertical Projects showcase replacing old Focus cards */
+      .projects-showcase {
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 20px;
+        background: rgba(10, 12, 14, 0.54);
+        backdrop-filter: blur(4px);
+        padding: clamp(1.1rem, 2.3vw, 1.9rem);
+      }
+      .projects-heading {
+        text-align: center;
+        margin-bottom: 1.2rem;
+      }
+      .projects-heading h2 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.1rem);
+        letter-spacing: -0.02em;
+      }
+      .projects-heading p {
+        margin: 0.5rem 0 0;
+        color: #b2b9c3;
+      }
+      .project-stack {
+        display: grid;
+        gap: 1.5rem;
+      }
+      .project-item {
+        max-width: 860px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .project-image-wrap {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+      }
+      .project-image-wrap img {
+        width: 100%;
+        height: 100%;
+        min-height: 250px;
+        max-height: 420px;
+        object-fit: cover;
+        display: block;
+      }
+      .project-text {
+        margin-top: 0.8rem;
+        padding: 0 0.35rem;
+        text-align: center;
+      }
+      .project-title {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+      .project-sub {
+        margin: 0.25rem 0 0.55rem;
+        color: #d6aa88;
+        font-size: 0.84rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .project-desc {
+        margin: 0;
+        color: #b7bec8;
+        line-height: 1.65;
+      }
+      .project-link {
+        display: inline-block;
+        margin-top: 0.6rem;
+        color: #f0b182;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(240, 177, 130, 0.4);
+        padding-bottom: 0.1rem;
+      }
+      .project-link:hover {
+        color: #ffd9c0;
+        border-color: rgba(255, 217, 192, 0.8);
+      }
+
       /* Updated: luxury cinematic contact background with video + layered overlays */
       .contact-section {
         position: relative;
@@ -1248,7 +1327,7 @@
           <a href="#about" data-section="about">About</a>
           <a href="#journey" data-section="journey">Journey</a>
           <a href="#blog" data-section="blog">Blog</a>
-          <a href="#projects" data-section="projects">Focus</a>
+          <a href="#projects" data-section="projects">Projects</a>
           <a href="#contact" data-section="contact">Contact</a>
         </nav>
 
@@ -1577,15 +1656,58 @@
       </section>
 
       <section id="projects" class="panel-section reveal">
-        <div class="container panel">
-          <h2 class="section-title">Focus</h2>
-          <p class="section-desc">
-            Current project focus: practical software + engineering systems with robust interfaces and useful automation.
-          </p>
-          <div class="cards">
-            <div class="card"><h3>Projects</h3><p>Portfolio systems, tools, and production-ready implementations.</p></div>
-            <div class="card"><h3>Tech Stack</h3><p>Python, Java, C/C++, web interfaces, and modern tooling.</p></div>
-            <div class="card"><h3>Research</h3><p>Optimization, data interpretation, and system-level thinking.</p></div>
+        <div class="container projects-showcase">
+          <header class="projects-heading">
+            <h2>Projects</h2>
+            <p>Selected work presented as a clean vertical showcase.</p>
+          </header>
+
+          <div class="project-stack">
+            <!-- Edit/add project blocks from here -->
+            <article class="project-item">
+              <figure class="project-image-wrap">
+                <img src="/assets/img/fehris.png" alt="FEHRIS project image" />
+              </figure>
+              <div class="project-text">
+                <h3 class="project-title">FEHRIS</h3>
+                <p class="project-sub">Flutter · Product System</p>
+                <p class="project-desc">
+                  Cross-platform productivity platform for organizing links, media, and knowledge
+                  artifacts through structured tags and categories.
+                </p>
+                <a class="project-link" href="https://fehris.qcri.org/" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <figure class="project-image-wrap">
+                <img src="/assets/img/stock.jpg" alt="Stock predictor project image" />
+              </figure>
+              <div class="project-text">
+                <h3 class="project-title">Stock Predictor</h3>
+                <p class="project-sub">Python · Machine Learning</p>
+                <p class="project-desc">
+                  Forecasting workflow that uses feature-driven modeling to estimate market
+                  direction and support data-informed strategy decisions.
+                </p>
+                <a class="project-link" href="https://github.com/roma2023/StockPricePredictorProject" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </article>
+
+            <article class="project-item">
+              <figure class="project-image-wrap">
+                <img src="/assets/img/DFS.png" alt="File Stack project image" />
+              </figure>
+              <div class="project-text">
+                <h3 class="project-title">File Stack</h3>
+                <p class="project-sub">Java · Distributed Systems</p>
+                <p class="project-desc">
+                  Distributed file management system built with Java RMI for coordinated storage,
+                  reliable communication, and scalable file operations.
+                </p>
+                <a class="project-link" href="https://github.com/roma2023/FileStack" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
