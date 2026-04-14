@@ -732,6 +732,114 @@
         border-radius: 10px;
       }
 
+      /* Added: luxury editorial Blog section (below Journey) */
+      .blog-luxury {
+        position: relative;
+      }
+      .blog-shell {
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 20px;
+        background: rgba(10, 12, 14, 0.54);
+        backdrop-filter: blur(4px);
+        padding: clamp(1.1rem, 2.3vw, 1.9rem);
+      }
+      .blog-heading {
+        margin-bottom: 1.1rem;
+      }
+      .blog-heading h2 {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        letter-spacing: -0.02em;
+      }
+      .blog-heading p {
+        margin: 0.5rem 0 0;
+        color: #b0b7c1;
+      }
+      .blog-list {
+        display: grid;
+        gap: 1.05rem;
+      }
+      .blog-item {
+        display: grid;
+        grid-template-columns: 1.35fr 1fr;
+        gap: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1rem;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .blog-item:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+      .blog-item:hover {
+        transform: translateY(-2px);
+        border-color: rgba(231, 166, 111, 0.35);
+      }
+      .blog-main {
+        display: grid;
+        grid-template-columns: 88px 1fr;
+        gap: 0.8rem;
+      }
+      .blog-number {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1;
+        font-weight: 800;
+        color: rgba(231, 166, 111, 0.28);
+        letter-spacing: 0.04em;
+      }
+      .blog-title {
+        margin: 0;
+        font-size: 1.2rem;
+        transition: color 0.25s ease;
+      }
+      .blog-item:hover .blog-title {
+        color: #ffd8bf;
+      }
+      .blog-excerpt {
+        margin: 0.45rem 0 0.6rem;
+        color: #b7bec8;
+        line-height: 1.6;
+      }
+      .blog-meta {
+        margin: 0;
+        color: #d4a886;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .blog-link {
+        display: inline-block;
+        margin-top: 0.65rem;
+        color: #f0b182;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(240, 177, 130, 0.4);
+        padding-bottom: 0.1rem;
+        transition: color 0.2s ease, border-color 0.2s ease;
+      }
+      .blog-link:hover {
+        color: #ffd9c0;
+        border-color: rgba(255, 217, 192, 0.8);
+      }
+      .blog-media {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.26);
+      }
+      .blog-media img {
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+        max-height: 230px;
+        object-fit: cover;
+        transition: filter 0.25s ease, transform 0.25s ease;
+      }
+      .blog-item:hover .blog-media img {
+        filter: brightness(1.06);
+        transform: scale(1.02);
+      }
+
       /* Updated: luxury cinematic contact background with video + layered overlays */
       .contact-section {
         position: relative;
@@ -1060,6 +1168,12 @@
         .journey-media {
           grid-column: 2;
         }
+        .blog-item {
+          grid-template-columns: 1fr;
+        }
+        .blog-media {
+          grid-row: 2;
+        }
       }
 
       @media (max-width: 620px) {
@@ -1089,6 +1203,10 @@
         .journey-media-grid {
           grid-template-columns: 1fr 1fr;
         }
+        .blog-main {
+          grid-template-columns: 68px 1fr;
+          gap: 0.6rem;
+        }
       }
     </style>
   </head>
@@ -1107,6 +1225,7 @@
           <a href="#home" data-section="home">Home</a>
           <a href="#about" data-section="about">About</a>
           <a href="#journey" data-section="journey">Journey</a>
+          <a href="#blog" data-section="blog">Blog</a>
           <a href="#projects" data-section="projects">Focus</a>
           <a href="#contact" data-section="contact">Contact</a>
         </nav>
@@ -1124,6 +1243,7 @@
       <div class="rail-point" data-section="home"><span class="dot"></span><span>home</span></div>
       <div class="rail-point" data-section="about"><span class="dot"></span><span>about</span></div>
       <div class="rail-point" data-section="journey"><span class="dot"></span><span>journey</span></div>
+      <div class="rail-point" data-section="blog"><span class="dot"></span><span>blog</span></div>
       <div class="rail-point" data-section="projects"><span class="dot"></span><span>projects</span></div>
       <div class="rail-point" data-section="contact"><span class="dot"></span><span>contact</span></div>
     </aside>
@@ -1340,6 +1460,73 @@
         </div>
       </section>
 
+      <!-- Added: premium editorial Blog section directly below Journey -->
+      <section id="blog" class="panel-section reveal blog-luxury">
+        <div class="container blog-shell">
+          <header class="blog-heading">
+            <h2>Latest Writing</h2>
+            <p>Selected notes from engineering, systems design, and execution strategy.</p>
+          </header>
+
+          <div class="blog-list">
+            <!-- Edit/add blog items from here -->
+            <article class="blog-item">
+              <div class="blog-main">
+                <p class="blog-number">01</p>
+                <div>
+                  <h3 class="blog-title">Designing Reliable Systems Under Real-World Constraints</h3>
+                  <p class="blog-excerpt">
+                    A practical framework for balancing speed, safety, and maintainability when
+                    engineering decisions must survive field realities and changing constraints.
+                  </p>
+                  <p class="blog-meta">Systems · 2026 · 6 min read</p>
+                  <a class="blog-link" href="#blog">Read More</a>
+                </div>
+              </div>
+              <figure class="blog-media">
+                <img src="/assets/img/6.jpg" alt="Blog post visual one" />
+              </figure>
+            </article>
+
+            <article class="blog-item">
+              <div class="blog-main">
+                <p class="blog-number">02</p>
+                <div>
+                  <h3 class="blog-title">From Data to Decisions: Building Trust in Dashboards</h3>
+                  <p class="blog-excerpt">
+                    Why clarity, context, and simple KPIs matter more than visual noise when
+                    analytics must drive decisions across technical and non-technical stakeholders.
+                  </p>
+                  <p class="blog-meta">Analytics · 2025 · 5 min read</p>
+                  <a class="blog-link" href="#blog">Read More</a>
+                </div>
+              </div>
+              <figure class="blog-media">
+                <img src="/assets/img/5.jpg" alt="Blog post visual two" />
+              </figure>
+            </article>
+
+            <article class="blog-item">
+              <div class="blog-main">
+                <p class="blog-number">03</p>
+                <div>
+                  <h3 class="blog-title">Execution Discipline: The Hidden Advantage in Engineering Teams</h3>
+                  <p class="blog-excerpt">
+                    A concise look at cadence, ownership, and communication patterns that create
+                    durable momentum and reduce delivery risk in complex projects.
+                  </p>
+                  <p class="blog-meta">Leadership · 2024 · 4 min read</p>
+                  <a class="blog-link" href="#blog">Read More</a>
+                </div>
+              </div>
+              <figure class="blog-media">
+                <img src="/assets/img/4.jpg" alt="Blog post visual three" />
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="projects" class="panel-section reveal">
         <div class="container panel">
           <h2 class="section-title">Focus</h2>
@@ -1442,7 +1629,7 @@
     </main>
 
     <script>
-      const sectionIds = ["home", "about", "journey", "projects", "contact"];
+      const sectionIds = ["home", "about", "journey", "blog", "projects", "contact"];
       const sections = sectionIds.map((id) => document.getElementById(id));
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
