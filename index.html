@@ -812,6 +812,11 @@
         margin-top: 0.65rem;
         color: #f0b182;
         text-decoration: none;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
         border-bottom: 1px solid rgba(240, 177, 130, 0.4);
         padding-bottom: 0.1rem;
         transition: color 0.2s ease, border-color 0.2s ease;
@@ -819,6 +824,23 @@
       .blog-link:hover {
         color: #ffd9c0;
         border-color: rgba(255, 217, 192, 0.8);
+      }
+      /* Added: expandable full-text area for each blog item (functionality only) */
+      .blog-more {
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition: height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+      }
+      .blog-more.is-open {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .blog-more-inner {
+        margin-top: 0.65rem;
+        color: #aeb6c0;
+        line-height: 1.65;
       }
       .blog-media {
         border-radius: 12px;
@@ -1480,7 +1502,16 @@
                     engineering decisions must survive field realities and changing constraints.
                   </p>
                   <p class="blog-meta">Systems · 2026 · 6 min read</p>
-                  <a class="blog-link" href="#blog">Read More</a>
+                  <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-01">Read More</button>
+                  <!-- Edit full blog text for item 01 below -->
+                  <div class="blog-more" id="blog-more-01" aria-hidden="true">
+                    <div class="blog-more-inner">
+                      In this post, I break down a decision model for balancing reliability,
+                      delivery speed, and maintainability when constraints are dynamic. It covers
+                      requirement prioritization, risk mapping, and a simple review loop that
+                      helps teams ship confidently without sacrificing long-term quality.
+                    </div>
+                  </div>
                 </div>
               </div>
               <figure class="blog-media">
@@ -1498,7 +1529,16 @@
                     analytics must drive decisions across technical and non-technical stakeholders.
                   </p>
                   <p class="blog-meta">Analytics · 2025 · 5 min read</p>
-                  <a class="blog-link" href="#blog">Read More</a>
+                  <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-02">Read More</button>
+                  <!-- Edit full blog text for item 02 below -->
+                  <div class="blog-more" id="blog-more-02" aria-hidden="true">
+                    <div class="blog-more-inner">
+                      This article explains how to design dashboards that decision-makers trust:
+                      clear metric ownership, consistent definitions, and context-first
+                      storytelling. I also share practical patterns for reducing ambiguity when
+                      presenting performance indicators across mixed technical audiences.
+                    </div>
+                  </div>
                 </div>
               </div>
               <figure class="blog-media">
@@ -1516,7 +1556,16 @@
                     durable momentum and reduce delivery risk in complex projects.
                   </p>
                   <p class="blog-meta">Leadership · 2024 · 4 min read</p>
-                  <a class="blog-link" href="#blog">Read More</a>
+                  <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-03">Read More</button>
+                  <!-- Edit full blog text for item 03 below -->
+                  <div class="blog-more" id="blog-more-03" aria-hidden="true">
+                    <div class="blog-more-inner">
+                      I explore execution discipline as a performance multiplier: meeting rhythm,
+                      ownership clarity, and feedback cadence. The post outlines simple operating
+                      habits that improve alignment, reduce delivery risk, and create sustainable
+                      momentum in engineering teams.
+                    </div>
+                  </div>
                 </div>
               </div>
               <figure class="blog-media">
@@ -1795,9 +1844,54 @@
         });
       }
 
+      // Added: Blog "Read More" toggle (independent per item)
+      function initBlogReadMore() {
+        const toggles = Array.from(document.querySelectorAll(".blog-toggle"));
+        if (toggles.length === 0) return;
+
+        const setPanelState = (panel, open) => {
+          const inner = panel.querySelector(".blog-more-inner");
+          if (!inner) return;
+
+          if (open) {
+            panel.classList.add("is-open");
+            panel.style.height = `${inner.scrollHeight}px`;
+          } else {
+            panel.style.height = `${panel.scrollHeight}px`;
+            requestAnimationFrame(() => {
+              panel.classList.remove("is-open");
+              panel.style.height = "0px";
+            });
+          }
+        };
+
+        toggles.forEach((btn) => {
+          const panelId = btn.getAttribute("aria-controls");
+          const panel = panelId ? document.getElementById(panelId) : null;
+          if (!panel) return;
+          panel.style.height = "0px";
+
+          btn.addEventListener("click", () => {
+            const isOpen = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!isOpen));
+            btn.textContent = isOpen ? "Read More" : "Show Less";
+            panel.setAttribute("aria-hidden", String(isOpen));
+            setPanelState(panel, !isOpen);
+          });
+        });
+
+        window.addEventListener("resize", () => {
+          document.querySelectorAll(".blog-more.is-open").forEach((panel) => {
+            const inner = panel.querySelector(".blog-more-inner");
+            if (inner) panel.style.height = `${inner.scrollHeight}px`;
+          });
+        });
+      }
+
       window.addEventListener("load", () => {
         setupContactBackground();
         updateAboutLocalTime();
+        initBlogReadMore();
         setInterval(updateAboutLocalTime, 1000);
         placeRailPoints();
         syncScrollUI();
