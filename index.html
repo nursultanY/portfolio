@@ -523,6 +523,26 @@
         font-size: 1.06rem;
         font-weight: 700;
       }
+      .about-edu-head {
+        margin-top: 0.45rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.55rem;
+      }
+      .about-edu-head .about-heading {
+        font-size: 1rem;
+      }
+      .about-term {
+        border-radius: 999px;
+        border: 1px solid rgba(231, 166, 111, 0.42);
+        background: rgba(199, 122, 66, 0.14);
+        color: #f5cfb4;
+        padding: 0.2rem 0.58rem;
+        font-size: 0.74rem;
+        font-weight: 600;
+        white-space: nowrap;
+      }
       .about-sub {
         margin: 0.25rem 0 0.8rem;
         color: #b7bec8;
@@ -588,6 +608,21 @@
       }
       .about-bullets li + li {
         margin-top: 0.25rem;
+      }
+      .about-award-list {
+        margin-top: 0.7rem;
+        display: grid;
+        gap: 0.35rem;
+      }
+      .about-award-list span {
+        display: inline-block;
+        border-radius: 10px;
+        border: 1px solid rgba(231, 166, 111, 0.35);
+        background: rgba(199, 122, 66, 0.12);
+        color: #f5cfb4;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.32rem 0.55rem;
       }
 
       /* Updated: premium vertical Journey timeline section */
@@ -1400,9 +1435,16 @@
             <article class="about-card">
               <i class="fas fa-graduation-cap about-icon"></i>
               <p class="about-label">Academic Profile</p>
-              <h3 class="about-heading">Mechanical Engineering Student</h3>
-              <p class="about-sub">Hamad Bin Khalifa University · Systems and Applied Engineering</p>
-              <p class="about-achievement">Top project outcomes across reliability, diagnostics, and optimization.</p>
+              <div class="about-edu-head">
+                <h3 class="about-heading">Hamad Bin Khalifa University</h3>
+                <span class="about-term">2024-2028</span>
+              </div>
+              <p class="about-sub">Mechanical Engineering Student</p>
+              <p class="about-sub" style="margin-top: -0.45rem;">Mechanical Engineering</p>
+              <div class="about-award-list">
+                <span>Dean's List Awardee</span>
+                <span>WOQOD Grant Receipent</span>
+              </div>
             </article>
 
             <!-- Edit location/time content here -->
@@ -1416,8 +1458,8 @@
             <!-- Edit metric content here -->
             <article class="about-card about-centered">
               <i class="fas fa-chart-line about-metric-icon"></i>
-              <p class="about-metric-number">9+</p>
-              <p class="about-metric-caption">Years Coding</p>
+              <p class="about-metric-number">3</p>
+              <p class="about-metric-caption">engineering internships experience</p>
             </article>
           </div>
 
@@ -1425,34 +1467,34 @@
           <div class="about-grid-mid">
             <article class="about-card">
               <i class="fas fa-oil-can about-icon"></i>
-              <h3 class="about-heading">Production Systems</h3>
-              <p class="about-desc">Execution-ready engineering for safer and more stable industrial output.</p>
-              <div class="about-tags"><span>Operations</span><span>Reliability</span></div>
-              <ul class="about-bullets"><li>Flow continuity</li><li>Downtime reduction</li></ul>
+              <h3 class="about-heading">Machine Learning</h3>
+              <p class="about-desc">Successful applications of Machine Learning in Research and Internships.</p>
+              <div class="about-tags"><span>Python</span><span>C++</span></div>
+              <ul class="about-bullets"><li>Pulsar Classification via KAN</li><li>Lithium-ion Degredation Prediction</li></ul>
             </article>
 
             <article class="about-card">
               <i class="fas fa-microchip about-icon"></i>
-              <h3 class="about-heading">Digital Engineering</h3>
-              <p class="about-desc">Turning technical data into practical dashboards and decision workflows.</p>
-              <div class="about-tags"><span>Python</span><span>Automation</span></div>
-              <ul class="about-bullets"><li>Data pipelines</li><li>Actionable KPIs</li></ul>
+              <h3 class="about-heading">Petroleum Engineering</h3>
+              <p class="about-desc">Engaging in on-site Oil and Gas activities to create measurable results.</p>
+              <div class="about-tags"><span>Oil</span><span>Gas</span></div>
+              <ul class="about-bullets"><li>NefteStroiService - Kazakhstan</li><li>Halliburton - Qatar</li></ul>
             </article>
 
             <article class="about-card">
               <i class="fas fa-shield-alt about-icon"></i>
-              <h3 class="about-heading">Asset Integrity</h3>
-              <p class="about-desc">Structured diagnostics and preventive strategies for durable system health.</p>
-              <div class="about-tags"><span>Integrity</span><span>Safety</span></div>
-              <ul class="about-bullets"><li>Risk visibility</li><li>Lifecycle planning</li></ul>
+              <h3 class="about-heading">Research Experience</h3>
+              <p class="about-desc">Co-authored 2 conference papers for ICRERA 2025, Austria, with one being accepted for AIra Journal.</p>
+              <div class="about-tags"><span>Integrity</span><span>Quality</span></div>
+              <ul class="about-bullets"><li>Research standard Writing skills</li><li>Collaboration skills</li></ul>
             </article>
 
             <article class="about-card">
               <i class="fas fa-users about-icon"></i>
-              <h3 class="about-heading">Leadership</h3>
-              <p class="about-desc">Clear communication and disciplined delivery across cross-functional teams.</p>
+              <h3 class="about-heading">Extracurriculars</h3>
+              <p class="about-desc">Active participation in different engineering &amp; non-engineering competitions and events.</p>
               <div class="about-tags"><span>Execution</span><span>Collaboration</span></div>
-              <ul class="about-bullets"><li>Stakeholder alignment</li><li>Outcome ownership</li></ul>
+              <ul class="about-bullets"><li>Flow Assurance Club Founder</li><li>SPE Hydrogen Technical Section YP Liasion</li></ul>
             </article>
           </div>
 
