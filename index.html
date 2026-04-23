@@ -1340,119 +1340,212 @@
       }
       .contact-shell {
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: var(--radius);
-        background: rgba(8, 10, 12, 0.62);
-        backdrop-filter: blur(4px);
+        border-radius: 24px;
+        background: rgba(8, 10, 12, 0.64);
+        backdrop-filter: blur(6px);
         box-shadow: 0 24px 45px rgba(0, 0, 0, 0.38);
-        padding: clamp(1.2rem, 2.4vw, 2rem);
+        padding: clamp(1.25rem, 2.5vw, 2.25rem);
+      }
+      .contact-finale-head {
+        max-width: 860px;
+      }
+      .contact-eyebrow {
+        margin: 0;
+        color: #d9ac87;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 0.74rem;
+        font-weight: 700;
       }
       .contact-heading {
-        margin: 0 0 1.2rem;
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
-        text-align: center;
+        margin: 0.52rem 0 0;
+        font-size: clamp(1.9rem, 4.2vw, 2.95rem);
+        letter-spacing: -0.02em;
       }
-      .contact-grid {
+      .contact-intro {
+        margin: 0.58rem 0 0;
+        color: #b8bec8;
+        line-height: 1.7;
+        max-width: 70ch;
+      }
+      .contact-finale {
+        margin-top: 1.15rem;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(420px, 1.1fr);
+        gap: clamp(1rem, 2.2vw, 1.8rem);
+        align-items: start;
       }
-      .contact-card {
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 13px;
-        background: rgba(255, 255, 255, 0.03);
-        padding: 1rem;
+      .contact-methods {
+        display: grid;
+        gap: 0.62rem;
       }
-      .contact-label {
-        margin: 0 0 0.85rem;
-        color: #d6d9de;
-        text-transform: uppercase;
-        letter-spacing: 0.09em;
-        font-size: 0.77rem;
+      .contact-method {
+        appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        background:
+          linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+          rgba(9, 11, 13, 0.68);
+        color: inherit;
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        padding: 0.85rem 0.9rem;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.7rem;
+        align-items: center;
+        transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
       }
-      .social-row {
-        display: flex;
-        gap: 0.65rem;
-        margin-bottom: 0.9rem;
+      .contact-method:hover {
+        transform: translateY(-2px);
+        border-color: rgba(231, 166, 111, 0.34);
       }
-      .social-btn {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        border: 1px solid rgba(231, 166, 111, 0.38);
-        background: rgba(255, 255, 255, 0.03);
-        color: #ffd9c6;
+      .contact-method.is-active {
+        border-color: rgba(231, 166, 111, 0.46);
+        background:
+          linear-gradient(160deg, rgba(231, 166, 111, 0.12), rgba(255, 255, 255, 0.01)),
+          rgba(9, 11, 13, 0.78);
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.18), 0 12px 26px rgba(0, 0, 0, 0.28);
+      }
+      .contact-method-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        border: 1px solid rgba(231, 166, 111, 0.3);
+        background: rgba(199, 122, 66, 0.12);
+        color: #f1c7a7;
         display: grid;
         place-items: center;
-        text-decoration: none;
-        transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease,
-          border-color 0.22s ease;
+        transition: transform 0.24s ease, box-shadow 0.24s ease;
       }
-      .social-btn:hover {
-        transform: translateY(-3px);
-        border-color: rgba(231, 166, 111, 0.78);
-        background: rgba(199, 122, 66, 0.16);
-        box-shadow: 0 10px 22px rgba(165, 99, 52, 0.24);
+      .contact-method.is-active .contact-method-icon {
+        transform: translateY(-1px);
+        box-shadow: 0 0 0 3px rgba(231, 166, 111, 0.12);
       }
-      .location-line {
+      .contact-method-title {
+        display: block;
         margin: 0;
-        color: var(--muted);
-      }
-      .email-primary {
-        margin: 0 0 0.45rem;
-        color: var(--copper);
-        font-weight: 700;
-        font-size: 1.05rem;
-      }
-      .email-secondary {
-        margin: 0.22rem 0;
-        color: #bec3cb;
-      }
-
-      /* Added: polished footer integrated under contact */
-      .site-footer {
-        margin-top: 1.4rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 1.15rem;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr 1fr;
-        gap: 1rem;
-      }
-      .footer-brand {
-        color: #f2f5f7;
-        font-size: 1.04rem;
-        font-weight: 700;
-      }
-      .footer-sub {
-        color: #b7bec8;
-        margin-top: 0.45rem;
-      }
-      .footer-title {
-        margin: 0 0 0.6rem;
         font-size: 0.95rem;
+        font-weight: 700;
       }
-      .quick-links {
-        list-style: none;
+      .contact-method-sub {
+        display: block;
+        margin: 0.2rem 0 0;
+        color: #b7bec8;
+        font-size: 0.83rem;
+      }
+      .contact-stage {
+        position: relative;
+        min-height: 420px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background:
+          radial-gradient(circle at 84% 14%, rgba(231, 166, 111, 0.2), transparent 42%),
+          rgba(10, 13, 15, 0.78);
+        overflow: hidden;
+      }
+      .contact-panel {
+        position: absolute;
+        inset: 0;
+        padding: clamp(1rem, 1.8vw, 1.45rem);
+        display: grid;
+        grid-template-rows: auto auto 1fr auto auto;
+        gap: 0.75rem;
+        opacity: 0;
+        transform: translateY(14px) scale(0.988);
+        pointer-events: none;
+        transition: opacity 0.38s ease, transform 0.38s ease;
+      }
+      .contact-panel.is-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+      .contact-panel-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        border: 1px solid rgba(231, 166, 111, 0.32);
+        background: rgba(199, 122, 66, 0.14);
+        color: #f1c7a7;
+        display: grid;
+        place-items: center;
+      }
+      .contact-panel-kicker {
         margin: 0;
-        padding: 0;
+        color: #d9ad88;
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
-      .quick-links li {
-        margin-bottom: 0.38rem;
+      .contact-panel-title {
+        margin: 0;
+        font-size: clamp(1.32rem, 2.2vw, 1.9rem);
       }
-      .quick-links a,
-      .footer-contact a {
+      .contact-panel-primary {
+        margin: 0;
+        font-size: clamp(1rem, 1.8vw, 1.25rem);
+        color: #f4d2bb;
         text-decoration: none;
-        color: #d6dbe3;
+        word-break: break-word;
+      }
+      .contact-panel-primary:hover {
+        color: #ffe0cb;
+      }
+      .contact-panel-desc {
+        margin: 0;
+        color: #b7bec8;
+        line-height: 1.66;
+      }
+      .contact-panel-meta {
+        margin: 0;
+        color: #c5ccd6;
+        font-size: 0.9rem;
+      }
+      .contact-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.34rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.76rem;
+        border: 1px solid rgba(231, 166, 111, 0.42);
+        color: #f3d0b8;
+        background: rgba(199, 122, 66, 0.14);
+        width: fit-content;
+        transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+      }
+      .contact-cta::after {
+        content: "↗";
+        font-size: 0.74rem;
+      }
+      .contact-cta:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 217, 192, 0.72);
+        color: #ffe0cb;
+      }
+      .contact-mini {
+        margin-top: 1.15rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 0.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem 1rem;
+        justify-content: space-between;
+        color: #adb5c0;
+        font-size: 0.86rem;
+      }
+      .contact-mini a {
+        color: #cfd6df;
+        text-decoration: none;
         transition: color 0.2s ease;
       }
-      .quick-links a:hover,
-      .footer-contact a:hover {
-        color: var(--copper);
-      }
-      .footer-contact p {
-        margin: 0.34rem 0;
-        color: #b7bec8;
+      .contact-mini a:hover {
+        color: #f0b182;
       }
 
       .reveal {
@@ -1530,14 +1623,25 @@
         .cards {
           grid-template-columns: 1fr;
         }
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr;
-        }
         .contact-video {
           object-position: center;
+        }
+        .contact-finale {
+          grid-template-columns: 1fr;
+        }
+        .contact-methods {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .contact-method {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 0.45rem;
+        }
+        .contact-method-icon {
+          margin: 0 auto;
+        }
+        .contact-stage {
+          min-height: 390px;
         }
         .about-top-grid {
           grid-template-columns: 1fr;
@@ -1647,6 +1751,31 @@
         .project-preview-media img {
           min-height: 230px;
           max-height: 290px;
+        }
+        .contact-shell {
+          padding: 1rem;
+        }
+        .contact-methods {
+          grid-template-columns: 1fr;
+        }
+        .contact-method {
+          grid-template-columns: auto 1fr;
+          text-align: left;
+          gap: 0.7rem;
+        }
+        .contact-method-icon {
+          margin: 0;
+        }
+        .contact-panel {
+          padding: 0.92rem;
+        }
+        .contact-stage {
+          min-height: 430px;
+        }
+        .contact-mini {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.4rem;
         }
       }
     </style>
@@ -2186,57 +2315,88 @@
         </div>
         <div class="container contact-wrap">
           <div class="contact-shell">
-            <h2 class="contact-heading">Get In Touch</h2>
+            <header class="contact-finale-head">
+              <p class="contact-eyebrow">Final Contact</p>
+              <h2 class="contact-heading">Let&rsquo;s Build Something Meaningful</h2>
+              <p class="contact-intro">
+                A focused contact hub for collaboration, research, and engineering opportunities.
+                Select your preferred channel and connect directly.
+              </p>
+            </header>
 
-            <div class="contact-grid">
-              <article class="contact-card">
-                <p class="contact-label">Connect</p>
-                <div class="social-row">
-                  <a class="social-btn" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                  <a class="social-btn" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                  <a class="social-btn" href="mailto:nuye69018@hbku.edu.qa" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-                <p class="location-line"><i class="fas fa-map-marker-alt"></i> Doha, Qatar</p>
-              </article>
+            <div class="contact-finale">
+              <div class="contact-methods" role="tablist" aria-label="Contact methods">
+                <button class="contact-method is-active" type="button" data-contact="email" aria-selected="true">
+                  <span class="contact-method-icon"><i class="fas fa-envelope"></i></span>
+                  <span>
+                    <span class="contact-method-title">Email</span>
+                    <span class="contact-method-sub">Direct response channel</span>
+                  </span>
+                </button>
+                <button class="contact-method" type="button" data-contact="linkedin" aria-selected="false">
+                  <span class="contact-method-icon"><i class="fab fa-linkedin-in"></i></span>
+                  <span>
+                    <span class="contact-method-title">LinkedIn</span>
+                    <span class="contact-method-sub">Professional conversation</span>
+                  </span>
+                </button>
+                <button class="contact-method" type="button" data-contact="github" aria-selected="false">
+                  <span class="contact-method-icon"><i class="fab fa-github"></i></span>
+                  <span>
+                    <span class="contact-method-title">GitHub</span>
+                    <span class="contact-method-sub">Code and project history</span>
+                  </span>
+                </button>
+              </div>
 
-              <article class="contact-card">
-                <p class="contact-label">Email</p>
-                <p class="email-primary">nuye69018@hbku.edu.qa</p>
-                <p class="email-secondary">nursultan.yerken@portfolio.dev</p>
-                <p class="email-secondary">Response usually within 24 hours.</p>
-              </article>
+              <div class="contact-stage" aria-live="polite">
+                <article class="contact-panel is-active" data-contact="email">
+                  <span class="contact-panel-icon"><i class="fas fa-envelope"></i></span>
+                  <p class="contact-panel-kicker">Primary Channel</p>
+                  <h3 class="contact-panel-title">Email Me</h3>
+                  <a class="contact-panel-primary" href="mailto:nuye69018@hbku.edu.qa">nuye69018@hbku.edu.qa</a>
+                  <p class="contact-panel-desc">
+                    Best for internship opportunities, research collaboration, and engineering
+                    discussions with clear context.
+                  </p>
+                  <p class="contact-panel-meta">Doha, Qatar · Response usually within 24 hours</p>
+                  <a class="contact-cta" href="mailto:nuye69018@hbku.edu.qa">Send Email</a>
+                </article>
+
+                <article class="contact-panel" data-contact="linkedin">
+                  <span class="contact-panel-icon"><i class="fab fa-linkedin-in"></i></span>
+                  <p class="contact-panel-kicker">Professional Network</p>
+                  <h3 class="contact-panel-title">Connect on LinkedIn</h3>
+                  <a class="contact-panel-primary" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer">
+                    linkedin.com/in/nursultan-yerken
+                  </a>
+                  <p class="contact-panel-desc">
+                    Ideal for recruiter outreach, role discussions, and professional collaboration
+                    across engineering and product execution.
+                  </p>
+                  <p class="contact-panel-meta">Open to meaningful technical conversations</p>
+                  <a class="contact-cta" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer">Visit LinkedIn</a>
+                </article>
+
+                <article class="contact-panel" data-contact="github">
+                  <span class="contact-panel-icon"><i class="fab fa-github"></i></span>
+                  <p class="contact-panel-kicker">Technical Portfolio</p>
+                  <h3 class="contact-panel-title">Explore My GitHub</h3>
+                  <a class="contact-panel-primary" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer">github.com/nursultanY</a>
+                  <p class="contact-panel-desc">
+                    Review repositories, implementation style, and project depth across software,
+                    systems, and experimental builds.
+                  </p>
+                  <p class="contact-panel-meta">Consistent project delivery and code-first documentation</p>
+                  <a class="contact-cta" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                </article>
+              </div>
             </div>
 
-            <!-- Added: footer under contact -->
-            <footer class="site-footer">
-              <div class="footer-grid">
-                <section>
-                  <div class="footer-brand">Nursultan Yerken</div>
-                  <p class="footer-sub">Engineering robust systems with practical impact.</p>
-                  <div class="social-row">
-                    <a class="social-btn" href="https://github.com/nursultanY" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a class="social-btn" href="https://www.linkedin.com/in/nursultan-yerken/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="social-btn" href="mailto:nuye69018@hbku.edu.qa" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                  </div>
-                </section>
-
-                <section>
-                  <h3 class="footer-title">Quick Links</h3>
-                  <ul class="quick-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#journey">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                  </ul>
-                </section>
-
-                <section class="footer-contact">
-                  <h3 class="footer-title">Get in Touch</h3>
-                  <p><a href="mailto:nuye69018@hbku.edu.qa">nuye69018@hbku.edu.qa</a></p>
-                  <p>Doha, Qatar</p>
-                </section>
-              </div>
+            <footer class="contact-mini">
+              <span>Nursultan Yerken · Doha, Qatar</span>
+              <span><a href="#projects">Projects</a> · <a href="#about">About</a></span>
+              <span>Open to internships, research, and high-impact engineering collaboration.</span>
             </footer>
           </div>
         </div>
@@ -2502,10 +2662,44 @@
         });
       }
 
+      // Added: Contact finale interactive mode switching
+      function initContactHub() {
+        const methodButtons = Array.from(document.querySelectorAll(".contact-method"));
+        const methodPanels = Array.from(document.querySelectorAll(".contact-panel"));
+        if (methodButtons.length === 0 || methodPanels.length === 0) return;
+
+        const setActiveMethod = (methodId) => {
+          if (!methodId) return;
+          methodButtons.forEach((button) => {
+            const active = button.dataset.contact === methodId;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-selected", String(active));
+          });
+          methodPanels.forEach((panel) => {
+            panel.classList.toggle("is-active", panel.dataset.contact === methodId);
+          });
+        };
+
+        const hoverEnabled = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        methodButtons.forEach((button) => {
+          const methodId = button.dataset.contact;
+          if (!methodId) return;
+          button.addEventListener("click", () => setActiveMethod(methodId));
+          button.addEventListener("focus", () => setActiveMethod(methodId));
+          if (hoverEnabled) button.addEventListener("mouseenter", () => setActiveMethod(methodId));
+        });
+
+        const defaultMethod =
+          methodButtons.find((button) => button.classList.contains("is-active"))?.dataset.contact ||
+          methodButtons[0]?.dataset.contact;
+        setActiveMethod(defaultMethod);
+      }
+
       window.addEventListener("load", () => {
         setupContactBackground();
         updateAboutLocalTime();
         initBlogReadMore();
+        initContactHub();
         initRailDock();
         initProjectsShowcase();
         setInterval(updateAboutLocalTime, 1000);
