@@ -143,7 +143,7 @@
       .nav-wrap {
         min-height: 74px;
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
         gap: 1.2rem;
       }
@@ -153,6 +153,7 @@
         align-items: center;
         gap: 0.55rem;
         white-space: nowrap;
+        justify-self: start;
       }
 
       .brand-mark {
@@ -173,6 +174,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        justify-self: center;
         gap: 0.45rem;
         flex-wrap: wrap;
       }
@@ -200,37 +202,6 @@
         );
         box-shadow: inset 0 0 0 1px rgba(var(--active-accent-rgb), 0.34), 0 0 14px rgba(var(--active-accent-rgb), 0.18);
         transition: background 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .search-shell {
-        min-width: 210px;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 999px;
-        padding: 0.4rem 0.55rem 0.4rem 0.75rem;
-        color: var(--muted);
-      }
-
-      .search-shell input {
-        background: transparent;
-        border: 0;
-        color: var(--text);
-        outline: none;
-        font-size: 0.86rem;
-        width: 100%;
-      }
-
-      .kbd {
-        font-size: 0.74rem;
-        color: #d9dbe0;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-bottom-width: 2px;
-        border-radius: 6px;
-        padding: 0.16rem 0.4rem;
-        background: rgba(255, 255, 255, 0.06);
       }
 
       .scroll-rail {
@@ -1715,10 +1686,6 @@
         .brand {
           justify-content: center;
         }
-        .search-shell {
-          justify-self: center;
-          width: min(360px, 100%);
-        }
       }
 
       @media (max-width: 900px) {
@@ -1928,12 +1895,6 @@
           <a href="#projects" data-section="projects">Projects</a>
           <a href="#contact" data-section="contact">Contact</a>
         </nav>
-
-        <div class="search-shell" aria-label="Visual search bar">
-          <span aria-hidden="true">🔍</span>
-          <input type="text" placeholder="Search" readonly />
-          <span class="kbd">Ctrl K</span>
-        </div>
       </div>
     </header>
 
