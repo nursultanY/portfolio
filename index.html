@@ -356,6 +356,124 @@
         position: relative;
         z-index: 1;
       }
+      .hero-copy-shell {
+        position: relative;
+        display: grid;
+        gap: 0.92rem;
+        padding: 1.05rem;
+        border-radius: 26px;
+        background: linear-gradient(
+          170deg,
+          rgba(14, 20, 31, 0.9),
+          rgba(12, 18, 29, 0.68) 48%,
+          rgba(10, 16, 25, 0.76)
+        );
+        border: 1px solid rgba(218, 227, 240, 0.12);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 26px 44px rgba(4, 7, 12, 0.46);
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+      }
+      .hero-copy-shell::before {
+        content: "";
+        position: absolute;
+        left: 1.02rem;
+        top: 1.08rem;
+        bottom: 1.08rem;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          rgba(var(--active-accent-rgb), 0.85),
+          rgba(var(--active-accent-rgb), 0.24) 42%,
+          transparent 100%
+        );
+        box-shadow: 0 0 18px rgba(var(--active-accent-rgb), 0.3);
+        animation: accentPulse 5.8s ease-in-out infinite;
+      }
+      .hero-identity-panel,
+      .hero-focus-grid,
+      .hero-proof-panel,
+      .hero-cta-panel {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: rise 0.72s ease forwards;
+      }
+      .hero-identity-panel {
+        animation-delay: 0.04s;
+      }
+      .hero-focus-grid {
+        animation-delay: 0.16s;
+      }
+      .hero-proof-panel {
+        animation-delay: 0.28s;
+      }
+      .hero-cta-panel {
+        animation-delay: 0.38s;
+      }
+
+      .hero-identity-panel,
+      .hero-focus-grid,
+      .hero-proof-panel,
+      .hero-cta-panel {
+        position: relative;
+        margin-left: 0.88rem;
+      }
+      .hero-identity-panel {
+        display: grid;
+        gap: 0.22rem;
+      }
+      .identity-signature {
+        justify-self: start;
+        margin-bottom: 0.28rem;
+        color: rgba(237, 223, 202, 0.8);
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 0.18rem 0.54rem;
+        border-radius: 999px;
+        border: 1px solid rgba(243, 214, 184, 0.3);
+        background: rgba(203, 151, 93, 0.11);
+      }
+      .hero-panel-title {
+        margin: 0;
+        color: rgba(220, 228, 240, 0.82);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.65rem;
+        font-weight: 650;
+      }
+      .hero-focus-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 0.8fr);
+        gap: 0.72rem;
+      }
+      .hero-focus-panel,
+      .hero-focus-card,
+      .hero-proof-panel,
+      .hero-cta-panel {
+        border: 1px solid rgba(220, 228, 240, 0.13);
+        border-radius: 16px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014));
+        padding: 0.68rem 0.75rem 0.76rem;
+      }
+      .hero-focus-card {
+        transition: transform 0.28s ease, border-color 0.28s ease, background-color 0.28s ease;
+      }
+      .hero-focus-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(var(--active-accent-rgb), 0.42);
+        background: linear-gradient(
+          160deg,
+          rgba(var(--active-accent-rgb), 0.16),
+          rgba(var(--bridge-accent-rgb), 0.08)
+        );
+      }
+      .hero-card-text {
+        margin: 0.46rem 0 0;
+        color: #d6dce6;
+        line-height: 1.45;
+        font-size: 0.77rem;
+      }
+
       .hero-copy .eyebrow,
       .hero-copy h1,
       .hero-copy .role,
@@ -368,25 +486,25 @@
         animation: rise 0.72s ease forwards;
       }
       .hero-copy .eyebrow {
-        animation-delay: 0.04s;
+        animation-delay: 0.07s;
       }
       .hero-copy h1 {
-        animation-delay: 0.09s;
+        animation-delay: 0.11s;
       }
       .hero-copy .role {
-        animation-delay: 0.14s;
+        animation-delay: 0.15s;
       }
       .hero-copy .lead {
         animation-delay: 0.2s;
       }
       .hero-copy .hero-meta-strip {
-        animation-delay: 0.28s;
+        animation-delay: 0.22s;
       }
       .hero-copy .hero-proof-row {
-        animation-delay: 0.34s;
+        animation-delay: 0.3s;
       }
       .hero-copy .hero-cta-row {
-        animation-delay: 0.41s;
+        animation-delay: 0.4s;
       }
 
       .eyebrow {
@@ -416,12 +534,12 @@
         max-width: 62ch;
         color: var(--muted);
         line-height: 1.62;
-        margin: 1.05rem 0 1.35rem;
+        margin: 0.85rem 0 0.2rem;
         font-size: 0.95rem;
       }
 
       .hero-meta-strip {
-        margin-top: 0.15rem;
+        margin-top: 0.45rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.48rem;
@@ -445,7 +563,7 @@
         background: rgba(74, 140, 122, 0.14);
       }
       .hero-proof-row {
-        margin-top: 0.82rem;
+        margin-top: 0.5rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.52rem;
@@ -477,7 +595,7 @@
       }
 
       .hero-cta-row {
-        margin-top: 1.28rem;
+        margin-top: 0.58rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.62rem;
@@ -1848,6 +1966,17 @@
           transform: translateY(0);
         }
       }
+      @keyframes accentPulse {
+        0%,
+        100% {
+          opacity: 0.75;
+          transform: scaleY(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleY(1.04);
+        }
+      }
       @keyframes floatCard {
         0%,
         100% {
@@ -1905,6 +2034,12 @@
         }
         .hero-copy {
           order: 2;
+        }
+        .hero-copy-shell {
+          padding: 0.96rem;
+        }
+        .hero-focus-grid {
+          grid-template-columns: 1fr;
         }
         .hero-visual {
           order: 1;
@@ -2001,6 +2136,21 @@
         .hero-cta-row {
           flex-direction: column;
           align-items: stretch;
+        }
+        .hero-copy-shell::before {
+          left: 0.76rem;
+        }
+        .hero-identity-panel,
+        .hero-focus-grid,
+        .hero-proof-panel,
+        .hero-cta-panel {
+          margin-left: 0.55rem;
+        }
+        .hero-focus-panel,
+        .hero-focus-card,
+        .hero-proof-panel,
+        .hero-cta-panel {
+          padding: 0.6rem 0.62rem 0.68rem;
         }
         .btn-resume {
           min-height: 54px;
@@ -2164,36 +2314,56 @@
       <section id="home" class="hero">
         <div class="container hero-grid">
           <article class="hero-copy">
-            <p class="eyebrow">MECHANICAL ENGINEERING · APPLIED ML · SYSTEMS DESIGN</p>
-            <h1>Nursultan Yerken</h1>
-            <p class="role">
-              Mechanical Engineering student building across energy systems, field execution, and
-              applied machine learning.
-            </p>
-            <p class="lead">
-              Mechanical Engineering student at HBKU with experience across battery analytics, field
-              engineering, research, and chassis design.
-            </p>
+            <div class="hero-copy-shell">
+              <div class="hero-identity-panel">
+                <span class="identity-signature">N.Y.</span>
+                <p class="eyebrow">MECHANICAL ENGINEERING · APPLIED ML · SYSTEMS DESIGN</p>
+                <h1>Nursultan Yerken</h1>
+                <p class="role">
+                  Mechanical Engineering student building across energy systems, field execution, and
+                  applied machine learning.
+                </p>
+                <p class="lead">
+                  Mechanical Engineering student at HBKU with experience across battery analytics, field
+                  engineering, research, and chassis design.
+                </p>
+              </div>
 
-            <div class="hero-meta-strip">
-              <span>HBKU · B.S. Mechanical Engineering</span>
-              <span>QEERI · Battery Analytics</span>
-              <span>Shell Eco-marathon · Chassis Design</span>
-            </div>
+              <div class="hero-focus-grid">
+                <div class="hero-focus-panel">
+                  <p class="hero-panel-title">Built across</p>
+                  <div class="hero-meta-strip">
+                    <span>HBKU · B.S. Mechanical Engineering</span>
+                    <span>QEERI · Battery Analytics</span>
+                    <span>Shell Eco-marathon · Chassis Design</span>
+                  </div>
+                </div>
+                <div class="hero-focus-card">
+                  <p class="hero-panel-title">Current availability</p>
+                  <p class="hero-card-text">Open to Mechanical, Energy, and Applied ML roles · Doha, Qatar</p>
+                </div>
+              </div>
 
-            <div class="hero-proof-row">
-              <span><strong>Dean&rsquo;s Honours List</strong></span>
-              <span><strong>WOQOD Grant Awardee</strong></span>
-              <span><strong>2 Publications</strong></span>
-              <span><strong>3,000+ Battery Cycles</strong></span>
-            </div>
+              <div class="hero-proof-panel">
+                <p class="hero-panel-title">Selected credibility</p>
+                <div class="hero-proof-row">
+                  <span><strong>Dean&rsquo;s Honours List</strong></span>
+                  <span><strong>WOQOD Grant Awardee</strong></span>
+                  <span><strong>2 Publications</strong></span>
+                  <span><strong>3,000+ Battery Cycles</strong></span>
+                </div>
+              </div>
 
-            <div class="hero-cta-row">
-              <a class="btn btn-resume" href="/assets/pdf/Resume%20of%20Nursultan%20Yerken%20-%202026.pdf">Resume</a>
-              <a class="btn btn-primary" href="#projects">Projects</a>
-              <a class="btn btn-tertiary" href="#journey">Journey</a>
-              <a class="btn btn-tertiary" href="#blog">Blog</a>
-              <a class="btn btn-tertiary" href="#contact">Get In Touch</a>
+              <div class="hero-cta-panel">
+                <p class="hero-panel-title">Explore</p>
+                <div class="hero-cta-row">
+                  <a class="btn btn-resume" href="/assets/pdf/Resume%20of%20Nursultan%20Yerken%20-%202026.pdf">Resume</a>
+                  <a class="btn btn-primary" href="#projects">Projects</a>
+                  <a class="btn btn-tertiary" href="#journey">Journey</a>
+                  <a class="btn btn-tertiary" href="#blog">Blog</a>
+                  <a class="btn btn-tertiary" href="#contact">Get In Touch</a>
+                </div>
+              </div>
             </div>
           </article>
 
