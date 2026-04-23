@@ -179,68 +179,39 @@
 
       .scroll-rail {
         position: fixed;
-        top: 110px;
-        left: 6px;
-        bottom: 54px;
-        width: 98px;
-        z-index: 20;
+        left: 12px;
+        bottom: 24px;
+        z-index: 22;
+        display: flex;
+        flex-direction: column;
+        gap: 0.38rem;
+        padding: 0.45rem;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(9, 12, 14, 0.62);
+        backdrop-filter: blur(7px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
         pointer-events: auto;
       }
 
-      .rail-line {
-        position: absolute;
-        left: 8px;
-        top: 0;
-        width: 2px;
-        height: 100%;
-        background: rgba(187, 196, 208, 0.16);
-      }
-
-      .rail-fill {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 22px;
-        border-radius: 999px;
-        opacity: 0.32;
-        background: linear-gradient(180deg, rgba(231, 166, 111, 0.44), rgba(231, 166, 111, 0));
-        transform: translateY(0);
-        transform-origin: top center;
-        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
-        pointer-events: none;
-      }
-
-      .rail-beacon {
-        position: absolute;
-        left: 8px;
-        top: 0;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #f0b182;
-        border: 1px solid rgba(255, 229, 208, 0.85);
-        box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.18), 0 0 16px rgba(231, 166, 111, 0.48);
-        transform: translate(-50%, 0);
-        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, scale 0.28s ease;
-        pointer-events: none;
-      }
-
-      .rail-beacon::after {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        border-radius: 50%;
-        border: 1px solid rgba(231, 166, 111, 0.42);
-        opacity: 0.6;
-      }
-
       .rail-point {
-        position: absolute;
-        left: 0;
+        appearance: none;
+        border: 1px solid transparent;
+        background: transparent;
+        cursor: pointer;
+        color: #96a0ac;
+        font: inherit;
         display: flex;
         align-items: center;
-        width: 18px;
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 0.46rem;
+        width: max-content;
+        max-width: 20px;
+        padding: 0.34rem 0.38rem;
+        border-radius: 999px;
+        overflow: hidden;
+        transition: max-width 0.34s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.28s ease,
+          border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
       }
 
       .rail-point .dot {
@@ -252,55 +223,46 @@
         transition: all 0.28s ease;
       }
 
+      .rail-point .dock-label {
+        opacity: 0;
+        max-width: 0;
+        transform: translateX(-4px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+        font-size: 0.64rem;
+        transition: opacity 0.24s ease, transform 0.24s ease, max-width 0.28s ease;
+      }
+
+      .rail-point:hover,
+      .rail-point.active {
+        max-width: 118px;
+      }
+
+      .rail-point:hover .dock-label,
+      .rail-point.active .dock-label {
+        opacity: 1;
+        max-width: 90px;
+        transform: translateX(0);
+      }
+
       .rail-point.active .dot {
         border-color: rgba(231, 166, 111, 0.78);
         background: rgba(231, 166, 111, 0.52);
         box-shadow: 0 0 0 3px rgba(231, 166, 111, 0.12);
       }
 
-      .scroll-rail.projects-active .rail-beacon {
-        scale: 1.05;
-        box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.24), 0 0 20px rgba(231, 166, 111, 0.6);
+      .rail-point.active {
+        border-color: rgba(231, 166, 111, 0.34);
+        background: rgba(199, 122, 66, 0.16);
+        color: #f1d1ba;
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.14);
       }
 
-      .rail-chip {
-        position: absolute;
-        left: 22px;
-        top: 0;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        border-radius: 999px;
-        border: 1px solid rgba(231, 166, 111, 0.26);
-        background: rgba(10, 13, 16, 0.74);
-        backdrop-filter: blur(6px);
-        color: #f3d4be;
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-weight: 600;
-        padding: 0.3rem 0.58rem;
-        white-space: nowrap;
-        transform: translateY(0);
-        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease,
-          border-color 0.3s ease, box-shadow 0.3s ease;
-        pointer-events: none;
-      }
-
-      .rail-chip::before {
-        content: "";
-        width: 8px;
-        height: 1px;
-        background: rgba(231, 166, 111, 0.36);
-      }
-
-      .scroll-rail:hover .rail-chip {
-        border-color: rgba(231, 166, 111, 0.35);
-      }
-
-      .scroll-rail.projects-active .rail-chip {
-        border-color: rgba(231, 166, 111, 0.38);
-        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.2), 0 0 16px rgba(231, 166, 111, 0.14);
+      .scroll-rail.projects-active .rail-point.active {
+        border-color: rgba(231, 166, 111, 0.44);
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.26), 0 0 16px rgba(231, 166, 111, 0.16);
       }
 
       main {
@@ -1717,16 +1679,25 @@
       </div>
     </header>
 
-    <aside class="scroll-rail" aria-hidden="true">
-      <div class="rail-line"><div class="rail-fill" id="railFill"></div></div>
-      <div class="rail-point" data-section="home" data-label="Home"><span class="dot"></span></div>
-      <div class="rail-point" data-section="about" data-label="About"><span class="dot"></span></div>
-      <div class="rail-point" data-section="journey" data-label="Journey"><span class="dot"></span></div>
-      <div class="rail-point" data-section="blog" data-label="Blog"><span class="dot"></span></div>
-      <div class="rail-point" data-section="projects" data-label="Projects"><span class="dot"></span></div>
-      <div class="rail-point" data-section="contact" data-label="Contact"><span class="dot"></span></div>
-      <div class="rail-beacon" id="railBeacon"></div>
-      <div class="rail-chip" id="railChip"><span id="railChipLabel">Home</span></div>
+    <aside class="scroll-rail" aria-label="Section dock">
+      <button class="rail-point active" data-section="home" type="button" aria-label="Go to Home">
+        <span class="dot"></span><span class="dock-label">Home</span>
+      </button>
+      <button class="rail-point" data-section="about" type="button" aria-label="Go to About">
+        <span class="dot"></span><span class="dock-label">About</span>
+      </button>
+      <button class="rail-point" data-section="journey" type="button" aria-label="Go to Journey">
+        <span class="dot"></span><span class="dock-label">Journey</span>
+      </button>
+      <button class="rail-point" data-section="blog" type="button" aria-label="Go to Blog">
+        <span class="dot"></span><span class="dock-label">Blog</span>
+      </button>
+      <button class="rail-point" data-section="projects" type="button" aria-label="Go to Projects">
+        <span class="dot"></span><span class="dock-label">Projects</span>
+      </button>
+      <button class="rail-point" data-section="contact" type="button" aria-label="Go to Contact">
+        <span class="dot"></span><span class="dock-label">Contact</span>
+      </button>
     </aside>
 
     <main>
@@ -2278,47 +2249,18 @@
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const scrollRail = document.querySelector(".scroll-rail");
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
-      const railFill = document.getElementById("railFill");
-      const railBeacon = document.getElementById("railBeacon");
-      const railChip = document.getElementById("railChip");
-      const railChipLabel = document.getElementById("railChipLabel");
       const journeySection = document.getElementById("journey");
       const journeyRows = Array.from(document.querySelectorAll(".journey-row"));
       const projectsSection = document.getElementById("projects");
       const projectNavItems = Array.from(document.querySelectorAll(".project-nav-item"));
       const projectPreviews = Array.from(document.querySelectorAll(".project-preview"));
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
-      let activeSectionId = sectionIds[0];
-      let hoveredRailSectionId = null;
       let particleState = null;
 
-      function setRailIndicator(sectionId) {
-        const point = railPoints.find((p) => p.dataset.section === sectionId);
-        if (!point) return;
-        const targetY = point.offsetTop + 3;
-        if (railBeacon) railBeacon.style.transform = `translate(-50%, ${targetY}px)`;
-        if (railFill) railFill.style.transform = `translateY(${targetY - 2}px)`;
-        if (railChip) railChip.style.transform = `translateY(${targetY - 12}px)`;
-        if (railChipLabel) railChipLabel.textContent = point.dataset.label || sectionId;
-      }
-
       function activateSection(id) {
-        activeSectionId = id;
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
         railPoints.forEach((point) => point.classList.toggle("active", point.dataset.section === id));
         if (scrollRail) scrollRail.classList.toggle("projects-active", id === "projects");
-        if (!hoveredRailSectionId) setRailIndicator(id);
-      }
-
-      function placeRailPoints() {
-        const docHeight = document.documentElement.scrollHeight;
-        railPoints.forEach((point) => {
-          const section = document.getElementById(point.dataset.section);
-          const center = section.offsetTop + section.offsetHeight / 2;
-          const pct = Math.max(0.02, Math.min(0.98, center / docHeight));
-          point.style.top = `calc(${(pct * 100).toFixed(2)}% - 4px)`;
-        });
-        setRailIndicator(hoveredRailSectionId || activeSectionId);
       }
 
       function syncScrollUI() {
@@ -2382,18 +2324,15 @@
       }
 
       function initRailDock() {
-        if (!scrollRail || railPoints.length === 0) return;
+        if (railPoints.length === 0) return;
         railPoints.forEach((point) => {
           const sectionId = point.dataset.section;
           if (!sectionId) return;
-          point.addEventListener("mouseenter", () => {
-            hoveredRailSectionId = sectionId;
-            setRailIndicator(sectionId);
+          point.addEventListener("click", () => {
+            const target = document.getElementById(sectionId);
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            activateSection(sectionId);
           });
-        });
-        scrollRail.addEventListener("mouseleave", () => {
-          hoveredRailSectionId = null;
-          setRailIndicator(activeSectionId);
         });
       }
 
@@ -2570,12 +2509,10 @@
         initRailDock();
         initProjectsShowcase();
         setInterval(updateAboutLocalTime, 1000);
-        placeRailPoints();
         syncScrollUI();
       });
       window.addEventListener("resize", () => {
         if (particleState && particleState.resizeParticles) particleState.resizeParticles();
-        placeRailPoints();
         syncScrollUI();
       });
       window.addEventListener("scroll", syncScrollUI, { passive: true });
