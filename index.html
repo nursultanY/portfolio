@@ -84,32 +84,9 @@
         --active-accent: var(--accent-home);
         --active-accent-2: var(--accent-home-2);
         --active-accent-rgb: var(--accent-home-rgb);
-      }
-
-      body[data-active-section="about"] {
-        --active-accent: var(--accent-about);
-        --active-accent-2: var(--accent-about-2);
-        --active-accent-rgb: var(--accent-about-rgb);
-      }
-      body[data-active-section="journey"] {
-        --active-accent: var(--accent-journey);
-        --active-accent-2: var(--accent-journey-2);
-        --active-accent-rgb: var(--accent-journey-rgb);
-      }
-      body[data-active-section="blog"] {
-        --active-accent: var(--accent-blog);
-        --active-accent-2: var(--accent-blog-2);
-        --active-accent-rgb: var(--accent-blog-rgb);
-      }
-      body[data-active-section="projects"] {
-        --active-accent: var(--accent-projects);
-        --active-accent-2: var(--accent-projects-2);
-        --active-accent-rgb: var(--accent-projects-rgb);
-      }
-      body[data-active-section="contact"] {
-        --active-accent: var(--accent-contact);
-        --active-accent-2: var(--accent-contact-2);
-        --active-accent-rgb: var(--accent-contact-rgb);
+        --blend-accent-rgb: var(--accent-about-rgb);
+        --bridge-accent-rgb: var(--accent-home-rgb);
+        --color-drift: 0;
       }
 
       .bg-layer {
@@ -117,11 +94,16 @@
         inset: 0;
         z-index: -3;
         background:
-          radial-gradient(circle at 78% 32%, rgba(var(--active-accent-rgb), 0.15), transparent 42%),
-          radial-gradient(circle at 73% 40%, rgba(var(--active-accent-rgb), 0.1), transparent 36%),
-          linear-gradient(180deg, #101319, #12161f),
+          radial-gradient(130% 100% at 10% 8%, rgba(var(--active-accent-rgb), 0.1), transparent 72%),
+          radial-gradient(
+            120% 95% at 88% 18%,
+            rgba(var(--blend-accent-rgb), calc(0.04 + (var(--color-drift) * 0.08))),
+            transparent 72%
+          ),
+          radial-gradient(135% 100% at 50% 82%, rgba(var(--bridge-accent-rgb), 0.07), transparent 74%),
+          linear-gradient(180deg, #0f131b, #111720 45%, #121922),
           var(--bg);
-        transition: background 0.45s ease;
+        transition: background 0.7s linear;
       }
 
       .container {
@@ -201,7 +183,7 @@
           rgba(var(--active-accent-rgb), 0.14)
         );
         box-shadow: inset 0 0 0 1px rgba(var(--active-accent-rgb), 0.34), 0 0 14px rgba(var(--active-accent-rgb), 0.18);
-        transition: background 0.3s ease, box-shadow 0.3s ease;
+        transition: background 0.55s ease, box-shadow 0.55s ease;
       }
 
       .scroll-rail {
@@ -2506,17 +2488,68 @@
       const projectsSection = document.getElementById("projects");
       const projectNavItems = Array.from(document.querySelectorAll(".project-nav-item"));
       const projectPreviews = Array.from(document.querySelectorAll(".project-preview"));
+      const sectionAccentData = {
+        home: { primary: [214, 160, 94], secondary: [185, 122, 61] },
+        about: { primary: [47, 143, 131], secondary: [62, 127, 115] },
+        journey: { primary: [75, 108, 183], secondary: [63, 95, 168] },
+        blog: { primary: [139, 63, 92], secondary: [161, 77, 103] },
+        projects: { primary: [110, 86, 207], secondary: [127, 90, 240] },
+        contact: { primary: [198, 133, 109], secondary: [185, 116, 90] },
+      };
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
       let particleState = null;
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function smoothstep(value) {
+        const t = clamp(value, 0, 1);
+        return t * t * (3 - 2 * t);
+      }
+
+      function blendColor(from, to, t) {
+        return from.map((channel, i) => Math.round(channel + (to[i] - channel) * t));
+      }
+
+      function setAtmosphereFromScroll(scrollY) {
+        if (sections.length === 0) return;
+        const marker = scrollY + window.innerHeight * 0.5;
+        const anchors = sections.map((section) => section.offsetTop + section.offsetHeight * 0.5);
+        let index = 0;
+
+        while (index < anchors.length - 1 && marker > anchors[index + 1]) index += 1;
+
+        const currentId = sectionIds[index];
+        const nextId = sectionIds[Math.min(index + 1, sectionIds.length - 1)];
+        const current = sectionAccentData[currentId] || sectionAccentData.home;
+        const next = sectionAccentData[nextId] || current;
+
+        const start = anchors[index];
+        const end = anchors[Math.min(index + 1, anchors.length - 1)];
+        const rawProgress = start === end ? 0 : clamp((marker - start) / (end - start), 0, 1);
+        const progress = smoothstep(rawProgress);
+
+        const primary = blendColor(current.primary, next.primary, progress);
+        const secondary = blendColor(current.secondary, next.secondary, progress);
+        const bridge = blendColor(current.primary, next.primary, 0.5);
+
+        document.body.style.setProperty("--active-accent-rgb", primary.join(", "));
+        document.body.style.setProperty("--active-accent", `rgb(${primary.join(", ")})`);
+        document.body.style.setProperty("--active-accent-2", `rgb(${secondary.join(", ")})`);
+        document.body.style.setProperty("--blend-accent-rgb", next.primary.join(", "));
+        document.body.style.setProperty("--bridge-accent-rgb", bridge.join(", "));
+        document.body.style.setProperty("--color-drift", progress.toFixed(4));
+      }
 
       function activateSection(id) {
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
         railPoints.forEach((point) => point.classList.toggle("active", point.dataset.section === id));
-        document.body.dataset.activeSection = id;
       }
 
       function syncScrollUI() {
         const scrollY = window.scrollY;
+        setAtmosphereFromScroll(scrollY);
 
         let current = sectionIds[0];
         for (const section of sections) {
