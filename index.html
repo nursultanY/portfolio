@@ -180,10 +180,11 @@
       .scroll-rail {
         position: fixed;
         top: 110px;
-        left: 10px;
+        left: 6px;
         bottom: 54px;
-        width: 132px;
+        width: 98px;
         z-index: 20;
+        pointer-events: auto;
       }
 
       .rail-line {
@@ -192,17 +193,17 @@
         top: 0;
         width: 2px;
         height: 100%;
-        background: rgba(199, 207, 219, 0.17);
+        background: rgba(187, 196, 208, 0.16);
       }
 
       .rail-fill {
         position: absolute;
         left: 0;
         width: 100%;
-        height: 26px;
+        height: 22px;
         border-radius: 999px;
-        opacity: 0.42;
-        background: linear-gradient(180deg, rgba(231, 166, 111, 0.58), rgba(231, 166, 111, 0));
+        opacity: 0.32;
+        background: linear-gradient(180deg, rgba(231, 166, 111, 0.44), rgba(231, 166, 111, 0));
         transform: translateY(0);
         transform-origin: top center;
         transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
@@ -220,7 +221,7 @@
         border: 1px solid rgba(255, 229, 208, 0.85);
         box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.18), 0 0 16px rgba(231, 166, 111, 0.48);
         transform: translate(-50%, 0);
-        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, scale 0.28s ease;
         pointer-events: none;
       }
 
@@ -238,31 +239,17 @@
         left: 0;
         display: flex;
         align-items: center;
-        gap: 0.52rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-size: 0.7rem;
-        color: #7d8691;
-        transition: color 0.28s ease;
+        width: 18px;
+        justify-content: center;
       }
 
       .rail-point .dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         border: 1px solid rgba(170, 179, 192, 0.42);
         background: #0f1216;
         transition: all 0.28s ease;
-      }
-
-      .rail-point .rail-label {
-        padding: 0.22rem 0.42rem;
-        border-radius: 999px;
-        transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-      }
-
-      .rail-point.active {
-        color: #ffe0cd;
       }
 
       .rail-point.active .dot {
@@ -271,20 +258,49 @@
         box-shadow: 0 0 0 3px rgba(231, 166, 111, 0.12);
       }
 
-      .rail-point.active .rail-label {
-        background: rgba(199, 122, 66, 0.18);
-        color: #ffe0cc;
-        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.2);
-      }
-
-      .rail-point[data-section="projects"].active .rail-label {
-        background: rgba(199, 122, 66, 0.23);
-        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.3), 0 0 16px rgba(231, 166, 111, 0.2);
-      }
-
-      .rail-point[data-section="projects"].active ~ .rail-beacon,
       .scroll-rail.projects-active .rail-beacon {
+        scale: 1.05;
         box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.24), 0 0 20px rgba(231, 166, 111, 0.6);
+      }
+
+      .rail-chip {
+        position: absolute;
+        left: 22px;
+        top: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        border-radius: 999px;
+        border: 1px solid rgba(231, 166, 111, 0.26);
+        background: rgba(10, 13, 16, 0.74);
+        backdrop-filter: blur(6px);
+        color: #f3d4be;
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        padding: 0.3rem 0.58rem;
+        white-space: nowrap;
+        transform: translateY(0);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease,
+          border-color 0.3s ease, box-shadow 0.3s ease;
+        pointer-events: none;
+      }
+
+      .rail-chip::before {
+        content: "";
+        width: 8px;
+        height: 1px;
+        background: rgba(231, 166, 111, 0.36);
+      }
+
+      .scroll-rail:hover .rail-chip {
+        border-color: rgba(231, 166, 111, 0.35);
+      }
+
+      .scroll-rail.projects-active .rail-chip {
+        border-color: rgba(231, 166, 111, 0.38);
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.2), 0 0 16px rgba(231, 166, 111, 0.14);
       }
 
       main {
@@ -1703,13 +1719,14 @@
 
     <aside class="scroll-rail" aria-hidden="true">
       <div class="rail-line"><div class="rail-fill" id="railFill"></div></div>
-      <div class="rail-point" data-section="home"><span class="dot"></span><span class="rail-label">home</span></div>
-      <div class="rail-point" data-section="about"><span class="dot"></span><span class="rail-label">about</span></div>
-      <div class="rail-point" data-section="journey"><span class="dot"></span><span class="rail-label">journey</span></div>
-      <div class="rail-point" data-section="blog"><span class="dot"></span><span class="rail-label">blog</span></div>
-      <div class="rail-point" data-section="projects"><span class="dot"></span><span class="rail-label">projects</span></div>
-      <div class="rail-point" data-section="contact"><span class="dot"></span><span class="rail-label">contact</span></div>
+      <div class="rail-point" data-section="home" data-label="Home"><span class="dot"></span></div>
+      <div class="rail-point" data-section="about" data-label="About"><span class="dot"></span></div>
+      <div class="rail-point" data-section="journey" data-label="Journey"><span class="dot"></span></div>
+      <div class="rail-point" data-section="blog" data-label="Blog"><span class="dot"></span></div>
+      <div class="rail-point" data-section="projects" data-label="Projects"><span class="dot"></span></div>
+      <div class="rail-point" data-section="contact" data-label="Contact"><span class="dot"></span></div>
       <div class="rail-beacon" id="railBeacon"></div>
+      <div class="rail-chip" id="railChip"><span id="railChipLabel">Home</span></div>
     </aside>
 
     <main>
@@ -2263,24 +2280,34 @@
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
       const railFill = document.getElementById("railFill");
       const railBeacon = document.getElementById("railBeacon");
+      const railChip = document.getElementById("railChip");
+      const railChipLabel = document.getElementById("railChipLabel");
       const journeySection = document.getElementById("journey");
       const journeyRows = Array.from(document.querySelectorAll(".journey-row"));
       const projectsSection = document.getElementById("projects");
       const projectNavItems = Array.from(document.querySelectorAll(".project-nav-item"));
       const projectPreviews = Array.from(document.querySelectorAll(".project-preview"));
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
+      let activeSectionId = sectionIds[0];
+      let hoveredRailSectionId = null;
       let particleState = null;
 
+      function setRailIndicator(sectionId) {
+        const point = railPoints.find((p) => p.dataset.section === sectionId);
+        if (!point) return;
+        const targetY = point.offsetTop + 3;
+        if (railBeacon) railBeacon.style.transform = `translate(-50%, ${targetY}px)`;
+        if (railFill) railFill.style.transform = `translateY(${targetY - 2}px)`;
+        if (railChip) railChip.style.transform = `translateY(${targetY - 12}px)`;
+        if (railChipLabel) railChipLabel.textContent = point.dataset.label || sectionId;
+      }
+
       function activateSection(id) {
+        activeSectionId = id;
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
         railPoints.forEach((point) => point.classList.toggle("active", point.dataset.section === id));
         if (scrollRail) scrollRail.classList.toggle("projects-active", id === "projects");
-
-        const activePoint = railPoints.find((point) => point.dataset.section === id);
-        if (!activePoint) return;
-        const targetY = activePoint.offsetTop + 5;
-        if (railBeacon) railBeacon.style.transform = `translate(-50%, ${targetY}px)`;
-        if (railFill) railFill.style.transform = `translateY(${targetY - 1}px)`;
+        if (!hoveredRailSectionId) setRailIndicator(id);
       }
 
       function placeRailPoints() {
@@ -2289,8 +2316,9 @@
           const section = document.getElementById(point.dataset.section);
           const center = section.offsetTop + section.offsetHeight / 2;
           const pct = Math.max(0.02, Math.min(0.98, center / docHeight));
-          point.style.top = `calc(${(pct * 100).toFixed(2)}% - 6px)`;
+          point.style.top = `calc(${(pct * 100).toFixed(2)}% - 4px)`;
         });
+        setRailIndicator(hoveredRailSectionId || activeSectionId);
       }
 
       function syncScrollUI() {
@@ -2351,6 +2379,22 @@
           }
         });
         if (target) setActiveProject(target);
+      }
+
+      function initRailDock() {
+        if (!scrollRail || railPoints.length === 0) return;
+        railPoints.forEach((point) => {
+          const sectionId = point.dataset.section;
+          if (!sectionId) return;
+          point.addEventListener("mouseenter", () => {
+            hoveredRailSectionId = sectionId;
+            setRailIndicator(sectionId);
+          });
+        });
+        scrollRail.addEventListener("mouseleave", () => {
+          hoveredRailSectionId = null;
+          setRailIndicator(activeSectionId);
+        });
       }
 
       function initProjectsShowcase() {
@@ -2523,6 +2567,7 @@
         setupContactBackground();
         updateAboutLocalTime();
         initBlogReadMore();
+        initRailDock();
         initProjectsShowcase();
         setInterval(updateAboutLocalTime, 1000);
         placeRailPoints();
