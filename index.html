@@ -180,9 +180,9 @@
       .scroll-rail {
         position: fixed;
         top: 110px;
-        left: 14px;
+        left: 10px;
         bottom: 54px;
-        width: 150px;
+        width: 132px;
         z-index: 20;
       }
 
@@ -192,14 +192,45 @@
         top: 0;
         width: 2px;
         height: 100%;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(199, 207, 219, 0.17);
       }
 
       .rail-fill {
+        position: absolute;
+        left: 0;
         width: 100%;
-        height: 0;
-        background: linear-gradient(180deg, var(--accent), #ff8d6a);
-        transition: height 0.15s linear;
+        height: 26px;
+        border-radius: 999px;
+        opacity: 0.42;
+        background: linear-gradient(180deg, rgba(231, 166, 111, 0.58), rgba(231, 166, 111, 0));
+        transform: translateY(0);
+        transform-origin: top center;
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
+        pointer-events: none;
+      }
+
+      .rail-beacon {
+        position: absolute;
+        left: 8px;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #f0b182;
+        border: 1px solid rgba(255, 229, 208, 0.85);
+        box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.18), 0 0 16px rgba(231, 166, 111, 0.48);
+        transform: translate(-50%, 0);
+        transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+        pointer-events: none;
+      }
+
+      .rail-beacon::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        border: 1px solid rgba(231, 166, 111, 0.42);
+        opacity: 0.6;
       }
 
       .rail-point {
@@ -211,27 +242,49 @@
         text-transform: uppercase;
         letter-spacing: 0.08em;
         font-size: 0.7rem;
-        color: #7f8792;
-        transition: color 0.22s ease;
+        color: #7d8691;
+        transition: color 0.28s ease;
       }
 
       .rail-point .dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        border: 2px solid #7f8792;
+        border: 1px solid rgba(170, 179, 192, 0.42);
         background: #0f1216;
-        transition: all 0.22s ease;
+        transition: all 0.28s ease;
+      }
+
+      .rail-point .rail-label {
+        padding: 0.22rem 0.42rem;
+        border-radius: 999px;
+        transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
       }
 
       .rail-point.active {
-        color: #ffd2be;
+        color: #ffe0cd;
       }
 
       .rail-point.active .dot {
-        border-color: var(--accent);
-        background: var(--accent);
-        box-shadow: 0 0 12px rgba(255, 90, 45, 0.8);
+        border-color: rgba(231, 166, 111, 0.78);
+        background: rgba(231, 166, 111, 0.52);
+        box-shadow: 0 0 0 3px rgba(231, 166, 111, 0.12);
+      }
+
+      .rail-point.active .rail-label {
+        background: rgba(199, 122, 66, 0.18);
+        color: #ffe0cc;
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.2);
+      }
+
+      .rail-point[data-section="projects"].active .rail-label {
+        background: rgba(199, 122, 66, 0.23);
+        box-shadow: 0 0 0 1px rgba(231, 166, 111, 0.3), 0 0 16px rgba(231, 166, 111, 0.2);
+      }
+
+      .rail-point[data-section="projects"].active ~ .rail-beacon,
+      .scroll-rail.projects-active .rail-beacon {
+        box-shadow: 0 0 0 4px rgba(231, 166, 111, 0.24), 0 0 20px rgba(231, 166, 111, 0.6);
       }
 
       main {
@@ -1650,12 +1703,13 @@
 
     <aside class="scroll-rail" aria-hidden="true">
       <div class="rail-line"><div class="rail-fill" id="railFill"></div></div>
-      <div class="rail-point" data-section="home"><span class="dot"></span><span>home</span></div>
-      <div class="rail-point" data-section="about"><span class="dot"></span><span>about</span></div>
-      <div class="rail-point" data-section="journey"><span class="dot"></span><span>journey</span></div>
-      <div class="rail-point" data-section="blog"><span class="dot"></span><span>blog</span></div>
-      <div class="rail-point" data-section="projects"><span class="dot"></span><span>projects</span></div>
-      <div class="rail-point" data-section="contact"><span class="dot"></span><span>contact</span></div>
+      <div class="rail-point" data-section="home"><span class="dot"></span><span class="rail-label">home</span></div>
+      <div class="rail-point" data-section="about"><span class="dot"></span><span class="rail-label">about</span></div>
+      <div class="rail-point" data-section="journey"><span class="dot"></span><span class="rail-label">journey</span></div>
+      <div class="rail-point" data-section="blog"><span class="dot"></span><span class="rail-label">blog</span></div>
+      <div class="rail-point" data-section="projects"><span class="dot"></span><span class="rail-label">projects</span></div>
+      <div class="rail-point" data-section="contact"><span class="dot"></span><span class="rail-label">contact</span></div>
+      <div class="rail-beacon" id="railBeacon"></div>
     </aside>
 
     <main>
@@ -2205,8 +2259,10 @@
       const sectionIds = ["home", "about", "journey", "blog", "projects", "contact"];
       const sections = sectionIds.map((id) => document.getElementById(id));
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
+      const scrollRail = document.querySelector(".scroll-rail");
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
       const railFill = document.getElementById("railFill");
+      const railBeacon = document.getElementById("railBeacon");
       const journeySection = document.getElementById("journey");
       const journeyRows = Array.from(document.querySelectorAll(".journey-row"));
       const projectsSection = document.getElementById("projects");
@@ -2218,6 +2274,13 @@
       function activateSection(id) {
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
         railPoints.forEach((point) => point.classList.toggle("active", point.dataset.section === id));
+        if (scrollRail) scrollRail.classList.toggle("projects-active", id === "projects");
+
+        const activePoint = railPoints.find((point) => point.dataset.section === id);
+        if (!activePoint) return;
+        const targetY = activePoint.offsetTop + 5;
+        if (railBeacon) railBeacon.style.transform = `translate(-50%, ${targetY}px)`;
+        if (railFill) railFill.style.transform = `translateY(${targetY - 1}px)`;
       }
 
       function placeRailPoints() {
@@ -2232,9 +2295,6 @@
 
       function syncScrollUI() {
         const scrollY = window.scrollY;
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = max > 0 ? (scrollY / max) * 100 : 0;
-        railFill.style.height = `${Math.max(0, Math.min(100, progress))}%`;
 
         let current = sectionIds[0];
         for (const section of sections) {
