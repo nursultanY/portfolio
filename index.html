@@ -1187,7 +1187,7 @@
         transform: scale(1.02);
       }
 
-      /* Updated: luxury editorial Blog section with featured + secondary composition */
+      /* Updated: luxury editorial Blog section with active reading stage */
       .blog-luxury {
         position: relative;
       }
@@ -1197,7 +1197,8 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 24px;
         background:
-          radial-gradient(circle at 9% 8%, rgba(var(--accent-blog-rgb), 0.14), transparent 42%),
+          radial-gradient(circle at 9% 8%, rgba(var(--accent-blog-rgb), 0.16), transparent 44%),
+          radial-gradient(circle at 78% 22%, rgba(var(--accent-blog-rgb), 0.08), transparent 32%),
           var(--surface-1);
         backdrop-filter: blur(4px);
         padding: clamp(1.4rem, 2.8vw, 2.45rem);
@@ -1207,7 +1208,7 @@
         grid-template-columns: 1fr auto;
         gap: 1rem;
         align-items: end;
-        margin-bottom: 1.35rem;
+        margin-bottom: 1.25rem;
       }
       .blog-heading-copy {
         max-width: 760px;
@@ -1240,44 +1241,117 @@
         padding: 0.36rem 0.7rem;
         white-space: nowrap;
       }
-      .blog-list {
+      .blog-journal {
         display: grid;
-        gap: 1.1rem;
+        grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.25fr);
+        gap: clamp(1rem, 2vw, 1.75rem);
+        align-items: start;
       }
-      .blog-item {
+      .blog-index {
+        display: grid;
+        gap: 0.82rem;
+      }
+      .blog-entry {
+        width: 100%;
+        border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 22px;
         background:
-          linear-gradient(160deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
-          rgba(24, 29, 37, 0.78);
-        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
-        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+          linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
+          rgba(23, 28, 36, 0.8);
+        color: inherit;
+        text-align: left;
+        padding: 0.95rem 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
-      .blog-item:hover {
-        transform: translateY(-4px);
-        border-color: rgba(var(--accent-blog-rgb), 0.42);
-        box-shadow: 0 20px 38px rgba(0, 0, 0, 0.35);
+      .blog-entry:hover {
+        transform: translateY(-2px);
+        border-color: rgba(var(--accent-blog-rgb), 0.38);
       }
-      .blog-featured {
+      .blog-entry.is-active {
+        border-color: rgba(var(--accent-blog-rgb), 0.5);
+        box-shadow: 0 0 0 1px rgba(var(--accent-blog-rgb), 0.25), 0 14px 28px rgba(0, 0, 0, 0.34);
+        background:
+          linear-gradient(150deg, rgba(var(--accent-blog-rgb), 0.2), rgba(255, 255, 255, 0.01)),
+          rgba(29, 33, 41, 0.9);
+      }
+      .blog-entry-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+      .blog-entry-number {
+        color: rgba(var(--accent-blog-rgb), 0.6);
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+      }
+      .blog-entry.is-active .blog-entry-number {
+        color: #efcad9;
+      }
+      .blog-entry-meta {
+        color: #c89ab0;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .blog-entry-title {
+        margin: 0.34rem 0 0;
+        font-size: 1.02rem;
+        line-height: 1.35;
+      }
+      .blog-entry-excerpt {
+        margin: 0.48rem 0 0;
+        color: var(--text-soft);
+        line-height: 1.58;
+        font-size: 0.92rem;
+      }
+      .blog-stage {
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background:
+          radial-gradient(circle at 15% 8%, rgba(var(--accent-blog-rgb), 0.11), transparent 42%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012)),
+          rgba(18, 22, 30, 0.86);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+        padding: clamp(1rem, 1.9vw, 1.6rem);
         display: grid;
-        grid-template-columns: minmax(560px, 1.18fr) minmax(380px, 0.95fr);
-        gap: clamp(1.5rem, 2.2vw, 2.15rem);
-        padding: clamp(1.35rem, 1.9vw, 1.85rem);
+        gap: 1rem;
+        min-height: 560px;
       }
-      .blog-content {
+      .blog-stage-progress {
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.09);
+        overflow: hidden;
+      }
+      .blog-stage-progress-fill {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, #b56a86, #f2c8d8);
+        transition: width 0.22s ease;
+      }
+      .blog-stage-article {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.78fr);
+        gap: clamp(1rem, 1.8vw, 1.45rem);
+        align-items: start;
+      }
+      .blog-stage-content {
         position: relative;
       }
-      .blog-number {
+      .blog-stage-number {
         margin: 0;
         position: absolute;
-        top: -0.2rem;
+        top: -0.16rem;
         right: 0;
-        font-size: clamp(1.6rem, 3.8vw, 2.75rem);
+        font-size: clamp(1.8rem, 4vw, 2.85rem);
         line-height: 1;
         font-weight: 800;
-        color: rgba(var(--accent-blog-rgb), 0.26);
-        letter-spacing: 0.04em;
-        pointer-events: none;
+        letter-spacing: 0.05em;
+        color: rgba(var(--accent-blog-rgb), 0.22);
       }
       .blog-kicker {
         margin: 0;
@@ -1287,34 +1361,31 @@
         text-transform: uppercase;
         font-weight: 700;
       }
-      .blog-title {
+      .blog-stage-title {
         margin: 0.55rem 0 0;
-        font-size: clamp(1.22rem, 1.7vw, 1.88rem);
-        letter-spacing: -0.01em;
-        max-width: 30ch;
-        transition: color 0.25s ease;
-      }
-      .blog-item:hover .blog-title {
-        color: #f0d0dc;
-      }
-      .blog-excerpt {
-        margin: 0.6rem 0 0.75rem;
-        color: var(--text-soft);
-        line-height: 1.68;
-        max-width: 64ch;
+        font-size: clamp(1.3rem, 1.9vw, 2rem);
+        letter-spacing: -0.015em;
+        line-height: 1.2;
+        max-width: 28ch;
       }
       .blog-meta {
-        margin: 0;
+        margin: 0.64rem 0 0;
         color: #c99ab0;
-        font-size: 0.76rem;
+        font-size: 0.75rem;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.11em;
+      }
+      .blog-stage-excerpt {
+        margin: 0.8rem 0 0;
+        color: var(--text-soft);
+        max-width: 62ch;
+        line-height: 1.72;
       }
       .blog-link {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
-        margin-top: 0.7rem;
+        margin-top: 0.85rem;
         color: #d9a8bc;
         text-decoration: none;
         background: transparent;
@@ -1322,7 +1393,7 @@
         cursor: pointer;
         font: inherit;
         text-align: left;
-        border-bottom: 1px solid rgba(var(--accent-blog-rgb), 0.5);
+        border-bottom: 1px solid rgba(var(--accent-blog-rgb), 0.55);
         padding-bottom: 0.1rem;
         transition: color 0.2s ease, border-color 0.2s ease;
       }
@@ -1334,80 +1405,71 @@
       }
       .blog-link:hover {
         color: #f0d0dc;
-        border-color: rgba(240, 208, 220, 0.7);
+        border-color: rgba(240, 208, 220, 0.75);
       }
       .blog-link:hover::after {
         transform: translateX(2px);
       }
-      /* Added: expandable full-text area for each blog item (functionality only) */
-      .blog-more {
-        height: 0;
+      .blog-stage-body {
+        margin-top: 0.82rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.09);
+        padding-top: 0.9rem;
+        max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transform: translateY(-4px);
-        transition: height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
+        transform: translateY(-5px);
+        transition: max-height 0.45s ease, opacity 0.32s ease, transform 0.32s ease;
       }
-      .blog-more.is-open {
+      .blog-stage-body.is-open {
         opacity: 1;
         transform: translateY(0);
       }
-      .blog-more-inner {
-        margin-top: 0.65rem;
-        color: #aeb6c0;
-        line-height: 1.65;
-        max-width: 64ch;
+      .blog-stage-body-wrap {
+        max-width: 66ch;
+        max-height: min(46vh, 430px);
+        overflow: auto;
+        padding-right: 0.45rem;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(var(--accent-blog-rgb), 0.45) transparent;
       }
-      .blog-media {
+      .blog-stage-body-wrap p {
+        margin: 0;
+        color: #bcc3ce;
+        line-height: 1.82;
+      }
+      .blog-stage-body-wrap p + p {
+        margin-top: 0.92rem;
+      }
+      .blog-stage-media {
         border-radius: 16px;
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        background: rgba(255, 255, 255, 0.02);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         margin: 0;
+        min-height: 280px;
+        background: rgba(255, 255, 255, 0.02);
       }
-      .blog-media img {
+      .blog-stage-media img {
         width: 100%;
         height: 100%;
-        min-height: 250px;
-        max-height: 340px;
+        min-height: 280px;
+        max-height: 420px;
         object-fit: cover;
-        transition: filter 0.32s ease, transform 0.32s ease;
+        transition: filter 0.45s ease, transform 0.45s ease;
       }
-      .blog-item:hover .blog-media img {
-        filter: brightness(1.08);
-        transform: scale(1.035);
+      .blog-stage.is-transitioning .blog-stage-media img {
+        filter: saturate(0.88) brightness(0.92);
+        transform: scale(1.015);
       }
-      .blog-secondary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.1rem;
+      .blog-stage.is-transitioning .blog-stage-content {
+        opacity: 0.72;
+        transform: translateY(6px);
       }
-      .blog-secondary {
-        display: grid;
-        gap: 0.9rem;
-        padding: 0.95rem;
+      .blog-stage-content {
+        transition: opacity 0.25s ease, transform 0.25s ease;
       }
-      .blog-secondary .blog-media img {
-        min-height: 190px;
-        max-height: 220px;
+      .blog-content-bank {
+        display: none;
       }
-      .blog-secondary .blog-content {
-        padding: 0.1rem 0.15rem 0.35rem;
-      }
-      .blog-secondary .blog-number {
-        top: 0;
-        font-size: clamp(1.45rem, 3vw, 2.15rem);
-      }
-      .blog-secondary .blog-title {
-        font-size: clamp(1.06rem, 1.4vw, 1.28rem);
-        max-width: 32ch;
-      }
-      .blog-secondary .blog-excerpt {
-        margin-top: 0.5rem;
-        font-size: 0.95rem;
-        max-width: 52ch;
-      }
-
       /* Updated: cinematic interactive Projects showcase */
       .projects-showcase {
         width: min(94vw, 1600px);
@@ -2099,16 +2161,22 @@
         .blog-heading-note {
           justify-self: start;
         }
-        .blog-featured {
+        .blog-journal {
           grid-template-columns: 1fr;
-          gap: 1rem;
-          padding: 1rem;
         }
-        .blog-featured .blog-media {
+        .blog-stage {
+          min-height: 0;
+        }
+        .blog-stage-article {
+          grid-template-columns: 1fr;
+        }
+        .blog-stage-media {
           order: -1;
+          min-height: 220px;
         }
-        .blog-secondary-grid {
-          grid-template-columns: 1fr 1fr;
+        .blog-stage-media img {
+          min-height: 220px;
+          max-height: 300px;
         }
         .projects-interactive {
           grid-template-columns: 1fr;
@@ -2213,14 +2281,17 @@
         .blog-shell {
           padding: 1rem;
         }
-        .blog-secondary-grid {
-          grid-template-columns: 1fr;
+        .blog-entry {
+          padding: 0.86rem 0.9rem;
         }
-        .blog-secondary {
-          padding: 0.85rem;
+        .blog-stage {
+          padding: 0.95rem;
         }
-        .blog-number {
-          font-size: 1.45rem;
+        .blog-stage-number {
+          font-size: 1.55rem;
+        }
+        .blog-stage-body-wrap {
+          max-height: 340px;
         }
         .projects-showcase {
           padding: 1rem;
@@ -2616,92 +2687,67 @@
             <div class="blog-heading-copy">
               <p class="blog-eyebrow">Selected Writing</p>
               <h2>Latest Writing</h2>
-              <p>Selected notes from engineering, systems design, and execution strategy.</p>
+              <p>Curated essays on systems, execution, and analytics in a dedicated luxury reading stage.</p>
             </div>
             <span class="blog-heading-note">Editorial Journal</span>
           </header>
 
-          <div class="blog-list">
-            <!-- Edit/add blog items from here -->
-            <article class="blog-item blog-featured">
-              <div class="blog-content">
-                <p class="blog-number">01</p>
-                <p class="blog-kicker">Featured Essay · Systems</p>
-                <h3 class="blog-title">Designing Reliable Systems Under Real-World Constraints</h3>
-                <p class="blog-excerpt">
-                  A practical framework for balancing speed, safety, and maintainability when
-                  engineering decisions must survive field realities and changing constraints.
-                </p>
-                <p class="blog-meta">Systems · 2026 · 6 min read</p>
-                <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-01">Read More</button>
-                <!-- Edit full blog text for item 01 below -->
-                <div class="blog-more" id="blog-more-01" aria-hidden="true">
-                  <div class="blog-more-inner">
-                    In this post, I break down a decision model for balancing reliability,
-                    delivery speed, and maintainability when constraints are dynamic. It covers
-                    requirement prioritization, risk mapping, and a simple review loop that
-                    helps teams ship confidently without sacrificing long-term quality.
-                  </div>
-                </div>
-              </div>
-              <figure class="blog-media">
-                <img src="/assets/img/6.jpg" alt="Blog post visual one" />
-              </figure>
-            </article>
-
-            <div class="blog-secondary-grid">
-              <article class="blog-item blog-secondary">
-                <figure class="blog-media">
-                  <img src="/assets/img/5.jpg" alt="Blog post visual two" />
-                </figure>
-                <div class="blog-content">
-                  <p class="blog-number">02</p>
-                  <p class="blog-kicker">Analytics Note</p>
-                  <h3 class="blog-title">From Data to Decisions: Building Trust in Dashboards</h3>
-                  <p class="blog-excerpt">
-                    Why clarity, context, and simple KPIs matter more than visual noise when
-                    analytics must drive decisions across technical and non-technical stakeholders.
-                  </p>
-                  <p class="blog-meta">Analytics · 2025 · 5 min read</p>
-                  <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-02">Read More</button>
-                  <!-- Edit full blog text for item 02 below -->
-                  <div class="blog-more" id="blog-more-02" aria-hidden="true">
-                    <div class="blog-more-inner">
-                      This article explains how to design dashboards that decision-makers trust:
-                      clear metric ownership, consistent definitions, and context-first
-                      storytelling. I also share practical patterns for reducing ambiguity when
-                      presenting performance indicators across mixed technical audiences.
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article class="blog-item blog-secondary">
-                <figure class="blog-media">
-                  <img src="/assets/img/4.jpg" alt="Blog post visual three" />
-                </figure>
-                <div class="blog-content">
-                  <p class="blog-number">03</p>
-                  <p class="blog-kicker">Execution Note</p>
-                  <h3 class="blog-title">Execution Discipline: The Hidden Advantage in Engineering Teams</h3>
-                  <p class="blog-excerpt">
-                    A concise look at cadence, ownership, and communication patterns that create
-                    durable momentum and reduce delivery risk in complex projects.
-                  </p>
-                  <p class="blog-meta">Leadership · 2024 · 4 min read</p>
-                  <button class="blog-link blog-toggle" type="button" aria-expanded="false" aria-controls="blog-more-03">Read More</button>
-                  <!-- Edit full blog text for item 03 below -->
-                  <div class="blog-more" id="blog-more-03" aria-hidden="true">
-                    <div class="blog-more-inner">
-                      I explore execution discipline as a performance multiplier: meeting rhythm,
-                      ownership clarity, and feedback cadence. The post outlines simple operating
-                      habits that improve alignment, reduce delivery risk, and create sustainable
-                      momentum in engineering teams.
-                    </div>
-                  </div>
-                </div>
-              </article>
+          <div class="blog-journal" id="blogJournal">
+            <div class="blog-index" role="tablist" aria-label="Writing selector">
+              <button class="blog-entry is-active" type="button" data-post="systems" aria-selected="true">
+                <div class="blog-entry-top"><span class="blog-entry-number">01</span><span class="blog-entry-meta">Systems · 2026 · 6 min</span></div>
+                <h3 class="blog-entry-title">Designing Reliable Systems Under Real-World Constraints</h3>
+                <p class="blog-entry-excerpt">Balancing speed, safety, and maintainability when requirements move faster than plans.</p>
+              </button>
+              <button class="blog-entry" type="button" data-post="analytics" aria-selected="false">
+                <div class="blog-entry-top"><span class="blog-entry-number">02</span><span class="blog-entry-meta">Analytics · 2025 · 5 min</span></div>
+                <h3 class="blog-entry-title">From Data to Decisions: Building Trust in Dashboards</h3>
+                <p class="blog-entry-excerpt">How metric clarity and narrative discipline convert dashboards into confident action.</p>
+              </button>
+              <button class="blog-entry" type="button" data-post="execution" aria-selected="false">
+                <div class="blog-entry-top"><span class="blog-entry-number">03</span><span class="blog-entry-meta">Leadership · 2024 · 4 min</span></div>
+                <h3 class="blog-entry-title">Execution Discipline: The Hidden Advantage in Engineering Teams</h3>
+                <p class="blog-entry-excerpt">Simple operating cadence patterns that improve alignment and delivery confidence.</p>
+              </button>
             </div>
+
+            <article class="blog-stage" id="blogStage" aria-live="polite">
+              <div class="blog-stage-progress" aria-hidden="true"><span class="blog-stage-progress-fill" id="blogStageProgress"></span></div>
+              <div class="blog-stage-article">
+                <div class="blog-stage-content">
+                  <p class="blog-stage-number" id="blogStageNumber">01</p>
+                  <p class="blog-kicker" id="blogStageKicker">Featured Essay · Systems</p>
+                  <h3 class="blog-stage-title" id="blogStageTitle">Designing Reliable Systems Under Real-World Constraints</h3>
+                  <p class="blog-meta" id="blogStageMeta">Systems · 2026 · 6 min read</p>
+                  <p class="blog-stage-excerpt" id="blogStageExcerpt">A practical framework for balancing speed, safety, and maintainability when engineering decisions must survive field realities and changing constraints.</p>
+                  <button class="blog-link" id="blogStageToggle" type="button" aria-expanded="false" aria-controls="blogStageBody">Read More</button>
+                  <div class="blog-stage-body" id="blogStageBody" aria-hidden="true">
+                    <div class="blog-stage-body-wrap" id="blogStageBodyWrap"></div>
+                  </div>
+                </div>
+                <figure class="blog-stage-media">
+                  <img id="blogStageImage" src="/assets/img/6.jpg" alt="Blog post visual one" />
+                </figure>
+              </div>
+            </article>
+          </div>
+
+          <div class="blog-content-bank" aria-hidden="true">
+            <article data-post="systems" data-number="01" data-kicker="Featured Essay · Systems" data-title="Designing Reliable Systems Under Real-World Constraints" data-meta="Systems · 2026 · 6 min read" data-excerpt="A practical framework for balancing speed, safety, and maintainability when engineering decisions must survive field realities and changing constraints." data-image="/assets/img/6.jpg" data-image-alt="Blog post visual one">
+              <p>Reliable systems are rarely built under perfect conditions. Deadlines move, dependencies shift, and operational reality introduces constraints that no planning meeting can fully predict. The practical response is to anchor architecture decisions in clear failure priorities rather than ideal-state assumptions.</p>
+              <p>I use a simple triage lens: what must never fail, what can fail briefly, and what can degrade gracefully. That framing keeps tradeoffs visible during delivery and helps teams avoid over-engineering low-impact areas while protecting the surfaces that carry true business risk.</p>
+              <p>Execution speed still matters, so I pair this reliability map with a lightweight review loop at every milestone. The loop asks whether each change increased recovery confidence, observability, and maintainability. Teams can then ship in smaller increments without sacrificing long-term system quality.</p>
+            </article>
+            <article data-post="analytics" data-number="02" data-kicker="Analytics Note" data-title="From Data to Decisions: Building Trust in Dashboards" data-meta="Analytics · 2025 · 5 min read" data-excerpt="Why clarity, context, and simple KPIs matter more than visual noise when analytics must drive decisions across technical and non-technical stakeholders." data-image="/assets/img/5.jpg" data-image-alt="Blog post visual two">
+              <p>Dashboards fail when they optimize for aesthetics over trust. Decision-makers need consistent definitions, clear ownership, and the confidence that one metric means the same thing every week. Without those foundations, polished charts still create hesitation.</p>
+              <p>I structure analytics around three layers: signal metrics, diagnostic metrics, and contextual notes. Signal metrics answer whether performance is improving, diagnostic metrics explain why, and contextual notes frame uncertainty. This hierarchy reduces ambiguity and speeds up cross-functional conversations.</p>
+              <p>To keep teams aligned, every KPI should have an explicit calculation source and review cadence. That discipline converts dashboards from passive reporting surfaces into shared operating instruments that technical and non-technical stakeholders can trust equally.</p>
+            </article>
+            <article data-post="execution" data-number="03" data-kicker="Execution Note" data-title="Execution Discipline: The Hidden Advantage in Engineering Teams" data-meta="Leadership · 2024 · 4 min read" data-excerpt="A concise look at cadence, ownership, and communication patterns that create durable momentum and reduce delivery risk in complex projects." data-image="/assets/img/4.jpg" data-image-alt="Blog post visual three">
+              <p>Most delivery problems are not caused by technical inability. They come from fragmented ownership, inconsistent meeting rhythm, and delayed feedback loops. Execution discipline is the operating layer that transforms good ideas into dependable outcomes.</p>
+              <p>High-performing teams standardize a predictable cadence: clear weekly planning, short decision checkpoints, and visible risk tracking. This rhythm keeps priorities stable enough for momentum while remaining flexible enough to absorb change.</p>
+              <p>When accountability, communication, and review loops are explicit, teams spend less energy resolving confusion and more energy shipping valuable work. Over time that consistency becomes a durable competitive advantage, especially in high-uncertainty environments.</p>
+            </article>
           </div>
         </div>
       </section>
@@ -3203,48 +3249,108 @@
         });
       }
 
-      // Added: Blog "Read More" toggle (independent per item)
+      // Updated: Blog editorial stage with active article + refined long-form reading mode
       function initBlogReadMore() {
-        const toggles = Array.from(document.querySelectorAll(".blog-toggle"));
-        if (toggles.length === 0) return;
+        const journal = document.getElementById("blogJournal");
+        if (!journal) return;
 
-        const setPanelState = (panel, open) => {
-          const inner = panel.querySelector(".blog-more-inner");
-          if (!inner) return;
+        const entries = Array.from(journal.querySelectorAll(".blog-entry"));
+        const bankItems = Array.from(document.querySelectorAll(".blog-content-bank [data-post]"));
+        if (entries.length === 0 || bankItems.length === 0) return;
 
+        const posts = new Map(bankItems.map((item) => [item.dataset.post, item]));
+        const stage = document.getElementById("blogStage");
+        const stageNumber = document.getElementById("blogStageNumber");
+        const stageKicker = document.getElementById("blogStageKicker");
+        const stageTitle = document.getElementById("blogStageTitle");
+        const stageMeta = document.getElementById("blogStageMeta");
+        const stageExcerpt = document.getElementById("blogStageExcerpt");
+        const stageImage = document.getElementById("blogStageImage");
+        const toggle = document.getElementById("blogStageToggle");
+        const body = document.getElementById("blogStageBody");
+        const bodyWrap = document.getElementById("blogStageBodyWrap");
+        const progressFill = document.getElementById("blogStageProgress");
+
+        if (!stage || !toggle || !body || !bodyWrap || !stageImage) return;
+
+        const setBodyOpen = (open) => {
           if (open) {
-            panel.classList.add("is-open");
-            panel.style.height = `${inner.scrollHeight}px`;
+            body.classList.add("is-open");
+            body.style.maxHeight = `${bodyWrap.scrollHeight + 26}px`;
           } else {
-            panel.style.height = `${panel.scrollHeight}px`;
+            body.style.maxHeight = `${body.scrollHeight}px`;
             requestAnimationFrame(() => {
-              panel.classList.remove("is-open");
-              panel.style.height = "0px";
+              body.classList.remove("is-open");
+              body.style.maxHeight = "0px";
             });
           }
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.textContent = open ? "Show Less" : "Read More";
+          body.setAttribute("aria-hidden", String(!open));
         };
 
-        toggles.forEach((btn) => {
-          const panelId = btn.getAttribute("aria-controls");
-          const panel = panelId ? document.getElementById(panelId) : null;
-          if (!panel) return;
-          panel.style.height = "0px";
+        const updateProgress = () => {
+          if (!progressFill) return;
+          const range = bodyWrap.scrollHeight - bodyWrap.clientHeight;
+          if (range <= 0) {
+            progressFill.style.width = body.classList.contains("is-open") ? "100%" : "0%";
+            return;
+          }
+          const ratio = Math.min(1, Math.max(0, bodyWrap.scrollTop / range));
+          progressFill.style.width = `${Math.round(ratio * 100)}%`;
+        };
 
-          btn.addEventListener("click", () => {
-            const isOpen = btn.getAttribute("aria-expanded") === "true";
-            btn.setAttribute("aria-expanded", String(!isOpen));
-            btn.textContent = isOpen ? "Read More" : "Show Less";
-            panel.setAttribute("aria-hidden", String(isOpen));
-            setPanelState(panel, !isOpen);
+        const activatePost = (postId) => {
+          const source = posts.get(postId);
+          if (!source) return;
+          stage.classList.add("is-transitioning");
+
+          setTimeout(() => {
+            stageNumber.textContent = source.dataset.number || "";
+            stageKicker.textContent = source.dataset.kicker || "";
+            stageTitle.textContent = source.dataset.title || "";
+            stageMeta.textContent = source.dataset.meta || "";
+            stageExcerpt.textContent = source.dataset.excerpt || "";
+            stageImage.src = source.dataset.image || stageImage.src;
+            stageImage.alt = source.dataset.imageAlt || "Blog post image";
+            bodyWrap.innerHTML = source.innerHTML;
+            bodyWrap.scrollTop = 0;
+            setBodyOpen(false);
+            updateProgress();
+            stage.classList.remove("is-transitioning");
+          }, 120);
+
+          entries.forEach((entry) => {
+            const active = entry.dataset.post === postId;
+            entry.classList.toggle("is-active", active);
+            entry.setAttribute("aria-selected", String(active));
           });
+        };
+
+        entries.forEach((entry) => {
+          const postId = entry.dataset.post;
+          if (!postId) return;
+          entry.addEventListener("click", () => activatePost(postId));
+          entry.addEventListener("focus", () => activatePost(postId));
         });
 
+        toggle.addEventListener("click", () => {
+          const isOpen = toggle.getAttribute("aria-expanded") === "true";
+          setBodyOpen(!isOpen);
+          bodyWrap.scrollTop = 0;
+          updateProgress();
+        });
+
+        bodyWrap.addEventListener("scroll", updateProgress, { passive: true });
         window.addEventListener("resize", () => {
-          document.querySelectorAll(".blog-more.is-open").forEach((panel) => {
-            const inner = panel.querySelector(".blog-more-inner");
-            if (inner) panel.style.height = `${inner.scrollHeight}px`;
-          });
+          if (body.classList.contains("is-open")) {
+            body.style.maxHeight = `${bodyWrap.scrollHeight + 26}px`;
+          }
+          updateProgress();
         });
+
+        const defaultPost = entries.find((entry) => entry.classList.contains("is-active"))?.dataset.post || entries[0]?.dataset.post;
+        if (defaultPost) activatePost(defaultPost);
       }
 
       // Added: Contact finale interactive mode switching
