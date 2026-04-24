@@ -890,11 +890,13 @@
         border: 1px solid rgba(255, 255, 255, 0.11);
         border-radius: 24px;
         background:
-          linear-gradient(150deg, rgba(22, 26, 34, 0.9), rgba(12, 15, 20, 0.85) 55%, rgba(9, 12, 18, 0.92)),
-          radial-gradient(circle at 9% 12%, rgba(var(--accent-about-rgb), 0.2), transparent 52%);
+          linear-gradient(145deg, rgba(20, 24, 33, 0.93), rgba(12, 15, 22, 0.88) 58%, rgba(8, 11, 18, 0.94)),
+          radial-gradient(circle at 9% 12%, rgba(var(--accent-about-rgb), 0.2), transparent 52%),
+          radial-gradient(circle at 94% 2%, rgba(70, 112, 188, 0.14), transparent 38%);
         backdrop-filter: blur(10px);
         box-shadow:
-          0 24px 58px rgba(0, 0, 0, 0.36),
+          0 26px 62px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(122, 171, 255, 0.05),
           inset 0 1px 0 rgba(255, 255, 255, 0.06);
         padding: clamp(1.25rem, 2.8vw, 2.25rem);
       }
@@ -909,14 +911,15 @@
       .about-banner {
         position: relative;
         border-radius: 18px;
-        padding: 1.2rem 1.35rem 1.1rem;
-        margin-bottom: 1.2rem;
+        padding: 1.3rem 1.45rem 1.2rem;
+        margin-bottom: 1.24rem;
         text-align: center;
         border: 1px solid rgba(var(--accent-about-rgb), 0.32);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(101, 147, 221, 0.08);
         background:
-          linear-gradient(180deg, rgba(20, 24, 31, 0.94), rgba(18, 21, 30, 0.88)),
-          radial-gradient(circle at 50% 40%, rgba(var(--accent-about-rgb), 0.2), transparent 72%);
+          linear-gradient(180deg, rgba(20, 24, 34, 0.95), rgba(16, 21, 31, 0.89)),
+          radial-gradient(circle at 50% 38%, rgba(var(--accent-about-rgb), 0.22), transparent 72%),
+          radial-gradient(circle at 12% 85%, rgba(56, 115, 183, 0.17), transparent 52%);
       }
       .about-banner h2 {
         margin: 0 0 0.35rem;
@@ -947,18 +950,28 @@
         gap: 1rem;
       }
       .about-card {
+        --card-accent-rgb: var(--accent-about-rgb);
         position: relative;
         border-radius: 16px;
         border: 1px solid rgba(255, 255, 255, 0.12);
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-          rgba(11, 14, 20, 0.8);
-        padding: 1.08rem 1.05rem 1.12rem;
+          linear-gradient(165deg, rgba(var(--card-accent-rgb), 0.08), rgba(255, 255, 255, 0.02) 44%, rgba(255, 255, 255, 0.01)),
+          rgba(10, 14, 21, 0.84);
+        padding: 1.14rem 1.12rem 1.16rem;
         box-shadow:
           0 10px 30px rgba(0, 0, 0, 0.28),
+          0 0 0 1px rgba(var(--card-accent-rgb), 0.07),
           inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        transition: transform 0.34s ease, border-color 0.34s ease, box-shadow 0.34s ease, background 0.34s ease;
+        transition: transform 0.34s ease, border-color 0.34s ease, box-shadow 0.34s ease, background 0.34s ease, filter 0.34s ease;
         overflow: hidden;
+      }
+      .about-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 1px solid rgba(var(--card-accent-rgb), 0.12);
+        pointer-events: none;
       }
       .about-card::before {
         content: "";
@@ -967,55 +980,62 @@
         width: 220px;
         height: 220px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(var(--accent-about-rgb), 0.16), transparent 68%);
+        background: radial-gradient(circle, rgba(var(--card-accent-rgb), 0.19), transparent 68%);
         opacity: 0;
         transition: opacity 0.34s ease;
         pointer-events: none;
       }
       .about-card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(var(--accent-about-rgb), 0.52);
+        transform: translateY(-7px);
+        border-color: rgba(var(--card-accent-rgb), 0.54);
         box-shadow:
-          0 18px 36px rgba(0, 0, 0, 0.34),
-          0 0 0 1px rgba(var(--accent-about-rgb), 0.16);
+          0 20px 38px rgba(0, 0, 0, 0.36),
+          0 0 0 1px rgba(var(--card-accent-rgb), 0.18);
         background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
-          rgba(12, 16, 22, 0.9);
+          linear-gradient(170deg, rgba(var(--card-accent-rgb), 0.12), rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.01)),
+          rgba(11, 16, 24, 0.92);
+        filter: saturate(1.05);
       }
       .about-card:hover::before {
         opacity: 1;
       }
       .about-card--highlight {
-        border-color: rgba(var(--accent-about-rgb), 0.44);
+        border-color: rgba(var(--card-accent-rgb), 0.44);
         box-shadow:
           0 16px 36px rgba(0, 0, 0, 0.34),
-          0 0 0 1px rgba(var(--accent-about-rgb), 0.2);
+          0 0 0 1px rgba(var(--card-accent-rgb), 0.22);
       }
       .about-icon {
-        color: #bce7df;
-        font-size: 1rem;
-        width: 2rem;
-        height: 2rem;
+        color: #cde9f3;
+        font-size: 0.98rem;
+        width: 2.12rem;
+        height: 2.12rem;
         display: inline-grid;
         place-items: center;
         border-radius: 10px;
-        border: 1px solid rgba(var(--accent-about-rgb), 0.5);
-        background: linear-gradient(150deg, rgba(var(--accent-about-rgb), 0.22), rgba(var(--accent-about-rgb), 0.08));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(var(--card-accent-rgb), 0.5);
+        background: linear-gradient(150deg, rgba(var(--card-accent-rgb), 0.25), rgba(var(--card-accent-rgb), 0.07));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 8px 20px rgba(var(--card-accent-rgb), 0.16);
+        transition: box-shadow 0.28s ease, transform 0.28s ease, border-color 0.28s ease;
+      }
+      .about-card:hover .about-icon {
+        transform: translateY(-1px);
+        border-color: rgba(var(--card-accent-rgb), 0.7);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 12px 22px rgba(var(--card-accent-rgb), 0.24);
       }
       .about-label {
-        margin: 0.72rem 0 0.4rem;
+        margin: 0.78rem 0 0.42rem;
         color: #dbe2ea;
         font-size: 0.74rem;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
       }
       .about-heading {
         margin: 0;
-        font-size: 1.09rem;
+        font-size: 1.08rem;
         font-weight: 700;
-        line-height: 1.32;
-        letter-spacing: 0.01em;
+        line-height: 1.36;
+        letter-spacing: 0.015em;
       }
       .about-edu-head {
         margin-top: 0.2rem;
@@ -1029,8 +1049,8 @@
       }
       .about-term {
         border-radius: 999px;
-        border: 1px solid rgba(var(--accent-about-rgb), 0.58);
-        background: rgba(var(--accent-about-rgb), 0.2);
+        border: 1px solid rgba(var(--card-accent-rgb), 0.58);
+        background: rgba(var(--card-accent-rgb), 0.2);
         color: #d2f1ec;
         padding: 0.24rem 0.64rem;
         font-size: 0.74rem;
@@ -1082,9 +1102,9 @@
         line-height: 1.5;
       }
       .about-desc {
-        margin: 0.5rem 0 0.8rem;
+        margin: 0.55rem 0 0.84rem;
         color: #b9c2ce;
-        line-height: 1.62;
+        line-height: 1.66;
         font-size: 0.9rem;
       }
       .about-tags {
@@ -1095,9 +1115,9 @@
       }
       .about-tags span {
         border-radius: 999px;
-        border: 1px solid rgba(var(--accent-about-rgb), 0.48);
-        background: rgba(var(--accent-about-rgb), 0.16);
-        color: #d0ece7;
+        border: 1px solid rgba(var(--card-accent-rgb), 0.48);
+        background: linear-gradient(165deg, rgba(var(--card-accent-rgb), 0.2), rgba(var(--card-accent-rgb), 0.09));
+        color: #d5ebf2;
         font-size: 0.75rem;
         font-weight: 600;
         padding: 0.24rem 0.62rem;
@@ -1105,8 +1125,8 @@
       }
       .about-card:hover .about-tags span {
         transform: translateY(-1px);
-        border-color: rgba(var(--accent-about-rgb), 0.72);
-        background: rgba(var(--accent-about-rgb), 0.22);
+        border-color: rgba(var(--card-accent-rgb), 0.72);
+        background: linear-gradient(165deg, rgba(var(--card-accent-rgb), 0.27), rgba(var(--card-accent-rgb), 0.11));
       }
       .about-bullets {
         margin: 0.35rem 0 0;
@@ -1126,8 +1146,8 @@
       .about-award-list span {
         display: inline-block;
         border-radius: 10px;
-        border: 1px solid rgba(var(--accent-about-rgb), 0.48);
-        background: rgba(var(--accent-about-rgb), 0.16);
+        border: 1px solid rgba(var(--card-accent-rgb), 0.48);
+        background: linear-gradient(165deg, rgba(var(--card-accent-rgb), 0.22), rgba(var(--card-accent-rgb), 0.1));
         color: #d0ede8;
         font-size: 0.8rem;
         font-weight: 600;
@@ -2672,8 +2692,8 @@
           <!-- Top row cards -->
           <div class="about-top-grid">
             <!-- Edit education/affiliation content here -->
-            <article class="about-card about-card--highlight">
-              <i class="fas fa-graduation-cap about-icon"></i>
+            <article class="about-card about-card--highlight" style="--card-accent-rgb: 54, 151, 140;">
+              <i class="fas fa-user-graduate about-icon"></i>
               <p class="about-label">Academic Profile</p>
               <div class="about-edu-head">
                 <h3 class="about-heading">Hamad Bin Khalifa University</h3>
@@ -2688,7 +2708,8 @@
             </article>
 
             <!-- Edit location/time content here -->
-            <article class="about-card about-centered">
+            <article class="about-card about-centered" style="--card-accent-rgb: 68, 141, 186;">
+              <i class="fas fa-map-marker-alt about-icon"></i>
               <p class="about-label">Location</p>
               <h3 class="about-heading">Doha, Qatar</h3>
               <p class="about-sub">Current local time</p>
@@ -2696,7 +2717,7 @@
             </article>
 
             <!-- Edit metric content here -->
-            <article class="about-card about-centered about-card--highlight">
+            <article class="about-card about-centered about-card--highlight" style="--card-accent-rgb: 72, 162, 170;">
               <i class="fas fa-chart-line about-metric-icon"></i>
               <p class="about-metric-number" id="aboutMetricNumber" data-target="4">4</p>
               <p class="about-metric-caption">Technical roles delivered across research, field engineering, and design execution.</p>
@@ -2705,32 +2726,32 @@
 
           <!-- Middle row specialization cards -->
           <div class="about-grid-mid">
-            <article class="about-card">
-              <i class="fas fa-oil-can about-icon"></i>
+            <article class="about-card" style="--card-accent-rgb: 52, 149, 171;">
+              <i class="fas fa-brain about-icon"></i>
               <h3 class="about-heading">Applied Machine Learning</h3>
               <p class="about-desc">Applying Python and data-driven modeling to convert engineering data into practical, high-confidence decisions.</p>
               <div class="about-tags"><span>Python</span><span>ML</span></div>
               <ul class="about-bullets"><li>Battery analytics across 3,000+ cycles</li><li>98.5% pulsar classification via KAN</li></ul>
             </article>
 
-            <article class="about-card">
-              <i class="fas fa-microchip about-icon"></i>
+            <article class="about-card" style="--card-accent-rgb: 58, 145, 122;">
+              <i class="fas fa-industry about-icon"></i>
               <h3 class="about-heading">Energy &amp; Field Engineering</h3>
               <p class="about-desc">Operating in production environments through inspection, diagnostics, and reliability-led cross-team execution.</p>
               <div class="about-tags"><span>Field Ops</span><span>Reliability</span></div>
               <ul class="about-bullets"><li>150+ pressure and temperature diagnostics captured</li><li>25% reduction in workflow bottlenecks on site</li></ul>
             </article>
 
-            <article class="about-card">
-              <i class="fas fa-shield-alt about-icon"></i>
+            <article class="about-card" style="--card-accent-rgb: 74, 125, 186;">
+              <i class="fas fa-microscope about-icon"></i>
               <h3 class="about-heading">Research &amp; Publications</h3>
               <p class="about-desc">Research work across engineering and machine learning with emphasis on validation rigor and technical communication.</p>
               <div class="about-tags"><span>Publications</span><span>Analysis</span></div>
               <ul class="about-bullets"><li>Co-authored 2 research publications</li><li>Benchmarked 8 ML models for battery state estimation</li></ul>
             </article>
 
-            <article class="about-card">
-              <i class="fas fa-users about-icon"></i>
+            <article class="about-card" style="--card-accent-rgb: 63, 139, 154;">
+              <i class="fas fa-user-friends about-icon"></i>
               <h3 class="about-heading">Leadership &amp; Community</h3>
               <p class="about-desc">Contributing to technical communities that connect engineering practice, energy systems, and collaborative execution.</p>
               <div class="about-tags"><span>SPE</span><span>Teamwork</span></div>
@@ -2741,8 +2762,8 @@
           <!-- Bottom row cards -->
           <div class="about-grid-bottom">
             <!-- Edit awards here -->
-            <article class="about-card">
-              <i class="fas fa-award about-icon"></i>
+            <article class="about-card" style="--card-accent-rgb: 68, 151, 159;">
+              <i class="fas fa-medal about-icon"></i>
               <h3 class="about-heading">Honors &amp; Certifications</h3>
               <p class="about-desc">Recognition earned through consistent academic performance, disciplined design practice, and technical growth.</p>
               <ul class="about-bullets">
@@ -2752,7 +2773,7 @@
             </article>
 
             <!-- Edit internships/experience here -->
-            <article class="about-card">
+            <article class="about-card" style="--card-accent-rgb: 58, 134, 178;">
               <i class="fas fa-briefcase about-icon"></i>
               <h3 class="about-heading">Experience Snapshot</h3>
               <p class="about-desc">Experience built across field engineering, energy research, and performance-driven mechanical design.</p>
