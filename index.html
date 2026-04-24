@@ -361,76 +361,105 @@
         --lux-sapphire: 102, 136, 208;
         --lux-teal: 70, 136, 126;
         --lux-plum: 95, 82, 126;
-        --lux-ink: 18, 30, 46;
         --lux-mist: 184, 205, 232;
         position: relative;
         display: grid;
-        gap: clamp(1.28rem, 2.2vw, 1.95rem);
-        padding: clamp(1.45rem, 2.9vw, 2.35rem) clamp(1.4rem, 3vw, 2.5rem) clamp(1.25rem, 2.7vw, 2.05rem);
-        border-radius: 32px;
-        background:
-          linear-gradient(152deg, rgba(18, 30, 46, 0.92), rgba(20, 33, 50, 0.84) 45%, rgba(16, 26, 42, 0.88)),
-          radial-gradient(circle at 12% 14%, rgba(var(--lux-amber), 0.24), transparent 54%),
-          radial-gradient(circle at 82% 20%, rgba(var(--lux-sapphire), 0.2), transparent 56%),
-          radial-gradient(circle at 74% 82%, rgba(var(--lux-teal), 0.16), transparent 58%),
-          radial-gradient(circle at 40% 54%, rgba(var(--lux-mist), 0.08), transparent 70%);
-        border: 1px solid rgba(212, 224, 241, 0.18);
-        box-shadow: inset 0 1px 0 rgba(248, 252, 255, 0.12), inset 0 -1px 0 rgba(143, 167, 197, 0.12),
-          0 30px 56px rgba(4, 8, 16, 0.44), 0 0 0 1px rgba(92, 122, 156, 0.12);
-        backdrop-filter: blur(12px);
-        overflow: hidden;
-        max-width: 780px;
+        gap: clamp(0.92rem, 1.7vw, 1.28rem);
+        max-width: 860px;
         isolation: isolate;
       }
       .hero-copy-shell::before {
         content: "";
         position: absolute;
-        left: clamp(1.05rem, 2.3vw, 1.55rem);
-        top: clamp(1.2rem, 2.6vw, 1.9rem);
-        bottom: clamp(1.2rem, 2.5vw, 1.5rem);
-        width: 2px;
-        background: linear-gradient(180deg, rgba(var(--lux-amber), 0.98), rgba(var(--lux-sapphire), 0.62), rgba(var(--lux-teal), 0.18));
-        box-shadow: 0 0 22px rgba(var(--lux-amber), 0.34);
-        animation: accentPulse 5.8s ease-in-out infinite;
+        inset: -8% -10% auto 18%;
+        height: 62%;
+        background: radial-gradient(circle, rgba(var(--lux-sapphire), 0.24), transparent 70%);
+        filter: blur(26px);
+        opacity: 0.62;
+        animation: driftGlow 9s ease-in-out infinite alternate;
+        pointer-events: none;
       }
       .hero-copy-shell::after {
         content: "";
         position: absolute;
-        inset: -20% -10% 42% 30%;
-        background: radial-gradient(circle, rgba(var(--lux-sapphire), 0.3), transparent 68%);
-        filter: blur(26px);
-        opacity: 0.5;
+        inset: auto 10% -18% -6%;
+        height: 58%;
+        background: radial-gradient(circle, rgba(var(--lux-amber), 0.18), transparent 74%);
+        filter: blur(30px);
+        opacity: 0.6;
         pointer-events: none;
-        animation: driftGlow 10s ease-in-out infinite alternate;
       }
-      .hero-identity-panel,
-      .hero-open-body,
-      .hero-cta-panel {
-        opacity: 0;
-        transform: translateY(14px);
-        animation: rise 0.72s ease forwards;
+      .hero-float-card {
         position: relative;
-        margin-left: clamp(0.95rem, 1.7vw, 1.4rem);
+        z-index: 1;
+        border-radius: 22px;
+        border: 1px solid rgba(199, 216, 242, 0.24);
+        background:
+          linear-gradient(150deg, rgba(19, 31, 48, 0.88), rgba(16, 27, 44, 0.76) 54%, rgba(18, 30, 47, 0.8)),
+          radial-gradient(circle at 16% 18%, rgba(var(--lux-amber), 0.22), transparent 52%),
+          radial-gradient(circle at 84% 20%, rgba(var(--lux-sapphire), 0.2), transparent 56%),
+          radial-gradient(circle at 72% 82%, rgba(var(--lux-teal), 0.15), transparent 62%);
+        box-shadow: inset 0 1px 0 rgba(237, 245, 255, 0.11), inset 0 -1px 0 rgba(132, 161, 193, 0.12),
+          0 14px 30px rgba(5, 11, 19, 0.4), 0 0 0 1px rgba(87, 116, 148, 0.12);
+        backdrop-filter: blur(10px);
+        transform-style: preserve-3d;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        opacity: 0;
+        transform: translateY(18px);
+        animation: rise 0.78s ease forwards;
       }
-      .hero-identity-panel {
+      .hero-float-card:hover {
+        transform: perspective(980px) translateY(-5px) rotateX(3deg) rotateY(-2.5deg);
+        border-color: rgba(222, 234, 249, 0.42);
+        box-shadow: inset 0 1px 0 rgba(244, 249, 255, 0.16), 0 20px 38px rgba(6, 12, 21, 0.54), 0 0 26px rgba(108, 150, 214, 0.16);
+      }
+      .hero-identity-strip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        justify-self: start;
+        padding: 0.55rem 0.9rem;
+        border-radius: 999px;
+        animation-delay: 0.03s;
+      }
+      .hero-heading-card {
+        padding: clamp(1.08rem, 2.2vw, 1.55rem) clamp(1.06rem, 2.1vw, 1.45rem);
         display: grid;
-        gap: 0.55rem;
-        animation-delay: 0.05s;
+        gap: 0.52rem;
+        animation-delay: 0.12s;
       }
-      .hero-open-body {
-        animation-delay: 0.18s;
+      .hero-support-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: clamp(0.82rem, 1.6vw, 1.02rem);
+      }
+      .hero-built-card,
+      .hero-availability-card {
+        padding: 0.92rem 0.94rem;
+      }
+      .hero-built-card {
+        grid-column: span 8;
+        animation-delay: 0.22s;
+      }
+      .hero-availability-card {
+        grid-column: span 4;
+        animation-delay: 0.29s;
+      }
+      .hero-credibility-card {
+        padding: 0.86rem 0.92rem;
+        animation-delay: 0.36s;
       }
       .hero-cta-panel {
-        animation-delay: 0.36s;
+        padding: 0.84rem 0.88rem 0.92rem;
+        animation-delay: 0.44s;
       }
       .identity-signature {
         justify-self: start;
-        margin-bottom: 0.32rem;
         color: rgba(248, 236, 219, 0.82);
         font-size: 0.7rem;
         letter-spacing: 0.24em;
         text-transform: uppercase;
-        padding: 0.24rem 0.62rem;
+        padding: 0.2rem 0.58rem;
         border-radius: 999px;
         border: 1px solid rgba(var(--lux-amber), 0.46);
         background: linear-gradient(90deg, rgba(var(--lux-amber), 0.2), rgba(var(--lux-plum), 0.12));
@@ -444,33 +473,18 @@
         font-size: 0.64rem;
         font-weight: 650;
       }
-      .hero-open-body {
-        display: grid;
-        gap: 1.12rem;
-        padding: 1.14rem 0.15rem 1.1rem 0;
-        border-top: 1px solid rgba(226, 235, 248, 0.2);
-        border-bottom: 1px solid rgba(226, 235, 248, 0.16);
-      }
-      .hero-support-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.16fr) minmax(215px, 0.84fr);
-        gap: 1.04rem;
-        align-items: stretch;
-      }
-      .hero-built-strip {
-        display: grid;
-        gap: 0.62rem;
-        padding: 0.9rem 0.98rem;
-        border-radius: 18px;
-        border: 1px solid rgba(208, 223, 241, 0.24);
-        background: linear-gradient(140deg, rgba(178, 198, 224, 0.12), rgba(255, 255, 255, 0.02));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      .hero-identity-meta {
+        margin: 0;
+        color: #d0daea;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
       }
       .hero-meta-strip {
-        margin-top: 0.08rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
+        margin-top: 0.54rem;
       }
       .hero-meta-strip span {
         border-radius: 999px;
@@ -494,20 +508,10 @@
       .hero-meta-strip span:hover {
         transform: translateY(-2px);
       }
-      .hero-focus-card {
+      .hero-availability-card {
         display: grid;
-        gap: 0.4rem;
+        gap: 0.36rem;
         align-content: start;
-        border: 1px solid rgba(var(--lux-sapphire), 0.36);
-        border-radius: 18px;
-        background: linear-gradient(155deg, rgba(var(--lux-sapphire), 0.18), rgba(var(--lux-teal), 0.11) 50%, rgba(255, 255, 255, 0.03));
-        padding: 0.86rem 0.88rem 0.9rem;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .hero-focus-card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(var(--lux-teal), 0.45);
-        box-shadow: 0 14px 24px rgba(5, 9, 16, 0.42);
       }
       .hero-card-text {
         margin: 0;
@@ -515,12 +519,8 @@
         line-height: 1.5;
         font-size: 0.78rem;
       }
-      .hero-proof-ribbon {
-        display: grid;
-        gap: 0.5rem;
-      }
       .hero-proof-row {
-        margin-top: 0;
+        margin-top: 0.52rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.54rem;
@@ -543,37 +543,8 @@
         transform: translateY(-2px);
       }
 
-      .hero-copy .eyebrow,
-      .hero-copy h1,
-      .hero-copy .role,
-      .hero-copy .lead,
-      .hero-copy .hero-open-body,
-      .hero-copy .hero-cta-row {
-        opacity: 0;
-        transform: translateY(14px);
-        animation: rise 0.72s ease forwards;
-      }
-      .hero-copy .eyebrow {
-        animation-delay: 0.08s;
-      }
-      .hero-copy h1 {
-        animation-delay: 0.12s;
-      }
-      .hero-copy .role {
-        animation-delay: 0.16s;
-      }
-      .hero-copy .lead {
-        animation-delay: 0.21s;
-      }
-      .hero-copy .hero-open-body {
-        animation-delay: 0.24s;
-      }
-      .hero-copy .hero-cta-row {
-        animation-delay: 0.41s;
-      }
-
       .eyebrow {
-        margin: 0;
+        margin: 0 0 0.2rem;
         color: #cfd5df;
         text-transform: uppercase;
         letter-spacing: 0.14em;
@@ -681,7 +652,7 @@
       }
 
       .hero-cta-row {
-        margin-top: 0.54rem;
+        margin-top: 0.32rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.78rem;
@@ -2309,13 +2280,14 @@
           order: 2;
         }
         .hero-copy-shell {
-          padding: 1rem 1rem 0.95rem;
+          gap: 0.82rem;
         }
-        .hero-open-body {
-          gap: 0.95rem;
-        }
-        .hero-support-layout {
+        .hero-support-grid {
           grid-template-columns: 1fr;
+        }
+        .hero-built-card,
+        .hero-availability-card {
+          grid-column: span 1;
         }
         .hero-visual {
           order: 1;
@@ -2419,16 +2391,13 @@
           flex-direction: column;
           align-items: stretch;
         }
-        .hero-copy-shell::before {
-          left: 0.76rem;
+        .hero-float-card {
+          padding-left: 0.76rem;
+          padding-right: 0.76rem;
         }
-        .hero-identity-panel,
-        .hero-open-body,
-        .hero-cta-panel {
-          margin-left: 0.55rem;
-        }
-        .hero-focus-card {
-          padding: 0.68rem 0.66rem 0.72rem;
+        .hero-heading-card {
+          padding-top: 0.92rem;
+          padding-bottom: 0.92rem;
         }
         .btn-resume {
           min-height: 54px;
@@ -2596,9 +2565,12 @@
         <div class="container hero-grid">
           <article class="hero-copy">
             <div class="hero-copy-shell">
-              <div class="hero-identity-panel">
+              <div class="hero-float-card hero-identity-strip">
                 <span class="identity-signature">N.Y.</span>
-                <p class="eyebrow">MECHANICAL ENGINEERING · APPLIED ML · SYSTEMS DESIGN</p>
+                <p class="hero-identity-meta">Mechanical Engineering · Applied ML · Systems Design</p>
+              </div>
+
+              <div class="hero-float-card hero-heading-card">
                 <h1>Nursultan Yerken</h1>
                 <p class="role">
                   Mechanical Engineering student building across energy systems, field execution, and
@@ -2610,36 +2582,34 @@
                 </p>
               </div>
 
-              <div class="hero-open-body">
-                <div class="hero-support-layout">
-                  <div class="hero-built-strip">
-                    <p class="hero-panel-title">Built across</p>
-                    <div class="hero-meta-strip">
-                      <span>HBKU · B.S. Mechanical Engineering</span>
-                      <span>QEERI · Battery Analytics</span>
-                      <span>Shell Eco-marathon · Chassis Design</span>
-                    </div>
-                  </div>
-                  <div class="hero-focus-card">
-                    <p class="hero-panel-title">Current availability</p>
-                    <p class="hero-card-text">
-                      Open to Mechanical, Energy, and Applied ML roles · Doha, Qatar
-                    </p>
+              <div class="hero-support-grid">
+                <div class="hero-float-card hero-built-card">
+                  <p class="hero-panel-title">Built across</p>
+                  <div class="hero-meta-strip">
+                    <span>HBKU · B.S. Mechanical Engineering</span>
+                    <span>QEERI · Battery Analytics</span>
+                    <span>Shell Eco-marathon · Chassis Design</span>
                   </div>
                 </div>
-
-                <div class="hero-proof-ribbon">
-                  <p class="hero-panel-title">Selected credibility</p>
-                  <div class="hero-proof-row">
-                    <span><strong>Dean&rsquo;s Honours List</strong></span>
-                    <span><strong>WOQOD Grant Awardee</strong></span>
-                    <span><strong>2 Publications</strong></span>
-                    <span><strong>3,000+ Battery Cycles</strong></span>
-                  </div>
+                <div class="hero-float-card hero-availability-card">
+                  <p class="hero-panel-title">Current availability</p>
+                  <p class="hero-card-text">
+                    Open to Mechanical, Energy, and Applied ML roles · Doha, Qatar
+                  </p>
                 </div>
               </div>
 
-              <div class="hero-cta-panel">
+              <div class="hero-float-card hero-credibility-card">
+                <p class="hero-panel-title">Selected credibility</p>
+                <div class="hero-proof-row">
+                  <span><strong>Dean&rsquo;s Honours List</strong></span>
+                  <span><strong>WOQOD Grant Awardee</strong></span>
+                  <span><strong>2 Publications</strong></span>
+                  <span><strong>3,000+ Battery Cycles</strong></span>
+                </div>
+              </div>
+
+              <div class="hero-float-card hero-cta-panel">
                 <p class="hero-panel-title">Explore</p>
                 <div class="hero-cta-row">
                   <a class="btn btn-resume" href="/assets/pdf/Resume%20of%20Nursultan%20Yerken%20-%202026.pdf">Resume</a>
