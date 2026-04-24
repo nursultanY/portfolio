@@ -66,6 +66,9 @@
         --accent-publications: #5d7fd6;
         --accent-publications-2: #7390de;
         --accent-publications-rgb: 93, 127, 214;
+        --accent-recruiter: #8c74cf;
+        --accent-recruiter-2: #6f8dbf;
+        --accent-recruiter-rgb: 140, 116, 207;
         --accent-contact: #c6856d;
         --accent-contact-2: #b9745a;
         --accent-contact-rgb: 198, 133, 109;
@@ -797,7 +800,7 @@
         pointer-events: none;
         background:
           radial-gradient(130% 100% at 16% 6%, rgba(var(--accent-publications-rgb), 0.16), transparent 68%),
-          radial-gradient(110% 90% at 84% 12%, rgba(var(--accent-contact-rgb), 0.08), transparent 72%),
+          radial-gradient(110% 90% at 84% 12%, rgba(var(--accent-recruiter-rgb), 0.12), transparent 72%),
           linear-gradient(180deg, rgba(16, 20, 28, 0), rgba(16, 21, 30, 0.82) 58%, rgba(16, 21, 30, 0.9));
         z-index: 0;
       }
@@ -1965,6 +1968,145 @@
         padding: 0.2rem 0.48rem;
       }
 
+      /* Added: premium recruiter snapshot bridge section */
+      #recruiter-snapshot {
+        position: relative;
+        padding-top: clamp(2.3rem, 5.5vw, 4.2rem);
+        padding-bottom: clamp(2.3rem, 5.5vw, 4.2rem);
+      }
+      #recruiter-snapshot::before,
+      #recruiter-snapshot::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+      #recruiter-snapshot::before {
+        top: -2px;
+        height: clamp(130px, 16vw, 220px);
+        background:
+          radial-gradient(128% 105% at 12% 8%, rgba(var(--accent-publications-rgb), 0.16), transparent 67%),
+          radial-gradient(120% 95% at 84% 12%, rgba(var(--accent-recruiter-rgb), 0.16), transparent 70%),
+          linear-gradient(180deg, rgba(16, 21, 30, 0.84), rgba(16, 21, 30, 0));
+      }
+      #recruiter-snapshot::after {
+        bottom: -2px;
+        height: clamp(140px, 16vw, 230px);
+        background:
+          radial-gradient(130% 100% at 15% 94%, rgba(var(--accent-recruiter-rgb), 0.2), transparent 68%),
+          radial-gradient(120% 95% at 86% 90%, rgba(var(--accent-contact-rgb), 0.13), transparent 70%),
+          linear-gradient(180deg, rgba(16, 21, 30, 0), rgba(16, 21, 30, 0.9));
+      }
+      .snapshot-shell {
+        position: relative;
+        z-index: 1;
+        width: min(94vw, 1400px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background:
+          radial-gradient(circle at 11% 10%, rgba(var(--accent-recruiter-rgb), 0.2), transparent 43%),
+          radial-gradient(circle at 88% 88%, rgba(var(--accent-contact-rgb), 0.14), transparent 42%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+          rgba(20, 25, 34, 0.8);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        padding: clamp(1.3rem, 2.5vw, 2.15rem);
+      }
+      .snapshot-header {
+        max-width: 880px;
+        margin-bottom: 1rem;
+      }
+      .snapshot-eyebrow {
+        margin: 0;
+        color: #c9bcf2;
+        font-size: 0.73rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .snapshot-header h2 {
+        margin: 0.42rem 0 0;
+        font-size: clamp(1.9rem, 4.2vw, 2.9rem);
+        letter-spacing: -0.02em;
+      }
+      .snapshot-header p {
+        margin: 0.58rem 0 0;
+        color: #c1c9d4;
+        line-height: 1.7;
+      }
+      .snapshot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.78rem;
+      }
+      .snapshot-card {
+        position: relative;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background:
+          linear-gradient(165deg, rgba(var(--accent-recruiter-rgb), 0.16), rgba(255, 255, 255, 0.01) 48%),
+          rgba(25, 31, 40, 0.85);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
+        padding: 0.9rem 0.95rem;
+        min-height: 138px;
+        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+      }
+      .snapshot-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: 1px solid rgba(var(--accent-recruiter-rgb), 0.14);
+        pointer-events: none;
+      }
+      .snapshot-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(var(--accent-recruiter-rgb), 0.48);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(var(--accent-recruiter-rgb), 0.2);
+      }
+      .snapshot-card-label {
+        margin: 0 0 0.46rem;
+        color: #b8c2d0;
+        font-size: 0.69rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .snapshot-card-question {
+        margin: 0;
+        color: #e7ebf2;
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.42;
+      }
+      .snapshot-card-answer {
+        margin: 0.48rem 0 0;
+        color: #f3e5d6;
+        font-size: 0.98rem;
+        line-height: 1.58;
+        font-weight: 600;
+      }
+      #recruiter-snapshot.reveal .snapshot-card {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      #recruiter-snapshot.show .snapshot-card {
+        animation: snapshotCardIn 0.52s cubic-bezier(0.2, 0.72, 0.2, 1) forwards;
+      }
+      #recruiter-snapshot.show .snapshot-card:nth-child(2n + 1) {
+        animation-delay: 0.06s;
+      }
+      #recruiter-snapshot.show .snapshot-card:nth-child(2n) {
+        animation-delay: 0.14s;
+      }
+      @keyframes snapshotCardIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       /* Updated: luxury cinematic contact background with video + layered overlays */
       .contact-section {
         position: relative;
@@ -1982,7 +2124,7 @@
         pointer-events: none;
         z-index: 0;
         background:
-          radial-gradient(130% 110% at 12% 4%, rgba(var(--accent-publications-rgb), 0.12), transparent 66%),
+          radial-gradient(130% 110% at 12% 4%, rgba(var(--accent-recruiter-rgb), 0.13), transparent 66%),
           radial-gradient(120% 105% at 84% 8%, rgba(var(--accent-contact-rgb), 0.15), transparent 68%),
           linear-gradient(180deg, rgba(16, 21, 30, 0.98), rgba(16, 21, 30, 0.72) 44%, rgba(16, 21, 30, 0.16) 78%, rgba(16, 21, 30, 0));
       }
@@ -2637,6 +2779,15 @@
         .publication-card {
           padding: 0.9rem;
         }
+        .snapshot-shell {
+          padding: 1rem;
+        }
+        .snapshot-grid {
+          grid-template-columns: 1fr;
+        }
+        .snapshot-card {
+          min-height: 0;
+        }
         .contact-shell {
           padding: 1rem;
         }
@@ -2683,6 +2834,7 @@
           <a href="#blog" data-section="blog">Blog</a>
           <a href="#projects" data-section="projects">Projects</a>
           <a href="#publications" data-section="publications">Publications</a>
+          <a href="#recruiter-snapshot" data-section="recruiter-snapshot">Snapshot</a>
           <a href="#contact" data-section="contact">Contact</a>
         </nav>
       </div>
@@ -2706,6 +2858,9 @@
       </button>
       <button class="rail-point" data-section="publications" type="button" aria-label="Go to Publications">
         <span class="dot"></span><span class="dock-label">Publications</span>
+      </button>
+      <button class="rail-point" data-section="recruiter-snapshot" type="button" aria-label="Go to Recruiter Snapshot">
+        <span class="dot"></span><span class="dock-label">Snapshot</span>
       </button>
       <button class="rail-point" data-section="contact" type="button" aria-label="Go to Contact">
         <span class="dot"></span><span class="dock-label">Contact</span>
@@ -3324,6 +3479,96 @@
         </div>
       </section>
 
+      <section id="recruiter-snapshot" class="panel-section reveal">
+        <div class="container snapshot-shell">
+          <header class="snapshot-header">
+            <p class="snapshot-eyebrow">Recruiter Briefing</p>
+            <h2>Recruiter Snapshot</h2>
+            <p>
+              Key candidate details designed for quick evaluation across academic status, timeline,
+              technical direction, and current positioning.
+            </p>
+          </header>
+
+          <div class="snapshot-grid">
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Academic Status</p>
+              <h3 class="snapshot-card-question">What is Nursultan&rsquo;s current year of study?</h3>
+              <p class="snapshot-card-answer">Second year</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Degree</p>
+              <h3 class="snapshot-card-question">What is Nursultan&rsquo;s degree?</h3>
+              <p class="snapshot-card-answer">B.S. in Mechanical Engineering</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">University</p>
+              <h3 class="snapshot-card-question">What is Nursultan&rsquo;s university?</h3>
+              <p class="snapshot-card-answer">Hamad Bin Khalifa University</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Timeline</p>
+              <h3 class="snapshot-card-question">What is Nursultan&rsquo;s expected graduation date?</h3>
+              <p class="snapshot-card-answer">May 2028</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Location</p>
+              <h3 class="snapshot-card-question">Where is Nursultan currently based?</h3>
+              <p class="snapshot-card-answer">Doha, Qatar</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Technical Focus</p>
+              <h3 class="snapshot-card-question">What technical areas does Nursultan focus on?</h3>
+              <p class="snapshot-card-answer">
+                Mechanical engineering, applied machine learning, battery analytics, energy systems,
+                and field engineering
+              </p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Role Alignment</p>
+              <h3 class="snapshot-card-question">What kind of roles is Nursultan most aligned with?</h3>
+              <p class="snapshot-card-answer">
+                Mechanical engineering, energy systems, battery research, field engineering, and
+                applied ML roles
+              </p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Distinctive Profile</p>
+              <h3 class="snapshot-card-question">What makes Nursultan&rsquo;s profile distinctive?</h3>
+              <p class="snapshot-card-answer">
+                A blend of mechanical engineering, battery analytics, field experience, research
+                exposure, and applied machine learning
+              </p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Current Openness</p>
+              <h3 class="snapshot-card-question">What is Nursultan currently open to?</h3>
+              <p class="snapshot-card-answer">
+                Internships, research opportunities, and technically rigorous engineering roles
+              </p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Long-Term Direction</p>
+              <h3 class="snapshot-card-question">What is Nursultan building toward long-term?</h3>
+              <p class="snapshot-card-answer">
+                A career in high-performance engineering environments with strong focus on energy,
+                industry, and technical problem-solving
+              </p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Publications</p>
+              <h3 class="snapshot-card-question">How much publication experience does Nursultan have?</h3>
+              <p class="snapshot-card-answer">2 co-authored publications</p>
+            </article>
+            <article class="snapshot-card">
+              <p class="snapshot-card-label">Core Tools</p>
+              <h3 class="snapshot-card-question">What core tools support Nursultan&rsquo;s workflow?</h3>
+              <p class="snapshot-card-answer">Python, SOLIDWORKS, machine learning workflows, and engineering analysis</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- Updated: luxury cinematic contact section with video background and graceful fallback -->
       <section id="contact" class="panel-section reveal contact-section">
         <div class="contact-bg" aria-hidden="true">
@@ -3443,7 +3688,7 @@
     </main>
 
     <script>
-      const sectionIds = ["home", "about", "journey", "blog", "projects", "publications", "contact"];
+      const sectionIds = ["home", "about", "journey", "blog", "projects", "publications", "recruiter-snapshot", "contact"];
       const sections = sectionIds.map((id) => document.getElementById(id));
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const scrollRail = document.querySelector(".scroll-rail");
@@ -3460,6 +3705,7 @@
         blog: { primary: [139, 63, 92], secondary: [161, 77, 103] },
         projects: { primary: [110, 86, 207], secondary: [127, 90, 240] },
         publications: { primary: [93, 127, 214], secondary: [115, 144, 222] },
+        "recruiter-snapshot": { primary: [140, 116, 207], secondary: [111, 141, 191] },
         contact: { primary: [198, 133, 109], secondary: [185, 116, 90] },
       };
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
