@@ -358,22 +358,25 @@
       }
       .hero-copy-shell {
         --lux-amber: 214, 156, 94;
-        --lux-sapphire: 99, 131, 203;
-        --lux-teal: 66, 132, 122;
-        --lux-plum: 95, 72, 126;
+        --lux-sapphire: 102, 136, 208;
+        --lux-teal: 70, 136, 126;
+        --lux-plum: 95, 82, 126;
+        --lux-ink: 18, 30, 46;
+        --lux-mist: 184, 205, 232;
         position: relative;
         display: grid;
         gap: clamp(1.28rem, 2.2vw, 1.95rem);
         padding: clamp(1.45rem, 2.9vw, 2.35rem) clamp(1.4rem, 3vw, 2.5rem) clamp(1.25rem, 2.7vw, 2.05rem);
         border-radius: 32px;
         background:
-          linear-gradient(148deg, rgba(11, 16, 29, 0.88), rgba(13, 20, 33, 0.72) 42%, rgba(12, 20, 30, 0.78)),
-          radial-gradient(circle at 14% 12%, rgba(var(--lux-amber), 0.2), transparent 52%),
-          radial-gradient(circle at 78% 24%, rgba(var(--lux-sapphire), 0.16), transparent 54%),
-          radial-gradient(circle at 72% 80%, rgba(var(--lux-teal), 0.12), transparent 58%),
-          radial-gradient(circle at 25% 76%, rgba(var(--lux-plum), 0.14), transparent 56%);
-        border: 1px solid rgba(220, 229, 242, 0.11);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 32px 58px rgba(4, 7, 12, 0.48);
+          linear-gradient(152deg, rgba(18, 30, 46, 0.92), rgba(20, 33, 50, 0.84) 45%, rgba(16, 26, 42, 0.88)),
+          radial-gradient(circle at 12% 14%, rgba(var(--lux-amber), 0.24), transparent 54%),
+          radial-gradient(circle at 82% 20%, rgba(var(--lux-sapphire), 0.2), transparent 56%),
+          radial-gradient(circle at 74% 82%, rgba(var(--lux-teal), 0.16), transparent 58%),
+          radial-gradient(circle at 40% 54%, rgba(var(--lux-mist), 0.08), transparent 70%);
+        border: 1px solid rgba(212, 224, 241, 0.18);
+        box-shadow: inset 0 1px 0 rgba(248, 252, 255, 0.12), inset 0 -1px 0 rgba(143, 167, 197, 0.12),
+          0 30px 56px rgba(4, 8, 16, 0.44), 0 0 0 1px rgba(92, 122, 156, 0.12);
         backdrop-filter: blur(12px);
         overflow: hidden;
         max-width: 780px;
@@ -386,17 +389,17 @@
         top: clamp(1.2rem, 2.6vw, 1.9rem);
         bottom: clamp(1.2rem, 2.5vw, 1.5rem);
         width: 2px;
-        background: linear-gradient(180deg, rgba(var(--lux-amber), 0.95), rgba(var(--lux-sapphire), 0.46), transparent 100%);
-        box-shadow: 0 0 24px rgba(var(--lux-amber), 0.28);
+        background: linear-gradient(180deg, rgba(var(--lux-amber), 0.98), rgba(var(--lux-sapphire), 0.62), rgba(var(--lux-teal), 0.18));
+        box-shadow: 0 0 22px rgba(var(--lux-amber), 0.34);
         animation: accentPulse 5.8s ease-in-out infinite;
       }
       .hero-copy-shell::after {
         content: "";
         position: absolute;
-        inset: -12% 42% 28% -18%;
-        background: radial-gradient(circle, rgba(var(--lux-plum), 0.2), transparent 68%);
-        filter: blur(20px);
-        opacity: 0.55;
+        inset: -20% -10% 42% 30%;
+        background: radial-gradient(circle, rgba(var(--lux-sapphire), 0.3), transparent 68%);
+        filter: blur(26px);
+        opacity: 0.5;
         pointer-events: none;
         animation: driftGlow 10s ease-in-out infinite alternate;
       }
@@ -444,9 +447,9 @@
       .hero-open-body {
         display: grid;
         gap: 1.12rem;
-        padding: 1.14rem 0;
-        border-top: 1px solid rgba(224, 232, 245, 0.13);
-        border-bottom: 1px solid rgba(224, 232, 245, 0.11);
+        padding: 1.14rem 0.15rem 1.1rem 0;
+        border-top: 1px solid rgba(226, 235, 248, 0.2);
+        border-bottom: 1px solid rgba(226, 235, 248, 0.16);
       }
       .hero-support-layout {
         display: grid;
@@ -459,8 +462,9 @@
         gap: 0.62rem;
         padding: 0.9rem 0.98rem;
         border-radius: 18px;
-        border: 1px solid rgba(210, 220, 234, 0.16);
-        background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+        border: 1px solid rgba(208, 223, 241, 0.24);
+        background: linear-gradient(140deg, rgba(178, 198, 224, 0.12), rgba(255, 255, 255, 0.02));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
       }
       .hero-meta-strip {
         margin-top: 0.08rem;
@@ -470,13 +474,14 @@
       }
       .hero-meta-strip span {
         border-radius: 999px;
-        border: 1px solid rgba(var(--lux-amber), 0.38);
-        background: rgba(var(--lux-amber), 0.14);
-        color: #e5ebf3;
+        border: 1px solid rgba(var(--lux-amber), 0.5);
+        background: rgba(var(--lux-amber), 0.18);
+        color: #edf3fb;
         font-size: 0.72rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        padding: 0.28rem 0.62rem;
+        padding: 0.3rem 0.66rem;
+        transition: transform 0.28s ease, border-color 0.28s ease, background-color 0.28s ease;
       }
       .hero-meta-strip span:nth-child(2) {
         border-color: rgba(var(--lux-sapphire), 0.42);
@@ -486,13 +491,16 @@
         border-color: rgba(var(--lux-teal), 0.42);
         background: rgba(var(--lux-teal), 0.16);
       }
+      .hero-meta-strip span:hover {
+        transform: translateY(-2px);
+      }
       .hero-focus-card {
         display: grid;
         gap: 0.4rem;
         align-content: start;
-        border: 1px solid rgba(var(--lux-sapphire), 0.28);
+        border: 1px solid rgba(var(--lux-sapphire), 0.36);
         border-radius: 18px;
-        background: linear-gradient(155deg, rgba(var(--lux-sapphire), 0.12), rgba(var(--lux-plum), 0.06) 50%, rgba(255, 255, 255, 0.02));
+        background: linear-gradient(155deg, rgba(var(--lux-sapphire), 0.18), rgba(var(--lux-teal), 0.11) 50%, rgba(255, 255, 255, 0.03));
         padding: 0.86rem 0.88rem 0.9rem;
         transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
@@ -519,14 +527,20 @@
       }
       .hero-proof-row span {
         border-radius: 10px;
-        border: 1px solid rgba(214, 223, 234, 0.22);
-        background: linear-gradient(130deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
-        color: #cdd4df;
+        border: 1px solid rgba(216, 226, 239, 0.26);
+        background: linear-gradient(130deg, rgba(198, 214, 236, 0.12), rgba(255, 255, 255, 0.03));
+        color: #dce5f1;
         font-size: 0.78rem;
-        padding: 0.34rem 0.56rem;
+        padding: 0.36rem 0.6rem;
+        transition: border-color 0.28s ease, transform 0.28s ease, background-color 0.28s ease;
       }
       .hero-proof-row span strong {
-        color: #f5f2eb;
+        color: #fcf9f2;
+      }
+      .hero-proof-row span:hover {
+        border-color: rgba(var(--lux-amber), 0.46);
+        background: linear-gradient(130deg, rgba(var(--lux-amber), 0.2), rgba(var(--lux-sapphire), 0.1));
+        transform: translateY(-2px);
       }
 
       .hero-copy .eyebrow,
@@ -591,28 +605,106 @@
 
       .hero-cta-panel {
         display: grid;
-        gap: 0.35rem;
+        gap: 0.5rem;
       }
 
       .btn {
+        --btn-glow: rgba(87, 132, 204, 0.3);
+        position: relative;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        border-radius: 13px;
-        min-height: 46px;
-        padding: 0.72rem 1rem;
-        font-weight: 600;
-        letter-spacing: 0.01em;
+        border-radius: 14px;
+        min-height: 48px;
+        padding: 0.76rem 1.02rem;
+        font-weight: 620;
+        letter-spacing: 0.02em;
+        border: 1px solid transparent;
+        overflow: hidden;
+        isolation: isolate;
         transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease,
-          border-color 0.25s ease;
+          border-color 0.25s ease, color 0.25s ease;
+      }
+      .btn::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(120deg, transparent 12%, rgba(255, 255, 255, 0.26) 48%, transparent 78%);
+        transform: translateX(-130%);
+        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+        z-index: -1;
+      }
+      .btn:hover::before {
+        transform: translateX(130%);
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
+      .btn:active {
+        transform: translateY(-1px) scale(0.988);
+      }
+      .btn:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(13, 18, 28, 0.88), 0 0 0 4px rgba(103, 149, 221, 0.5);
+      }
+      .btn-resume {
+        color: #fdf8ee;
+        background: linear-gradient(135deg, #c58f51, #9f6532);
+        border-color: rgba(255, 214, 165, 0.45);
+        box-shadow: 0 12px 26px rgba(112, 72, 30, 0.34), inset 0 1px 0 rgba(255, 240, 216, 0.4);
+        --btn-glow: rgba(198, 143, 75, 0.45);
+      }
+      .btn-primary {
+        color: #eaf5ff;
+        background: linear-gradient(140deg, #356b96, #2a5f86 52%, #215a77);
+        border-color: rgba(148, 206, 244, 0.4);
+        box-shadow: 0 11px 24px rgba(30, 71, 95, 0.38), inset 0 1px 0 rgba(205, 239, 255, 0.28);
+        --btn-glow: rgba(63, 144, 198, 0.42);
+      }
+      .btn-tertiary {
+        color: #dde7f5;
+        background: linear-gradient(140deg, rgba(56, 77, 108, 0.62), rgba(36, 53, 78, 0.7));
+        border-color: rgba(160, 187, 221, 0.34);
+        box-shadow: inset 0 1px 0 rgba(218, 233, 253, 0.16), 0 8px 20px rgba(8, 13, 22, 0.34);
+        --btn-glow: rgba(96, 143, 201, 0.26);
+      }
+      .btn-resume:hover,
+      .btn-primary:hover,
+      .btn-tertiary:hover {
+        box-shadow: 0 14px 28px rgba(10, 16, 27, 0.48), 0 0 20px var(--btn-glow);
+      }
+      .btn-tertiary:hover {
+        border-color: rgba(175, 202, 236, 0.5);
+        color: #f0f6ff;
       }
 
       .hero-cta-row {
-        margin-top: 0.52rem;
+        margin-top: 0.54rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.72rem;
+        gap: 0.78rem;
+      }
+      .hero-cta-row .btn {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: ctaRise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .hero-cta-row .btn:nth-child(1) {
+        animation-delay: 0.46s;
+      }
+      .hero-cta-row .btn:nth-child(2) {
+        animation-delay: 0.52s;
+      }
+      .hero-cta-row .btn:nth-child(3) {
+        animation-delay: 0.58s;
+      }
+      .hero-cta-row .btn:nth-child(4) {
+        animation-delay: 0.64s;
+      }
+      .hero-cta-row .btn:nth-child(5) {
+        animation-delay: 0.7s;
       }
       .hero-visual {
         position: relative;
@@ -2135,6 +2227,16 @@
         100% {
           transform: translate3d(16px, -10px, 0);
           opacity: 0.72;
+        }
+      }
+      @keyframes ctaRise {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
       @keyframes driftObjA {
