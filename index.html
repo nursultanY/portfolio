@@ -3671,11 +3671,15 @@
     </main>
 
     <script>
-      const sectionIds = ["home", "about", "journey", "blog", "projects", "publications", "recruiter-snapshot", "contact"];
-      const sections = sectionIds.map((id) => document.getElementById(id));
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const scrollRail = document.querySelector(".scroll-rail");
       const railPoints = Array.from(document.querySelectorAll(".rail-point"));
+      const sectionIds = navLinks
+        .map((link) => link.dataset.section)
+        .filter((id, index, arr) => id && arr.indexOf(id) === index && document.getElementById(id));
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section) => section instanceof HTMLElement);
       const journeySection = document.getElementById("journey");
       const journeyRows = Array.from(document.querySelectorAll(".journey-row"));
       const projectsSection = document.getElementById("projects");
@@ -3693,6 +3697,7 @@
       };
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
       let particleState = null;
+      let activeSectionId = sectionIds[0] || null;
 
       function clamp(value, min, max) {
         return Math.min(max, Math.max(min, value));
@@ -3738,19 +3743,53 @@
       }
 
       function activateSection(id) {
+        if (!id) return;
+        activeSectionId = id;
         navLinks.forEach((link) => link.classList.toggle("active", link.dataset.section === id));
         railPoints.forEach((point) => point.classList.toggle("active", point.dataset.section === id));
+      }
+
+      function getTopOffset() {
+        const topBar = document.querySelector(".top-bar");
+        if (!topBar) return 0;
+        return Math.max(0, Math.round(topBar.getBoundingClientRect().height));
+      }
+
+      function getActiveSectionFromViewport() {
+        if (sections.length === 0) return null;
+
+        const viewportTop = getTopOffset() + 12;
+        const viewportBottom = window.innerHeight;
+        const viewportCenter = viewportTop + (viewportBottom - viewportTop) * 0.48;
+        let bestId = activeSectionId || sectionIds[0];
+        let bestVisibleArea = -1;
+        let bestCenterDistance = Number.POSITIVE_INFINITY;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const visibleTop = Math.max(rect.top, viewportTop);
+          const visibleBottom = Math.min(rect.bottom, viewportBottom);
+          const visibleArea = Math.max(0, visibleBottom - visibleTop);
+          if (visibleArea <= 0) return;
+
+          const sectionCenter = rect.top + rect.height / 2;
+          const centerDistance = Math.abs(sectionCenter - viewportCenter);
+          const hasBetterVisibility = visibleArea > bestVisibleArea + 1;
+          const sameVisibility = Math.abs(visibleArea - bestVisibleArea) <= 1;
+          if (hasBetterVisibility || (sameVisibility && centerDistance < bestCenterDistance)) {
+            bestVisibleArea = visibleArea;
+            bestCenterDistance = centerDistance;
+            bestId = section.id;
+          }
+        });
+
+        return bestId;
       }
 
       function syncScrollUI() {
         const scrollY = window.scrollY;
         setAtmosphereFromScroll(scrollY);
-
-        let current = sectionIds[0];
-        for (const section of sections) {
-          if (scrollY + window.innerHeight * 0.38 >= section.offsetTop) current = section.id;
-        }
-        activateSection(current);
+        activateSection(getActiveSectionFromViewport());
         syncJourneyTimeline();
         syncProjectsShowcase();
       }
@@ -4119,6 +4158,7 @@
         initRailDock();
         initProjectsShowcase();
         setInterval(updateAboutLocalTime, 1000);
+        activateSection(activeSectionId);
         syncScrollUI();
       });
       window.addEventListener("resize", () => {
