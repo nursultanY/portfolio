@@ -359,26 +359,21 @@
       .hero-copy-shell {
         position: relative;
         display: grid;
-        gap: 0.92rem;
-        padding: 1.05rem;
-        border-radius: 26px;
-        background: linear-gradient(
-          170deg,
-          rgba(14, 20, 31, 0.9),
-          rgba(12, 18, 29, 0.68) 48%,
-          rgba(10, 16, 25, 0.76)
-        );
-        border: 1px solid rgba(218, 227, 240, 0.12);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 26px 44px rgba(4, 7, 12, 0.46);
-        backdrop-filter: blur(8px);
+        gap: clamp(1.1rem, 2vw, 1.8rem);
+        padding: clamp(1.35rem, 2.6vw, 2.1rem) clamp(1.25rem, 2.5vw, 2rem) clamp(1.2rem, 2.4vw, 1.8rem);
+        border-radius: 30px;
+        background: linear-gradient(165deg, rgba(11, 18, 30, 0.74), rgba(11, 17, 27, 0.56) 52%, rgba(9, 15, 25, 0.68));
+        border: 1px solid rgba(218, 227, 240, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 52px rgba(4, 7, 12, 0.42);
+        backdrop-filter: blur(10px);
         overflow: hidden;
       }
       .hero-copy-shell::before {
         content: "";
         position: absolute;
-        left: 1.02rem;
-        top: 1.08rem;
-        bottom: 1.08rem;
+        left: clamp(0.95rem, 2vw, 1.3rem);
+        top: clamp(1.2rem, 2.4vw, 1.9rem);
+        bottom: clamp(1.2rem, 2.4vw, 1.4rem);
         width: 2px;
         background: linear-gradient(
           180deg,
@@ -390,7 +385,8 @@
         animation: accentPulse 5.8s ease-in-out infinite;
       }
       .hero-identity-panel,
-      .hero-focus-grid,
+      .hero-open-body,
+      .hero-support-grid,
       .hero-proof-panel,
       .hero-cta-panel {
         opacity: 0;
@@ -400,26 +396,30 @@
       .hero-identity-panel {
         animation-delay: 0.04s;
       }
-      .hero-focus-grid {
+      .hero-open-body {
         animation-delay: 0.16s;
       }
+      .hero-support-grid {
+        animation-delay: 0.2s;
+      }
       .hero-proof-panel {
-        animation-delay: 0.28s;
+        animation-delay: 0.3s;
       }
       .hero-cta-panel {
-        animation-delay: 0.38s;
+        animation-delay: 0.42s;
       }
 
       .hero-identity-panel,
-      .hero-focus-grid,
+      .hero-open-body,
+      .hero-support-grid,
       .hero-proof-panel,
       .hero-cta-panel {
         position: relative;
-        margin-left: 0.88rem;
+        margin-left: clamp(0.7rem, 1.4vw, 1.1rem);
       }
       .hero-identity-panel {
         display: grid;
-        gap: 0.22rem;
+        gap: 0.42rem;
       }
       .identity-signature {
         justify-self: start;
@@ -441,31 +441,37 @@
         font-size: 0.65rem;
         font-weight: 650;
       }
-      .hero-focus-grid {
+      .hero-open-body {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(180px, 0.8fr);
-        gap: 0.72rem;
+        gap: 1.15rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(221, 231, 243, 0.14);
+        border-bottom: 1px solid rgba(221, 231, 243, 0.12);
       }
-      .hero-focus-panel,
-      .hero-focus-card,
-      .hero-proof-panel,
-      .hero-cta-panel {
-        border: 1px solid rgba(220, 228, 240, 0.13);
-        border-radius: 16px;
-        background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014));
-        padding: 0.68rem 0.75rem 0.76rem;
+      .hero-support-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(210px, 0.74fr);
+        gap: 1rem;
       }
       .hero-focus-card {
-        transition: transform 0.28s ease, border-color 0.28s ease, background-color 0.28s ease;
+        border: 1px solid rgba(220, 228, 240, 0.13);
+        border-radius: 18px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014));
+        padding: 0.8rem 0.84rem 0.88rem;
+      }
+      .hero-focus-card {
+        align-self: start;
+        transition: transform 0.28s ease, border-color 0.28s ease, background-color 0.28s ease, box-shadow 0.28s ease;
       }
       .hero-focus-card:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         border-color: rgba(var(--active-accent-rgb), 0.42);
         background: linear-gradient(
           160deg,
           rgba(var(--active-accent-rgb), 0.16),
           rgba(var(--bridge-accent-rgb), 0.08)
         );
+        box-shadow: 0 14px 22px rgba(5, 9, 16, 0.38);
       }
       .hero-card-text {
         margin: 0.46rem 0 0;
@@ -478,6 +484,7 @@
       .hero-copy h1,
       .hero-copy .role,
       .hero-copy .lead,
+      .hero-copy .hero-open-body,
       .hero-copy .hero-meta-strip,
       .hero-copy .hero-proof-row,
       .hero-copy .hero-cta-row {
@@ -497,14 +504,17 @@
       .hero-copy .lead {
         animation-delay: 0.2s;
       }
-      .hero-copy .hero-meta-strip {
+      .hero-copy .hero-open-body {
         animation-delay: 0.22s;
       }
+      .hero-copy .hero-meta-strip {
+        animation-delay: 0.25s;
+      }
       .hero-copy .hero-proof-row {
-        animation-delay: 0.3s;
+        animation-delay: 0.34s;
       }
       .hero-copy .hero-cta-row {
-        animation-delay: 0.4s;
+        animation-delay: 0.44s;
       }
 
       .eyebrow {
@@ -534,7 +544,7 @@
         max-width: 62ch;
         color: var(--muted);
         line-height: 1.62;
-        margin: 0.85rem 0 0.2rem;
+        margin: 0.8rem 0 0.1rem;
         font-size: 0.95rem;
       }
 
@@ -563,7 +573,7 @@
         background: rgba(74, 140, 122, 0.14);
       }
       .hero-proof-row {
-        margin-top: 0.5rem;
+        margin-top: 0.42rem;
         display: flex;
         flex-wrap: wrap;
         gap: 0.52rem;
@@ -578,6 +588,14 @@
       }
       .hero-proof-row span strong {
         color: #f3f0ea;
+      }
+      .hero-proof-panel {
+        display: grid;
+        gap: 0.15rem;
+      }
+      .hero-cta-panel {
+        display: grid;
+        gap: 0.25rem;
       }
 
       .btn {
@@ -595,10 +613,10 @@
       }
 
       .hero-cta-row {
-        margin-top: 0.58rem;
+        margin-top: 0.45rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.62rem;
+        gap: 0.72rem;
       }
 
       .btn-primary {
@@ -2098,9 +2116,12 @@
           order: 2;
         }
         .hero-copy-shell {
-          padding: 0.96rem;
+          padding: 1rem 1rem 0.95rem;
         }
-        .hero-focus-grid {
+        .hero-open-body {
+          gap: 0.95rem;
+        }
+        .hero-support-grid {
           grid-template-columns: 1fr;
         }
         .hero-visual {
@@ -2209,16 +2230,14 @@
           left: 0.76rem;
         }
         .hero-identity-panel,
-        .hero-focus-grid,
+        .hero-open-body,
+        .hero-support-grid,
         .hero-proof-panel,
         .hero-cta-panel {
           margin-left: 0.55rem;
         }
-        .hero-focus-panel,
-        .hero-focus-card,
-        .hero-proof-panel,
-        .hero-cta-panel {
-          padding: 0.6rem 0.62rem 0.68rem;
+        .hero-focus-card {
+          padding: 0.68rem 0.66rem 0.72rem;
         }
         .btn-resume {
           min-height: 54px;
@@ -2400,28 +2419,32 @@
                 </p>
               </div>
 
-              <div class="hero-focus-grid">
-                <div class="hero-focus-panel">
-                  <p class="hero-panel-title">Built across</p>
-                  <div class="hero-meta-strip">
-                    <span>HBKU · B.S. Mechanical Engineering</span>
-                    <span>QEERI · Battery Analytics</span>
-                    <span>Shell Eco-marathon · Chassis Design</span>
+              <div class="hero-open-body">
+                <div class="hero-support-grid">
+                  <div>
+                    <p class="hero-panel-title">Built across</p>
+                    <div class="hero-meta-strip">
+                      <span>HBKU · B.S. Mechanical Engineering</span>
+                      <span>QEERI · Battery Analytics</span>
+                      <span>Shell Eco-marathon · Chassis Design</span>
+                    </div>
+                  </div>
+                  <div class="hero-focus-card">
+                    <p class="hero-panel-title">Current availability</p>
+                    <p class="hero-card-text">
+                      Open to Mechanical, Energy, and Applied ML roles · Doha, Qatar
+                    </p>
                   </div>
                 </div>
-                <div class="hero-focus-card">
-                  <p class="hero-panel-title">Current availability</p>
-                  <p class="hero-card-text">Open to Mechanical, Energy, and Applied ML roles · Doha, Qatar</p>
-                </div>
-              </div>
 
-              <div class="hero-proof-panel">
-                <p class="hero-panel-title">Selected credibility</p>
-                <div class="hero-proof-row">
-                  <span><strong>Dean&rsquo;s Honours List</strong></span>
-                  <span><strong>WOQOD Grant Awardee</strong></span>
-                  <span><strong>2 Publications</strong></span>
-                  <span><strong>3,000+ Battery Cycles</strong></span>
+                <div class="hero-proof-panel">
+                  <p class="hero-panel-title">Selected credibility</p>
+                  <div class="hero-proof-row">
+                    <span><strong>Dean&rsquo;s Honours List</strong></span>
+                    <span><strong>WOQOD Grant Awardee</strong></span>
+                    <span><strong>2 Publications</strong></span>
+                    <span><strong>3,000+ Battery Cycles</strong></span>
+                  </div>
                 </div>
               </div>
 
