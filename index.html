@@ -63,6 +63,9 @@
         --accent-projects: #6e56cf;
         --accent-projects-2: #7f5af0;
         --accent-projects-rgb: 110, 86, 207;
+        --accent-publications: #5d7fd6;
+        --accent-publications-2: #7390de;
+        --accent-publications-rgb: 93, 127, 214;
         --accent-contact: #c6856d;
         --accent-contact-2: #b9745a;
         --accent-contact-rgb: 198, 133, 109;
@@ -302,6 +305,11 @@
         --section-accent: var(--accent-projects);
         --section-accent-2: var(--accent-projects-2);
         --section-accent-rgb: var(--accent-projects-rgb);
+      }
+      #publications {
+        --section-accent: var(--accent-publications);
+        --section-accent-2: var(--accent-publications-2);
+        --section-accent-rgb: var(--accent-publications-rgb);
       }
       #contact {
         --section-accent: var(--accent-contact);
@@ -1894,6 +1902,121 @@
         color: #eadfff;
       }
 
+      .publications-shell {
+        width: min(94vw, 1400px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background:
+          radial-gradient(circle at 12% 12%, rgba(var(--accent-publications-rgb), 0.2), transparent 46%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+          rgba(21, 26, 34, 0.78);
+        backdrop-filter: blur(5px);
+        padding: clamp(1.35rem, 2.5vw, 2.3rem);
+      }
+      .publications-head {
+        max-width: 860px;
+      }
+      .publications-eyebrow {
+        margin: 0;
+        color: #b9c8f2;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .publications-head h2 {
+        margin: 0.45rem 0 0;
+        font-size: clamp(2rem, 4.5vw, 3rem);
+        letter-spacing: -0.02em;
+      }
+      .publications-head p {
+        margin: 0.58rem 0 0;
+        color: #bec6d2;
+        line-height: 1.72;
+      }
+      .publications-grid {
+        margin-top: 1.15rem;
+        display: grid;
+        gap: 0.95rem;
+      }
+      .publication-card {
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background:
+          linear-gradient(155deg, rgba(var(--accent-publications-rgb), 0.13), rgba(255, 255, 255, 0.01) 45%),
+          rgba(24, 30, 39, 0.82);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+        padding: clamp(0.95rem, 1.8vw, 1.3rem);
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+      .publication-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(var(--accent-publications-rgb), 0.5);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(var(--accent-publications-rgb), 0.22);
+      }
+      .publication-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .publication-type {
+        margin: 0;
+        color: #bac9f4;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .publication-date {
+        border-radius: 999px;
+        border: 1px solid rgba(var(--accent-publications-rgb), 0.44);
+        background: rgba(var(--accent-publications-rgb), 0.18);
+        color: #d8e1fb;
+        font-size: 0.71rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.56rem;
+      }
+      .publication-title {
+        margin: 0.58rem 0 0;
+        font-size: clamp(1.08rem, 2.2vw, 1.46rem);
+        line-height: 1.44;
+      }
+      .publication-venue {
+        margin: 0.48rem 0 0;
+        color: #c7d1eb;
+        font-size: 0.86rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .publication-origin {
+        margin: 0.38rem 0 0;
+        color: #aeb9ca;
+        font-size: 0.86rem;
+      }
+      .publication-desc {
+        margin: 0.62rem 0 0;
+        color: var(--text-soft);
+        line-height: 1.7;
+      }
+      .publication-tags {
+        margin-top: 0.72rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.38rem;
+      }
+      .publication-tags span {
+        border-radius: 999px;
+        border: 1px solid rgba(var(--accent-publications-rgb), 0.38);
+        background: rgba(var(--accent-publications-rgb), 0.11);
+        color: #cfd8f3;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.48rem;
+      }
+
       /* Updated: luxury cinematic contact background with video + layered overlays */
       .contact-section {
         position: relative;
@@ -2432,6 +2555,10 @@
         .projects-nav {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+        .publication-top {
+          align-items: flex-start;
+          flex-direction: column;
+        }
       }
 
       @media (max-width: 620px) {
@@ -2545,6 +2672,12 @@
           min-height: 230px;
           max-height: 290px;
         }
+        .publications-shell {
+          padding: 1rem;
+        }
+        .publication-card {
+          padding: 0.9rem;
+        }
         .contact-shell {
           padding: 1rem;
         }
@@ -2590,6 +2723,7 @@
           <a href="#journey" data-section="journey">Journey</a>
           <a href="#blog" data-section="blog">Blog</a>
           <a href="#projects" data-section="projects">Projects</a>
+          <a href="#publications" data-section="publications">Publications</a>
           <a href="#contact" data-section="contact">Contact</a>
         </nav>
       </div>
@@ -2610,6 +2744,9 @@
       </button>
       <button class="rail-point" data-section="projects" type="button" aria-label="Go to Projects">
         <span class="dot"></span><span class="dock-label">Projects</span>
+      </button>
+      <button class="rail-point" data-section="publications" type="button" aria-label="Go to Publications">
+        <span class="dot"></span><span class="dock-label">Publications</span>
       </button>
       <button class="rail-point" data-section="contact" type="button" aria-label="Go to Contact">
         <span class="dot"></span><span class="dock-label">Contact</span>
@@ -3175,6 +3312,65 @@
         </div>
       </section>
 
+      <section id="publications" class="panel-section reveal">
+        <div class="container publications-shell">
+          <header class="publications-head">
+            <p class="publications-eyebrow">Research Portfolio</p>
+            <h2>Publications</h2>
+            <p>
+              Selected research publications and conference contributions in battery safety,
+              degradation, and machine learning for energy systems.
+            </p>
+          </header>
+
+          <div class="publications-grid">
+            <article class="publication-card">
+              <div class="publication-top">
+                <p class="publication-type">Journal Expansion</p>
+                <span class="publication-date">Oct 30, 2025</span>
+              </div>
+              <h3 class="publication-title">
+                Comprehensive Machine Learning for Lithium-Ion Battery State-of-Health Estimation Using Group-Wise Cross-Validation
+              </h3>
+              <p class="publication-venue">
+                Artificial Intelligence Research and Applications (AIra) Journal | accepted for later journal publication
+              </p>
+              <p class="publication-origin">Original publication — ICRERA · Oct 30, 2025</p>
+              <p class="publication-desc">
+                Research was conducted on State-of-Health (SoH) estimation for Li-ion batteries using advanced machine learning frameworks.
+                Following a competitive peer-review process at the ICRERA 2025 conference in Vienna, this work was officially selected for
+                expansion and publication in the “Artificial Intelligence Research and Applications (AIra)” Journal. This distinction was
+                awarded to a limited number of high-impact papers from the conference proceedings.
+              </p>
+              <div class="publication-tags">
+                <span>Battery SoH</span><span>Machine Learning</span><span>Li-Ion Batteries</span><span>Cross-Validation</span>
+                <span>AIra Journal</span><span>ICRERA 2025</span>
+              </div>
+            </article>
+
+            <article class="publication-card">
+              <div class="publication-top">
+                <p class="publication-type">Conference Contribution</p>
+                <span class="publication-date">Oct 29, 2025</span>
+              </div>
+              <h3 class="publication-title">Thermal Degradation and Safety Assessment of Li-Ion Battery Cells in Harsh Climates</h3>
+              <p class="publication-venue">
+                14th International Conference on Renewable Energy Research and Applications (ICRERA) · Oct 29, 2025
+              </p>
+              <p class="publication-desc">
+                A technical safety assessment was performed regarding the thermal degradation of Li-ion battery cells within extreme climate
+                environments. This work was presented at the 14th ICRERA international conference in Vienna, Austria, and is currently in the
+                final stages of the IEEE publication cycle.
+              </p>
+              <div class="publication-tags">
+                <span>Battery Safety</span><span>Thermal Degradation</span><span>Harsh Climates</span><span>Li-Ion Batteries</span>
+                <span>ICRERA 2025</span><span>IEEE</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- Updated: luxury cinematic contact section with video background and graceful fallback -->
       <section id="contact" class="panel-section reveal contact-section">
         <div class="contact-bg" aria-hidden="true">
@@ -3285,7 +3481,7 @@
 
             <footer class="contact-mini">
               <span>Nursultan Yerken · Doha, Qatar</span>
-              <span><a href="#projects">Projects</a> · <a href="#about">About</a></span>
+              <span><a href="#projects">Projects</a> · <a href="#publications">Publications</a> · <a href="#about">About</a></span>
               <span>Open to internships, research, and high-impact engineering collaboration.</span>
             </footer>
           </div>
@@ -3294,7 +3490,7 @@
     </main>
 
     <script>
-      const sectionIds = ["home", "about", "journey", "blog", "projects", "contact"];
+      const sectionIds = ["home", "about", "journey", "blog", "projects", "publications", "contact"];
       const sections = sectionIds.map((id) => document.getElementById(id));
       const navLinks = Array.from(document.querySelectorAll(".main-nav a"));
       const scrollRail = document.querySelector(".scroll-rail");
@@ -3310,6 +3506,7 @@
         journey: { primary: [75, 108, 183], secondary: [63, 95, 168] },
         blog: { primary: [139, 63, 92], secondary: [161, 77, 103] },
         projects: { primary: [110, 86, 207], secondary: [127, 90, 240] },
+        publications: { primary: [93, 127, 214], secondary: [115, 144, 222] },
         contact: { primary: [198, 133, 109], secondary: [185, 116, 90] },
       };
       let activeProjectId = projectNavItems[0]?.dataset.project || null;
