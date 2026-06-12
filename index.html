@@ -1260,13 +1260,12 @@
           0 14px 34px rgba(0, 0, 0, 0.35),
           inset 0 1px 0 rgba(255, 255, 255, 0.02);
         padding: clamp(1.55rem, 1.9vw, 2rem);
-        opacity: 0.48;
-        transform: translateY(18px);
-        transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0.96;
+        transform: none;
+        transition: opacity 0.45s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
       .journey-row.is-visible {
-        opacity: 0.95;
-        transform: translateY(0);
+        opacity: 1;
       }
       .journey-row.is-active {
         opacity: 1;
@@ -1274,6 +1273,10 @@
         box-shadow:
           0 18px 36px rgba(0, 0, 0, 0.4),
           0 0 0 1px rgba(var(--accent-journey-rgb), 0.24);
+      }
+      #journey.reveal {
+        opacity: 1;
+        transform: none;
       }
       .journey-content {
         display: flex;
