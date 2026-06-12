@@ -10,7 +10,7 @@
       name="description"
       content="Premium one-page portfolio landing page with dark theme, hero, and scroll-linked section indicators."
     />
-    <link rel="shortcut icon" href="/assets/img/favicon.jpg" />
+    <link rel="shortcut icon" href="assets/img/favicon.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -337,8 +337,10 @@
           radial-gradient(circle at 20% 24%, rgba(209, 137, 70, 0.22), transparent 56%),
           radial-gradient(circle at 72% 20%, rgba(74, 112, 182, 0.2), transparent 58%),
           radial-gradient(circle at 80% 62%, rgba(58, 124, 118, 0.14), transparent 60%),
-          radial-gradient(circle at 44% 70%, rgba(89, 65, 116, 0.14), transparent 62%);
-        filter: blur(20px);
+          radial-gradient(circle at 44% 70%, rgba(89, 65, 116, 0.14), transparent 62%),
+          radial-gradient(circle at 18% 22%, rgba(var(--active-accent-rgb), 0.16), transparent 56%),
+          radial-gradient(circle at 72% 30%, rgba(var(--bridge-accent-rgb), 0.12), transparent 58%);
+        filter: blur(18px);
         pointer-events: none;
       }
       .hero::after {
@@ -415,6 +417,13 @@
         backdrop-filter: blur(10px);
         transform-style: preserve-3d;
         transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      }
+      .hero-copy .eyebrow,
+      .hero-copy h1,
+      .hero-copy .role,
+      .hero-copy .lead,
+      .hero-copy .hero-proof-row,
+      .hero-copy .hero-cta-row {
         opacity: 0;
         transform: translateY(18px);
         animation: rise 0.78s ease forwards;
@@ -463,6 +472,12 @@
       .hero-cta-panel {
         padding: 0.84rem 0.88rem 0.92rem;
         animation-delay: 0.44s;
+      }
+      .hero-copy .hero-proof-row {
+        animation-delay: 0.3s;
+      }
+      .hero-copy .hero-cta-row {
+        animation-delay: 0.39s;
       }
       .identity-signature {
         justify-self: start;
@@ -589,6 +604,22 @@
         display: grid;
         gap: 0.5rem;
       }
+      .hero-proof-row span:nth-child(1) {
+        border-color: rgba(var(--accent-home-rgb), 0.35);
+        background: rgba(var(--accent-home-rgb), 0.12);
+      }
+      .hero-proof-row span:nth-child(2) {
+        border-color: rgba(var(--accent-about-rgb), 0.32);
+        background: rgba(var(--accent-about-rgb), 0.11);
+      }
+      .hero-proof-row span:nth-child(3) {
+        border-color: rgba(var(--accent-journey-rgb), 0.32);
+        background: rgba(var(--accent-journey-rgb), 0.1);
+      }
+      .hero-proof-row span:nth-child(4) {
+        border-color: rgba(var(--accent-projects-rgb), 0.32);
+        background: rgba(var(--accent-projects-rgb), 0.1);
+      }
 
       .btn {
         --btn-glow: rgba(87, 132, 204, 0.3);
@@ -706,7 +737,19 @@
       }
 
       .image-glow::before {
-        content: none;
+        content: "";
+        position: absolute;
+        inset: 4% 2%;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(var(--active-accent-rgb), 0.34),
+          rgba(var(--bridge-accent-rgb), 0.22),
+          rgba(58, 126, 128, 0.14),
+          transparent 74%
+        );
+        filter: blur(14px);
+        animation: breatheGlow 11s ease-in-out infinite alternate;
       }
       .image-glow::after {
         content: none;
@@ -1340,6 +1383,113 @@
       .journey-media-card--research-support img {
         object-fit: contain;
         transform: scale(1.02);
+      }
+
+      /* Added: Waldorf Astoria internship announcement section */
+      .waldorf-luxury {
+        position: relative;
+      }
+      .waldorf-shell {
+        width: min(94vw, 1600px);
+        max-width: 1600px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(var(--accent-home-rgb), 0.18), transparent 44%),
+          radial-gradient(circle at 82% 16%, rgba(var(--accent-journey-rgb), 0.12), transparent 36%),
+          var(--surface-1);
+        backdrop-filter: blur(4px);
+        padding: clamp(1.4rem, 2.8vw, 2.45rem);
+      }
+      .waldorf-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: clamp(1rem, 2vw, 1.6rem);
+        align-items: stretch;
+      }
+      .waldorf-visual {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #10141b;
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      }
+      .waldorf-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(10, 12, 16, 0.06), rgba(10, 12, 16, 0.28)),
+          radial-gradient(circle at 72% 18%, rgba(var(--accent-home-rgb), 0.18), transparent 30%);
+        pointer-events: none;
+      }
+      .waldorf-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .waldorf-badge {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        z-index: 1;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(11, 14, 19, 0.66);
+        color: #f8efe6;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.36rem 0.64rem;
+        backdrop-filter: blur(12px);
+      }
+      .waldorf-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 360px;
+        padding: clamp(0.35rem, 1vw, 0.65rem) clamp(0.2rem, 1vw, 0.4rem) 0;
+      }
+      .waldorf-eyebrow {
+        margin: 0 0 0.7rem;
+        color: #e0b77e;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .waldorf-copy h2 {
+        margin: 0;
+        font-size: clamp(1.95rem, 3.5vw, 3rem);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        max-width: 12ch;
+      }
+      .waldorf-copy p {
+        margin: 0.95rem 0 0;
+        max-width: 58ch;
+        color: var(--text-soft);
+        line-height: 1.72;
+      }
+      .waldorf-meta {
+        margin-top: 1.1rem;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        color: #d6ddea;
+        font-size: 0.76rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+      .waldorf-meta span {
+        border-radius: 999px;
+        border: 1px solid rgba(var(--accent-home-rgb), 0.28);
+        background: rgba(var(--accent-home-rgb), 0.08);
+        padding: 0.3rem 0.55rem;
       }
 
       /* Updated: luxury editorial Blog section with active reading stage */
@@ -2602,6 +2752,19 @@
         .journey-year {
           font-size: 0.72rem;
         }
+        .waldorf-grid {
+          grid-template-columns: 1fr;
+        }
+        .waldorf-visual,
+        .waldorf-copy {
+          min-height: 0;
+        }
+        .waldorf-visual {
+          min-height: 300px;
+        }
+        .waldorf-copy {
+          padding: 0.15rem 0 0;
+        }
         .blog-heading {
           grid-template-columns: 1fr;
           align-items: start;
@@ -2722,6 +2885,26 @@
         .journey-media-grid--research .journey-media-card img {
           min-height: 170px;
           max-height: 240px;
+        }
+        .waldorf-shell {
+          padding: 1rem;
+        }
+        .waldorf-visual {
+          min-height: 240px;
+          border-radius: 18px;
+        }
+        .waldorf-copy h2 {
+          max-width: none;
+          font-size: clamp(1.55rem, 8vw, 2.1rem);
+        }
+        .waldorf-copy p {
+          margin-top: 0.75rem;
+        }
+        .waldorf-meta {
+          gap: 0.36rem;
+        }
+        .waldorf-meta span {
+          font-size: 0.7rem;
         }
         .blog-shell {
           padding: 1rem;
@@ -2901,7 +3084,7 @@
               <div class="hero-float-card hero-cta-panel">
                 <p class="hero-panel-title">Explore</p>
                 <div class="hero-cta-row">
-                  <a class="btn btn-resume" href="/assets/pdf/Resume%20of%20Nursultan%20Yerken%20-%202026.pdf">Resume</a>
+                  <a class="btn btn-resume" href="assets/pdf/Resume%20of%20Nursultan%20Yerken%20-%202026.pdf">Resume</a>
                   <a class="btn btn-primary" href="#projects">Projects</a>
                   <a class="btn btn-tertiary" href="#journey">Journey</a>
                   <a class="btn btn-tertiary" href="#blog">Blog</a>
@@ -2915,9 +3098,9 @@
             <div class="image-glow">
               <div class="hex-frame">
                 <img
-                  src="/assets/img/prof_pic.jpg"
+                  src="assets/img/prof_pic.jpg"
                   alt="Profile portrait"
-                  onerror="this.onerror=null;this.src='/assets/img/HBKU.png';"
+                  onerror="this.onerror=null;this.src='assets/img/HBKU.png';"
                 />
               </div>
               <div class="hero-stat hero-stat-one">
@@ -3065,7 +3248,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/HBKU.png" alt="Hamad Bin Khalifa University visual identity" />
+                  <img src="assets/img/HBKU.png" alt="Hamad Bin Khalifa University visual identity" />
                 </figure>
               </div>
             </article>
@@ -3084,7 +3267,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/RA.jpg" alt="Research Assistant milestone visual" />
+                  <img src="assets/img/RA.jpg" alt="Research Assistant milestone visual" />
                 </figure>
               </div>
             </article>
@@ -3104,7 +3287,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/QEERI.png" alt="Qatar Environment and Energy Research Institute visual identity" />
+                  <img src="assets/img/QEERI.png" alt="Qatar Environment and Energy Research Institute visual identity" />
                 </figure>
               </div>
             </article>
@@ -3123,7 +3306,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/NSS.jpg" alt="NefteStroiService field engineering milestone visual" />
+                  <img src="assets/img/NSS.jpg" alt="NefteStroiService field engineering milestone visual" />
                 </figure>
               </div>
             </article>
@@ -3142,7 +3325,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/QEERI.png" alt="Qatar Environment and Energy Research Institute visual identity" />
+                  <img src="assets/img/QEERI.png" alt="Qatar Environment and Energy Research Institute visual identity" />
                 </figure>
               </div>
             </article>
@@ -3161,7 +3344,7 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/SHELL.png" alt="Shell Eco-marathon visual identity" />
+                  <img src="assets/img/SHELL.png" alt="Shell Eco-marathon visual identity" />
                 </figure>
               </div>
             </article>
@@ -3181,10 +3364,36 @@
               </div>
               <div class="journey-media">
                 <figure class="journey-media-card journey-media-card--logo">
-                  <img src="/assets/img/SPE.png" alt="Society of Petroleum Engineers Hydrogen Technical Section visual identity" />
+                  <img src="assets/img/SPE.png" alt="Society of Petroleum Engineers Hydrogen Technical Section visual identity" />
                 </figure>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Added: Waldorf Astoria Doha Lusail internship announcement -->
+      <section id="waldorf" class="panel-section reveal waldorf-luxury">
+        <div class="container waldorf-shell">
+          <div class="waldorf-grid">
+            <figure class="waldorf-visual">
+              <span class="waldorf-badge">Hilton Property</span>
+              <img src="assets/img/Waldorf%20Astoria%20Post.jpg" alt="Waldorf Astoria Doha Lusail hotel visual" />
+            </figure>
+            <div class="waldorf-copy">
+              <p class="waldorf-eyebrow">Summer Internship 2026</p>
+              <h2>Engineering Intern · Waldorf Astoria Doha Lusail</h2>
+              <p>
+                I was selected for a Summer Internship 2026 as an Engineering Intern at Waldorf Astoria
+                Doha Lusail, the Hilton property in Lusail. It is a luxury hospitality engineering
+                opportunity where reliability, standards, and execution matter every day.
+              </p>
+              <div class="waldorf-meta">
+                <span>Engineering Intern</span>
+                <span>Hilton Property</span>
+                <span>Doha Lusail</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -3338,7 +3547,7 @@
               <!-- Edit project preview panels here -->
               <article class="project-preview is-active" data-project="snoocircle">
                 <figure class="project-preview-media">
-                  <img src="/assets/img/SnooCircle.png" alt="SnooCircle project preview" />
+                  <img src="assets/img/SnooCircle.png" alt="SnooCircle project preview" />
                 </figure>
                 <div class="project-preview-copy">
                   <h3>SnooCircle</h3>
@@ -3358,7 +3567,7 @@
 
               <article class="project-preview" data-project="invent-planet">
                 <figure class="project-preview-media">
-                  <img src="/assets/img/iftp.png" alt="Invent for the Planet project preview" />
+                  <img src="assets/img/iftp.png" alt="Invent for the Planet project preview" />
                 </figure>
                 <div class="project-preview-copy">
                   <h3>Invent for the Planet</h3>
@@ -3379,7 +3588,7 @@
 
               <article class="project-preview" data-project="modular-lap-desk">
                 <figure class="project-preview-media">
-                  <img src="/assets/img/MEEN210.png" alt="Modular Heat-Preventing Lap Desk project preview" />
+                  <img src="assets/img/MEEN210.png" alt="Modular Heat-Preventing Lap Desk project preview" />
                 </figure>
                 <div class="project-preview-copy">
                   <h3>Modular Heat-Preventing Lap Desk</h3>
@@ -3564,9 +3773,9 @@
               loop
               playsinline
               preload="metadata"
-              poster="/assets/img/12.jpg"
+              poster="assets/img/12.jpg"
             >
-              <source src="/assets/video/contact-space.mp4" type="video/mp4" />
+              <source src="assets/video/contact-space.mp4" type="video/mp4" />
             </video>
           </div>
           <div class="contact-fallback"><canvas id="contactParticles"></canvas></div>
@@ -4169,3 +4378,4 @@
     </script>
   </body>
 </html>
+
