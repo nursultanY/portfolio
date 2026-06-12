@@ -1385,111 +1385,23 @@
         transform: scale(1.02);
       }
 
-      /* Added: Waldorf Astoria internship announcement section */
-      .waldorf-luxury {
-        position: relative;
+      .journey-row--waldorf .journey-title {
+        white-space: nowrap;
+        font-size: clamp(1.08rem, 1.3vw, 1.44rem);
       }
-      .waldorf-shell {
-        width: min(90vw, 1120px);
-        max-width: 1120px;
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 24px;
-        background:
-          radial-gradient(circle at 12% 18%, rgba(var(--accent-home-rgb), 0.18), transparent 44%),
-          radial-gradient(circle at 82% 16%, rgba(var(--accent-journey-rgb), 0.12), transparent 36%),
-          var(--surface-1);
-        backdrop-filter: blur(4px);
-        padding: clamp(1rem, 2vw, 1.45rem);
+      .journey-row--waldorf .journey-desc {
+        max-width: 62ch;
       }
-      .waldorf-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-        gap: clamp(0.75rem, 1.35vw, 1rem);
-        align-items: stretch;
+      .journey-row--waldorf .journey-media {
+        padding: 0.34rem;
       }
-      .waldorf-visual {
-        position: relative;
-        overflow: hidden;
-        min-height: 240px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        background: #10141b;
-        box-shadow:
-          0 18px 40px rgba(0, 0, 0, 0.34),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      .journey-row--waldorf .journey-media-card--logo {
+        min-height: 290px;
+        padding: 0.44rem;
       }
-      .waldorf-visual::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(180deg, rgba(10, 12, 16, 0.06), rgba(10, 12, 16, 0.28)),
-          radial-gradient(circle at 72% 18%, rgba(var(--accent-home-rgb), 0.18), transparent 30%);
-        pointer-events: none;
-      }
-      .waldorf-visual img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .waldorf-badge {
-        position: absolute;
-        left: 1rem;
-        top: 1rem;
-        z-index: 1;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(11, 14, 19, 0.66);
-        color: #f8efe6;
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        padding: 0.36rem 0.64rem;
-        backdrop-filter: blur(12px);
-      }
-      .waldorf-copy {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 240px;
-        padding: clamp(0.2rem, 0.8vw, 0.45rem) clamp(0.1rem, 0.75vw, 0.3rem) 0;
-      }
-      .waldorf-eyebrow {
-        margin: 0 0 0.7rem;
-        color: #e0b77e;
-        font-size: 0.76rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-      .waldorf-copy h2 {
-        margin: 0;
-        font-size: clamp(1.55rem, 2.5vw, 2rem);
-        line-height: 1.04;
-        letter-spacing: -0.03em;
-        max-width: 12ch;
-      }
-      .waldorf-copy p {
-        margin: 0.95rem 0 0;
-        max-width: 48ch;
-        color: var(--text-soft);
-        line-height: 1.72;
-      }
-      .waldorf-meta {
-        margin-top: 1.1rem;
-        display: inline-flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        color: #d6ddea;
-        font-size: 0.76rem;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-      }
-      .waldorf-meta span {
-        border-radius: 999px;
-        border: 1px solid rgba(var(--accent-home-rgb), 0.28);
-        background: rgba(var(--accent-home-rgb), 0.08);
-        padding: 0.3rem 0.55rem;
+      .journey-row--waldorf .journey-media-card--logo img {
+        object-fit: contain;
+        transform: scale(1.02);
       }
 
       /* Updated: luxury editorial Blog section with active reading stage */
@@ -2752,19 +2664,6 @@
         .journey-year {
           font-size: 0.72rem;
         }
-        .waldorf-grid {
-          grid-template-columns: 1fr;
-        }
-        .waldorf-visual,
-        .waldorf-copy {
-          min-height: 0;
-        }
-        .waldorf-visual {
-          min-height: 300px;
-        }
-        .waldorf-copy {
-          padding: 0.15rem 0 0;
-        }
         .blog-heading {
           grid-template-columns: 1fr;
           align-items: start;
@@ -2804,6 +2703,9 @@
         .publication-top {
           align-items: flex-start;
           flex-direction: column;
+        }
+        .journey-row--waldorf .journey-title {
+          white-space: normal;
         }
       }
 
@@ -2886,25 +2788,9 @@
           min-height: 170px;
           max-height: 240px;
         }
-        .waldorf-shell {
-          padding: 1rem;
-        }
-        .waldorf-visual {
-          min-height: 210px;
-          border-radius: 18px;
-        }
-        .waldorf-copy h2 {
-          max-width: none;
-          font-size: clamp(1.55rem, 8vw, 2.1rem);
-        }
-        .waldorf-copy p {
-          margin-top: 0.75rem;
-        }
-        .waldorf-meta {
-          gap: 0.36rem;
-        }
-        .waldorf-meta span {
-          font-size: 0.7rem;
+        .journey-row--waldorf .journey-title {
+          white-space: normal;
+          font-size: clamp(1.22rem, 1.55vw, 1.58rem);
         }
         .blog-shell {
           padding: 1rem;
@@ -3349,6 +3235,25 @@
               </div>
             </article>
 
+            <article class="journey-row journey-row--waldorf" data-year="2026">
+              <div class="journey-content">
+                <span class="journey-year">JUL 2026 – SEP 2026</span>
+                <h3 class="journey-title">Engineering Intern · Waldorf Astoria Doha Lusail</h3>
+                <p class="journey-desc">
+                  Supporting hotel engineering operations across HVAC systems, chilled water plants,
+                  preventive maintenance programs, building services, and facility reliability. This
+                  internship provides exposure to large-scale hospitality engineering, operational
+                  excellence, and engineering standards within a luxury Hilton property.
+                </p>
+                <p class="journey-meta">HVAC · FACILITIES · MAINTENANCE · BUILDING SERVICES</p>
+              </div>
+              <div class="journey-media">
+                <figure class="journey-media-card journey-media-card--logo">
+                  <img src="assets/img/Waldorf%20Astoria%20Post.jpg" alt="Waldorf Astoria Doha Lusail visual identity" />
+                </figure>
+              </div>
+            </article>
+
             <article class="journey-row" data-year="2026">
               <div class="journey-content">
                 <span class="journey-year">Mar 2025 - Present</span>
@@ -3368,32 +3273,6 @@
                 </figure>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Added: Waldorf Astoria Doha Lusail internship announcement -->
-      <section id="waldorf" class="panel-section reveal waldorf-luxury">
-        <div class="container waldorf-shell">
-          <div class="waldorf-grid">
-            <div class="waldorf-copy">
-              <p class="waldorf-eyebrow">Summer Internship 2026</p>
-              <h2>Engineering Intern · Waldorf Astoria Doha Lusail</h2>
-              <p>
-                I was selected for a Summer Internship 2026 as an Engineering Intern at Waldorf Astoria
-                Doha Lusail, the Hilton property in Lusail. It is a luxury hospitality engineering
-                opportunity where reliability, standards, and execution matter every day.
-              </p>
-              <div class="waldorf-meta">
-                <span>Engineering Intern</span>
-                <span>Hilton Property</span>
-                <span>Doha Lusail</span>
-              </div>
-            </div>
-            <figure class="waldorf-visual">
-              <span class="waldorf-badge">Hilton Property</span>
-              <img src="assets/img/Waldorf%20Astoria%20Post.jpg" alt="Waldorf Astoria Doha Lusail hotel visual" />
-            </figure>
           </div>
         </div>
       </section>
